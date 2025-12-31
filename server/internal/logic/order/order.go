@@ -1,6 +1,8 @@
 package order
 
-import "kefu-server/internal/service"
+import (
+	"kefu-server/internal/service"
+)
 
 type sOrder struct{}
 

@@ -3,8 +3,10 @@ package router
 import (
 	"kefu-server/internal/controller/account"
 	"kefu-server/internal/controller/auth"
+	"kefu-server/internal/controller/order"
 	"kefu-server/internal/controller/product"
 	"kefu-server/internal/controller/site"
+	"kefu-server/internal/controller/witkey"
 	"kefu-server/internal/middleware"
 
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -20,6 +22,8 @@ func LoadRouter(s *ghttp.Server) {
 		group.Bind(
 			account.NewV1(),
 			product.NewV1(),
+			order.NewV1(),
+			witkey.NewV1(),
 		).Middleware(middleware.Auth).Middleware(middleware.Response)
 	})
 }

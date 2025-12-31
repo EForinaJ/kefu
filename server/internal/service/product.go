@@ -10,7 +10,7 @@ import (
 type IProduct interface {
 	GetList(ctx context.Context, req *dto_product.Query) (total int, res []*dao_product.List, err error)
 	GetDetail(ctx context.Context, id int64) (res *dao_product.Detail, err error)
-	Purchase(ctx context.Context, req *dto_product.Purchase) (err error)
+	Purchase(ctx context.Context, req *dto_product.Purchase) (code string, err error)
 }
 
 // 定义接口变量

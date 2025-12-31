@@ -123,7 +123,6 @@ const {
         apiFn: fetchGetProductList,
         apiParams:{
             name: "",
-            status: 0,
             code: ""
         },
         paginationKey:{

@@ -56,7 +56,7 @@ import { fetchGetUserOptionsList } from '@/api/site';
 import type { FormInstance, FormRules } from 'element-plus'
 import { useDebounce } from '@/hooks/index';
 import { fetchGetProductPurchase } from '@/api/product';
-
+import { useRouter } from 'vue-router'
 interface Props {
     visible: boolean
     id?: number | null
@@ -73,6 +73,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<Emits>()
+const router = useRouter()
+
 
 const formRef = ref<FormInstance>()
 
@@ -185,11 +187,18 @@ const handleSubmit = async () => {
     try {
         await formRef.value.validate()
         // TODO: 调用新增/编辑接口
-        await fetchGetProductPurchase(form)
+        const res = await fetchGetProductPurchase(form)
+        console.log(res)
+
         ElMessage.success('下单成功')
-        emit('submit')
         handleClose()
         handleCancel()
+        router.push({
+            name: 'OrderList',
+            query: {
+                code: res.code,
+            }
+        })
     } catch (error) {
         console.log('表单验证失败:', error)
     }

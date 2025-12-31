@@ -17,7 +17,9 @@ export function fetchGetProductDetail(params: {id:number}) {
 
 
 export function fetchGetProductPurchase(data: Product.Params.Model) {
-  return request.post({
+  return request.post<{
+    code:string
+  }>({
     url: '/product/purchase',
     data
   })

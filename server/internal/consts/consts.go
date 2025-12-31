@@ -15,3 +15,7 @@ const (
 	Add = 1
 	Sub = 2
 )
+const (
+	Yes = 2
+	Not = 1
+)

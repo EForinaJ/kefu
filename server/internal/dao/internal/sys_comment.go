@@ -20,38 +20,34 @@ type SysCommentDao struct {
 
 // SysCommentColumns defines and stores column names for the table sys_comment.
 type SysCommentColumns struct {
-	Id          string //
-	UserId      string //
-	OrderId     string //
-	ProductId   string //
-	ParentId    string //
-	ReplyUserId string //
-	Content     string //
-	Rating      string //
-	Images      string //
-	IsTop       string //
-	Status      string //
-	Ip          string //
-	CreateTime  string //
-	UpdateTime  string //
+	Id         string //
+	ManageId   string //
+	UserId     string //
+	ProductId  string //
+	Content    string //
+	Rate       string //
+	Images     string //
+	IsTop      string //
+	Status     string //
+	Ip         string //
+	CreateTime string //
+	UpdateTime string //
 }
 
 // sysCommentColumns holds the columns for the table sys_comment.
 var sysCommentColumns = SysCommentColumns{
-	Id:          "id",
-	UserId:      "user_id",
-	OrderId:     "order_id",
-	ProductId:   "product_id",
-	ParentId:    "parent_id",
-	ReplyUserId: "reply_user_id",
-	Content:     "content",
-	Rating:      "rating",
-	Images:      "images",
-	IsTop:       "is_top",
-	Status:      "status",
-	Ip:          "ip",
-	CreateTime:  "create_time",
-	UpdateTime:  "update_time",
+	Id:         "id",
+	ManageId:   "manage_id",
+	UserId:     "user_id",
+	ProductId:  "product_id",
+	Content:    "content",
+	Rate:       "rate",
+	Images:     "images",
+	IsTop:      "is_top",
+	Status:     "status",
+	Ip:         "ip",
+	CreateTime: "create_time",
+	UpdateTime: "update_time",
 }
 
 // NewSysCommentDao creates and returns a new DAO object for table data access.

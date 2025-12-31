@@ -1,6 +1,16 @@
 package consts
 
 const (
+	Disable = 1
+	Enable  = 2
+)
+
+const (
+	StatusApply   = 1 // 待审核
+	StatusSuccess = 2 // 通过
+	StatusFail    = 3 // 拒绝
+)
+const (
 	PayStatusPending = 1 // 未支付
 	PayStatusSuccess = 2 // 支付成功
 	PayStatusRefund  = 3 // 已退款

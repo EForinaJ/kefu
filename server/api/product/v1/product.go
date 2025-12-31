@@ -28,4 +28,6 @@ type PurchaseReq struct {
 	g.Meta `path:"/product/purchase" method:"post" tags:"商品" summary:"商品购买"`
 	*dto_product.Purchase
 }
-type PurchaseRes struct{}
+type PurchaseRes struct {
+	Code string `json:"code" dc:"订单编码"`
+}

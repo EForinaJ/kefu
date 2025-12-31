@@ -1,0 +1,106 @@
+package order
+
+import (
+	"context"
+	"kefu-server/internal/dao"
+	"kefu-server/internal/model/entity"
+	dao_order "kefu-server/internal/type/order/dao"
+	dto_order "kefu-server/internal/type/order/dto"
+	utils_error "kefu-server/internal/utils/error"
+	"kefu-server/internal/utils/response"
+
+	"github.com/gogf/gf/v2/util/gconv"
+)
+
+// GetList implements service.IOrder.
+func (s *sOrder) GetList(ctx context.Context, req *dto_order.Query) (total int, res []*dao_order.List, err error) {
+	m := dao.SysOrder.Ctx(ctx).
+		Page(req.Page, req.Limit).
+		OrderDesc(dao.SysOrder.Columns().CreateTime)
+	if req.Name != "" {
+		userId, err := dao.SysUser.Ctx(ctx).
+			WhereLike(dao.SysUser.Columns().Name, "%"+req.Name+"%").Value(dao.SysUser.Columns().Id)
+		if err != nil {
+			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+		}
+		m = m.Where(dao.SysOrder.Columns().UserId, userId)
+	}
+	if req.Code != "" {
+		m = m.Where(dao.SysOrder.Columns().Code, req.Code)
+	}
+	if req.Status != 0 {
+		m = m.Where(dao.SysOrder.Columns().Status, req.Status)
+	}
+
+	total, err = m.Count()
+	if err != nil {
+		return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+	}
+	var list []*entity.SysOrder
+	err = m.Scan(&list)
+	if err != nil {
+		return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+	}
+
+	res = make([]*dao_order.List, len(list))
+	for i, v := range list {
+		var entity *dao_order.List
+		err = gconv.Scan(v, &entity)
+		if err != nil {
+			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+		}
+
+		//  下单用户
+		user, err := dao.SysUser.Ctx(ctx).
+			Where(dao.SysUser.Columns().Id, v.UserId).
+			Value(dao.SysUser.Columns().Name)
+		if err != nil {
+			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+		}
+
+		entity.User = user.String()
+
+		// 商品内容
+		product, err := dao.SysProduct.Ctx(ctx).
+			Where(dao.SysProduct.Columns().Id, v.ProductId).
+			Fields(
+				dao.SysProduct.Columns().Name,
+				dao.SysProduct.Columns().Pic,
+				dao.SysProduct.Columns().GameId,
+				dao.SysProduct.Columns().CategoryId,
+			).
+			One()
+		if err != nil {
+			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+		}
+
+		game, err := dao.SysGame.Ctx(ctx).
+			Where(dao.SysGame.Columns().Id,
+				product.GMap().Get(dao.SysProduct.Columns().GameId)).
+			Value(dao.SysGame.Columns().Name)
+		if err != nil {
+			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+		}
+
+		category, err := dao.SysCategory.Ctx(ctx).
+			Where(dao.SysCategory.Columns().Id,
+				product.GMap().Get(dao.SysProduct.Columns().CategoryId)).
+			Value(dao.SysCategory.Columns().Name)
+		if err != nil {
+			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+		}
+
+		entity.Product = &dao_order.Product{
+			Id:        v.ProductId,
+			Name:      gconv.String(product.GMap().Get(dao.SysProduct.Columns().Name)),
+			Pic:       gconv.String(product.GMap().Get(dao.SysProduct.Columns().Pic)),
+			Quantity:  v.Quantity,
+			UnitPrice: v.UnitPrice,
+			Game:      game.String(),
+			Category:  category.String(),
+		}
+
+		res[i] = entity
+	}
+	return
+}

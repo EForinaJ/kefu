@@ -21,31 +21,11 @@ export const shopRoutes: AppRouteRecord = {
       }
     },
     {
-      path: 'shop_order',
-      name: 'ShopOrder',
-      component: '/shop/order',
+      path: 'shop_comment',
+      name: 'ShopComment',
+      component: '/shop/comment',
       meta: {
-        title: '订单列表',
-        keepAlive: true,
-        roles: ['R_SUPER']
-      }
-    },
-    {
-      path: 'shop_aftersales',
-      name: 'ShopAftersales',
-      component: '/order/aftersales',
-      meta: {
-        title: '售后中心',
-        keepAlive: true,
-        roles: ['R_SUPER']
-      }
-    },
-    {
-      path: 'shop_settlement',
-      name: 'ShopSettlement',
-      component: '/order/settlement',
-      meta: {
-        title: '报单结算',
+        title: '评价审核',
         keepAlive: true,
         roles: ['R_SUPER']
       }
