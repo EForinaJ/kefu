@@ -9,6 +9,9 @@ import (
 
 func (c *ControllerV1) GetSite(ctx context.Context, req *v1.GetSiteReq) (res *v1.GetSiteRes, err error) {
 	detail, err := service.Site().GetInfo(ctx)
+	if err != nil {
+		return nil, err
+	}
 	res = &v1.GetSiteRes{
 		Detail: detail,
 	}

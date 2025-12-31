@@ -42,7 +42,7 @@
                     <ElButton v-if="detail?.status == OrderStatus.InProgress"
                     @click="handleAftersales" size="small" type="warning">售后退款</ElButton>
                     <ElButton v-if="detail?.status == OrderStatus.InProgress"
-                    @click="handleAftersales" size="small" type="primary">结束完成</ElButton>
+                    @click="handleComplete" size="small" type="primary">结束完成</ElButton>
                 </ElSpace>
             </div>
         </template>
@@ -154,7 +154,7 @@
 </template>
 
 <script setup lang="ts">
-import { fetchGetOrderDetail, fetchPostOrderCancel, fetchPostOrderPaid } from '@/api/order';
+import { fetchGetOrderDetail, fetchPostOrderCancel, fetchPostOrderComplete, fetchPostOrderPaid, fetchPostOrderStart } from '@/api/order';
 import { PayMode } from '@/enums/modeEnum';
 import { OrderStatus, PayStatus } from '@/enums/statusEnum';
 import { useSiteStore } from '@/store/modules/site';
@@ -304,7 +304,7 @@ ElMessageBox.confirm(`确定要开始服务吗？`, '提示', {
     type: 'primary'
 }).then(async() => {
     // TODO: 调用删除接口
-    // await fetchPostOrderStart({id:row.id})
+    await fetchPostOrderStart({id:props.id!})
     getData()
 })
 .catch(() => {
@@ -312,14 +312,14 @@ ElMessageBox.confirm(`确定要开始服务吗？`, '提示', {
 })
 }
 
-const handleComplete = (row:Order.Response.Info): void => {
+const handleComplete = (): void => {
 ElMessageBox.confirm(`确定服务完成吗？`, '提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'primary'
 }).then(async() => {
     // TODO: 调用删除接口
-    // await fetchPostOrderComplete({id:row.id})
+    await fetchPostOrderComplete({id:props.id!})
     getData()
 })
 .catch(() => {

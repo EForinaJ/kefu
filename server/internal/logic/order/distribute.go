@@ -26,7 +26,7 @@ func (s *sOrder) Distribute(ctx context.Context, req *dto_order.Distribute) (err
 		}
 	}()
 
-	_, err = dao.SysDistribute.Ctx(ctx).
+	_, err = tx.Model(dao.SysDistribute.Table()).
 		Data(g.Map{
 			dao.SysDistribute.Columns().WitkeyId:   req.WitkeyId,
 			dao.SysDistribute.Columns().OrderId:    req.Id,

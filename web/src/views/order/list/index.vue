@@ -124,16 +124,15 @@ const {
             size: 'limit'
         },
         columnsFactory: () => [
-            { type: 'selection' }, // 勾选列
             {
                 prop: 'code',
                 label: '订单号',
-                width: 260,
+                width: 280,
             },
             {
                 prop: 'productInfo',
                 label: '商品信息',
-                width: 280,
+                width: 400,
                 formatter: (row) => {
                 return h('div', { class: 'flex-c' }, [
                     h(ElImage, {

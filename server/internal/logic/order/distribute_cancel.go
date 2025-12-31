@@ -25,10 +25,11 @@ func (s *sOrder) DistributeCancel(ctx context.Context, req *dto_order.Distribute
 			tx.Commit()
 		}
 	}()
-	_, err = dao.SysDistribute.Ctx(ctx).
+	_, err = tx.Model(dao.SysDistribute.Table()).
 		Where(dao.SysDistribute.Columns().Id, req.Id).
 		Data(g.Map{
-			dao.SysDistribute.Columns().Reason: req.Reason,
+			dao.SysDistribute.Columns().Reason:   req.Reason,
+			dao.SysDistribute.Columns().IsCancel: consts.Yes,
 		}).
 		Update()
 	if err != nil {
@@ -36,6 +37,7 @@ func (s *sOrder) DistributeCancel(ctx context.Context, req *dto_order.Distribute
 	}
 	orderId, err := tx.Model(dao.SysDistribute.Table()).
 		Where(dao.SysDistribute.Columns().Id, req.Id).Value(dao.SysDistribute.Columns().OrderId)
+	g.Dump(orderId)
 	if err != nil {
 		return utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
 	}

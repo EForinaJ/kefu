@@ -24,4 +24,5 @@ const (
 	OrderLogTypeAfterSales       = 6 // 添加售后工单
 	OrderLogTypeDistribute       = 7 // 派发威客
 	OrderLogTypeDistributeCancel = 8 // 取消派单服务
+	OrderLogTypeStart            = 9 // 开始服务
 )

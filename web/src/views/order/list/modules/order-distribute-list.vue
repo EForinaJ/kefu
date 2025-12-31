@@ -12,7 +12,7 @@
         </ArtTable>
         <OrderDistributeCancelModal 
             v-model:visible="cancelModalVisible"
-            :id="id"
+            :id="distributeId"
             @submit="refreshData"
         />
     </div>
@@ -127,8 +127,10 @@ const {
     },
 })
 
+const distributeId = ref(0)
 const cancelModalVisible = ref(false)
 const handleCancel = (id:number) => {
+    distributeId.value = id
     nextTick(() => {
         cancelModalVisible.value = true
     })

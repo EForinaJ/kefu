@@ -72,6 +72,7 @@ const orderMap: Record<string, Component> = {
   const handleClose = () => {
     visible.value = false
     activeKey.value = ""
+    emit('submit')
   }
 </script>
   
