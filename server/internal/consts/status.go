@@ -1,0 +1,16 @@
+package consts
+
+const (
+	PayStatusPending = 1 // 未支付
+	PayStatusSuccess = 2 // 支付成功
+	PayStatusRefund  = 3 // 已退款
+)
+
+const (
+	OrderStatusPendingPayment = 1 // 待付款
+	OrderStatusPendingOrder   = 2 // 待服务
+	OrderStatusInProgress     = 3 // 进行中
+	OrderStatusComplete       = 4 // 已完成
+	OrderStatusCancel         = 5 // 已取消
+	OrderStatusRefund         = 6 // 已退款
+)

@@ -1,0 +1,40 @@
+package site
+
+import (
+	"context"
+	"kefu-server/internal/dao"
+	"kefu-server/internal/model/entity"
+	dao_site "kefu-server/internal/type/site/dao"
+	utils_error "kefu-server/internal/utils/error"
+	"kefu-server/internal/utils/response"
+)
+
+func (s *sSite) GetUserOptions(ctx context.Context, phone string) (res []*dao_site.Options, err error) {
+	m := dao.SysUser.Ctx(ctx).
+		Page(1, 5).
+		OrderDesc(dao.SysUser.Columns().CreateTime).
+		Fields(dao.SysUser.Columns().Id, dao.SysUser.Columns().Name)
+
+	userId, err := dao.SysUser.Ctx(ctx).
+		WhereLike(dao.SysUser.Columns().Phone, phone).
+		Value(dao.SysUser.Columns().Id)
+	if err != nil {
+		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+	}
+	m = m.Where(dao.SysUser.Columns().Id, userId)
+
+	var list []*entity.SysUser
+	err = m.Scan(&list)
+	if err != nil {
+		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+	}
+	res = make([]*dao_site.Options, len(list))
+	for i, v := range list {
+		res[i] = &dao_site.Options{
+			Name:  v.Name,
+			Id:    v.Id,
+			Value: v.Id,
+		}
+	}
+	return
+}
