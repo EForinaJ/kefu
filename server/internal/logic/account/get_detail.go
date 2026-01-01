@@ -15,18 +15,18 @@ import (
 // GetDetail implements service.IAccount.
 func (s *sAccount) GetDetail(ctx context.Context) (res *dao_account.Detail, err error) {
 	userId := ctx.Value("userId")
-	// options, err := g.Redis().Get(ctx, consts.Account+gconv.String(userId))
-	// if err != nil {
-	// 	return nil, utils_error.Err(response.CACHE_READ_ERROR, response.CodeMsg(response.CACHE_READ_ERROR))
-	// }
+	options, err := g.Redis().Get(ctx, consts.Account+gconv.String(userId))
+	if err != nil {
+		return nil, utils_error.Err(response.CACHE_READ_ERROR, response.CodeMsg(response.CACHE_READ_ERROR))
+	}
 
-	// if !options.IsEmpty() {
-	// 	err = options.Scan(&res)
-	// 	if err != nil {
-	// 		return nil, utils_error.Err(response.CACHE_READ_ERROR, response.CodeMsg(response.CACHE_READ_ERROR))
-	// 	}
-	// 	return
-	// }
+	if !options.IsEmpty() {
+		err = options.Scan(&res)
+		if err != nil {
+			return nil, utils_error.Err(response.CACHE_READ_ERROR, response.CodeMsg(response.CACHE_READ_ERROR))
+		}
+		return
+	}
 
 	err = dao.SysManage.Ctx(ctx).Fields(dao.SysManage.Columns().Id,
 		dao.SysManage.Columns().Name,

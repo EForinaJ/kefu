@@ -22,8 +22,19 @@ func Auth(r *ghttp.Request) {
 		response.Error(r).SetCode(response.ACCESS_TOKEN_TIMEOUT).
 			SetMessage("访问失败,无效的token,请登录").Send()
 	}
-	// 将当前请求的userID信息保存到请求的上下文c上
 
+	// 判断是否有角色
+	// rolesList, err := dao.SysManageRole.
+	// 	Ctx(r.Context()).
+	// 	Where(dao.SysManageRole.Columns().ManageId, mc.Id).
+	// 	Fields(dao.SysManageRole.Columns().RoleId).
+	// 	Array()
+	// if err != nil {
+	// 	response.Error(r).SetCode(response.ACCESS_TOKEN_TIMEOUT).
+	// 		SetMessage("访问失败,无效的token,请登录").Send()
+	// }
+
+	// 将当前请求的userID信息保存到请求的上下文c上
 	r.SetCtxVar("userId", mc.Id)
 	r.Middleware.Next()
 }

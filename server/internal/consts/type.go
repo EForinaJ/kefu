@@ -1,6 +1,9 @@
 package consts
 
 const (
+	RoleTypeKefu = 2 // 客服角色
+)
+const (
 	ProfitTypeOrder = 1 // 订单收益
 )
 const (
