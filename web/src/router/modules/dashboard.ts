@@ -18,5 +18,17 @@ export const dashboardRoutes: AppRouteRecord = {
         keepAlive: false
       }
     },
+    {
+      path: 'account',
+      name: 'Account',
+      component: '/account/user-center',
+      meta: {
+        title: '账户中心',
+        keepAlive: true,
+        isHide: true,
+        isHideTab: true,
+        activePath: '/dashboard/console'
+      }
+    },
   ]
 }
