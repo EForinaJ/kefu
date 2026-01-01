@@ -20,7 +20,7 @@ func (c *ControllerV1) Login(ctx context.Context, req *v1.LoginReq) (res *v1.Log
 	// 获取token
 	token, err := service.Auth().Login(ctx, req.Login)
 	if err != nil {
-		return nil, utils_error.Err(response.LOGIN_ERROR, response.CodeMsg(response.LOGIN_ERROR))
+		return nil, err
 	}
 	res = &v1.LoginRes{
 		Token: token.(string),
