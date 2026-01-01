@@ -31,3 +31,17 @@ export function fetchGetUserOptionsList(params: {phone:string}) {
     params
   })
 }
+
+
+// 获取所属头衔选项列表
+export function fetchGetTitleOptionsList(params: {gameId:number}) {
+  return request.get<{
+    list: {
+      id:number,
+      name:string
+    }[]
+  }>({
+    url: '/site/title/options',
+    params
+  })
+}

@@ -2,9 +2,12 @@ package router
 
 import (
 	"server/internal/controller/account"
+	"server/internal/controller/aftersales"
 	"server/internal/controller/auth"
+	"server/internal/controller/comment"
 	"server/internal/controller/order"
 	"server/internal/controller/product"
+	"server/internal/controller/settlement"
 	"server/internal/controller/site"
 	"server/internal/controller/witkey"
 	"server/internal/middleware"
@@ -22,7 +25,10 @@ func LoadRouter(s *ghttp.Server) {
 		group.Bind(
 			account.NewV1(),
 			product.NewV1(),
+			comment.NewV1(),
 			order.NewV1(),
+			aftersales.NewV1(),
+			settlement.NewV1(),
 			witkey.NewV1(),
 		).Middleware(middleware.Auth).Middleware(middleware.Response)
 	})

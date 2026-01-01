@@ -28,3 +28,11 @@ type GetUserOptionsReq struct {
 type GetUserOptionsRes struct {
 	List []*dao_site.Options `json:"list" dc:"用户选项列表"`
 }
+
+type GetTitleOptionsReq struct {
+	g.Meta `path:"/site/title/options" method:"get" tags:"站点" summary:"所属头衔选项"`
+	GameId int64 `p:"gameId" v:"required#请输入游戏id" dc:"游戏id"`
+}
+type GetTitleOptionsRes struct {
+	List []*dao_site.Options `json:"list" dc:"所属头衔选项列表"`
+}

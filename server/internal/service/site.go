@@ -11,6 +11,7 @@ type ISite interface {
 	GetInfo(ctx context.Context) (res *dao_site.Detail, err error)
 	GetGameOptions(ctx context.Context) (res []*dao_site.Options, err error)
 	GetUserOptions(ctx context.Context, phone string) (res []*dao_site.Options, err error)
+	GetTitleOptions(ctx context.Context, id int64) (res []*dao_site.Options, err error)
 }
 
 // 定义接口变量

@@ -43,12 +43,6 @@ import { fetchGetOrderList, } from '@/api/order'
 import { OrderStatus} from '@/enums/statusEnum'
 import OrderSearch from './modules/order-search.vue'
 import OrderView from './modules/order-view.vue'
-//   import OrderAddDiscountModal from './modules/order-add-discount-modal.vue'
-
-//   import OrderViewDrawer from './modules/order-view-drawer.vue'
-//   import OrderRefundModal from './modules/order-refund-modal.vue'
-//   import OrderSearch from './modules/order-search.vue'
-
 
 const route = useRoute()
 defineOptions({ name: 'Order' })

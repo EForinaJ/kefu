@@ -6,33 +6,29 @@ declare namespace Witkey {
             Api.Common.CommonSearchParams
         >
         interface Model {
-            id?: number | null,
+            name: string | null;
             titleId: number | null;
             gameId: number| null;
             userId: number| null;
-            album: string[];
-            rate: number;
         }
-
-        interface ChangeCommission {
-            id?: number | null,
-            mode: number | null;
-            amount: number | null;
-            remark: string | null;
+        interface ChangeTitle {
+            id: number | null;
+            titleId: number | null;
+            gameId: number| null;
         }
     }
     namespace Response {
        
         type Info = {
             id: number;
+            name: string;
             user: {
                 name:string;
                 avatar:string;
-                phone:string;
             };
             game: string;
             title: string;
-            commission: number;
+            status: number;
             rate: number;
             createTime: string;
         }
@@ -40,15 +36,15 @@ declare namespace Witkey {
 
         type Detail = {
             id: number;
+            name:string;
             user: {
                 name:string;
                 avatar:string;
-                phone:string;
             };
             game: string;
             title: string;
-            commission: number;
             rate: number;
+            status: number;
             album: string[];
             createTime: string;
         }

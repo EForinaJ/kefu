@@ -9,6 +9,11 @@ import (
 // 定义显示接口
 type IWitkey interface {
 	GetList(ctx context.Context, req *dto_witkey.Query) (total int, res []*dao_witkey.List, err error)
+	GetDetail(ctx context.Context, id int64) (res *dao_witkey.Detail, err error)
+	Create(ctx context.Context, req *dto_witkey.Create) (err error)
+	CheckCreate(ctx context.Context, req *dto_witkey.Create) (err error)
+	ChangeTitle(ctx context.Context, req *dto_witkey.ChangeTitle) (err error)
+	CheckChangeTitle(ctx context.Context, req *dto_witkey.ChangeTitle) (err error)
 }
 
 // 定义接口变量
