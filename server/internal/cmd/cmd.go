@@ -18,7 +18,7 @@ var (
 		Brief: "start http server",
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 			s := g.Server()
-			s.AddStaticPath("/public", "./public")
+			s.AddStaticPath("/public", "../../public")
 			router.LoadRouter(s)
 			s.Run()
 			return nil

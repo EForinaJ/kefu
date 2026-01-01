@@ -7,7 +7,6 @@ export const orderRoutes: AppRouteRecord = {
   meta: {
     title: '订单管理',
     icon: 'solar:clipboard-heart-bold',
-    roles: ['R_SUPER']
   },
   children: [
     {
@@ -17,7 +16,6 @@ export const orderRoutes: AppRouteRecord = {
       meta: {
         title: '订单中心',
         keepAlive: true,
-        roles: ['R_SUPER']
       },
     },
     {
@@ -27,7 +25,6 @@ export const orderRoutes: AppRouteRecord = {
       meta: {
         title: '售后中心',
         keepAlive: true,
-        roles: ['R_SUPER']
       }
     },
     {
@@ -37,7 +34,6 @@ export const orderRoutes: AppRouteRecord = {
       meta: {
         title: '报单结算',
         keepAlive: true,
-        roles: ['R_SUPER']
       }
     },
   ]

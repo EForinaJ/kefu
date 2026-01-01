@@ -9,6 +9,7 @@ import (
 	"server/internal/controller/product"
 	"server/internal/controller/settlement"
 	"server/internal/controller/site"
+	"server/internal/controller/upload"
 	"server/internal/controller/witkey"
 	"server/internal/middleware"
 
@@ -30,6 +31,7 @@ func LoadRouter(s *ghttp.Server) {
 			aftersales.NewV1(),
 			settlement.NewV1(),
 			witkey.NewV1(),
+			upload.NewV1(),
 		).Middleware(middleware.Auth).Middleware(middleware.Response)
 	})
 }

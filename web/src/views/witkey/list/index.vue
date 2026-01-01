@@ -174,7 +174,7 @@ const {
       },
       {
         prop: 'status',
-        label: '结单状态',
+        label: '接单状态',
         formatter: (row) => {
           const statusConfig = getStatus(row.status)
           return h(ElTag, { type: statusConfig.type }, () => statusConfig.text)

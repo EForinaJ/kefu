@@ -9,5 +9,6 @@ import (
 	_ "server/internal/logic/product"
 	_ "server/internal/logic/settlement"
 	_ "server/internal/logic/site"
+	_ "server/internal/logic/upload"
 	_ "server/internal/logic/witkey"
 )

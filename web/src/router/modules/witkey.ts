@@ -7,7 +7,6 @@ export const witkeyRoutes: AppRouteRecord = {
   meta: {
     title: '威客中心',
     icon: 'solar:user-id-bold',
-    roles: ['R_SUPER']
   },
   children: [
     {
@@ -17,7 +16,6 @@ export const witkeyRoutes: AppRouteRecord = {
       meta: {
         title: '威客列表',
         keepAlive: true,
-        roles: ['R_SUPER']
       }
     },
   ]

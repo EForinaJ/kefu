@@ -7,7 +7,6 @@ export const shopRoutes: AppRouteRecord = {
   meta: {
     title: '商城中心',
     icon: 'solar:shop-bold',
-    roles: ['R_SUPER']
   },
   children: [
     {
@@ -17,7 +16,6 @@ export const shopRoutes: AppRouteRecord = {
       meta: {
         title: '商品列表',
         keepAlive: true,
-        roles: ['R_SUPER']
       }
     },
     {
@@ -27,7 +25,6 @@ export const shopRoutes: AppRouteRecord = {
       meta: {
         title: '评价审核',
         keepAlive: true,
-        roles: ['R_SUPER']
       }
     },
   ]

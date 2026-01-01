@@ -5,9 +5,8 @@ export const dashboardRoutes: AppRouteRecord = {
   path: '/dashboard',
   component: '/index/index',
   meta: {
-    title: 'menus.dashboard.title',
+    title: '仪表盘',
     icon: 'solar:pie-chart-2-bold',
-    roles: ['R_SUPER', 'R_ADMIN']
   },
   children: [
     {
@@ -15,10 +14,9 @@ export const dashboardRoutes: AppRouteRecord = {
       name: 'Console',
       component: '/dashboard/console',
       meta: {
-        title: 'menus.dashboard.console',
-        keepAlive: false,
-        fixedTab: true
+        title: '工作台',
+        keepAlive: false
       }
-    }
+    },
   ]
 }

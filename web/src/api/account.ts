@@ -7,9 +7,19 @@ import request from '@/utils/http'
 export function fetchGetAccountInfo() {
     return request.get<Account.Response.Info>({
       url: '/account'
-      // 自定义请求头
-      // headers: {
-      //   'X-Custom-Header': 'your-custom-value'
-      // }
     })
+}
+
+export function fetchPostAccountEdit(data: Account.Params.Model) {
+  return request.post({
+    url: '/account/edit',
+    data
+  })
+}
+
+export function fetchPostAccountChangePass(data: Account.Params.ChangePass) {
+  return request.post({
+    url: '/account/change/pass',
+    data
+  })
 }

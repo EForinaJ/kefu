@@ -5,5 +5,9 @@ export enum AfterSalesType {
   Other = 3,      // 其他
 }
 
-
+export enum SexType {
+  Male = 1,      // 男
+  Female = 2,    // 女
+  Other = 3,     // 其他
+}
 

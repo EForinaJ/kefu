@@ -50,7 +50,7 @@
 <script setup lang="ts">
 import { fetchGetGameOptionsList, fetchGetTitleOptionsList } from '@/api/site';
 import type { FormInstance, FormRules } from 'element-plus'
-import { useDebounce } from '@/hooks/index';
+
 import { fetchPostWitkeyChangeTitle } from '@/api/witkey';
 interface Props {
   visible: boolean
@@ -98,14 +98,10 @@ const rules = reactive<FormRules>({
 })
 
 
-// 使用防抖 hook
-const { debounce } = useDebounce()
 interface ListItem {
   value: number
   label: string,
 }
-
-
 const gameOptions = ref<ListItem[]>([])
 const getGameOptions =  async () => {
   const res = await fetchGetGameOptionsList()

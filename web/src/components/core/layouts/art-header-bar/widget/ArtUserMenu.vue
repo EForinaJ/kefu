@@ -29,11 +29,11 @@
             <span class="block text-sm font-medium text-g-800 truncate">{{
               userInfo.name
             }}</span>
-            <span class="block mt-0.5 text-xs text-g-500 truncate">{{ userInfo.name }}</span>
+            <span class="block mt-0.5 text-xs text-g-500 truncate">{{ userInfo.description }}</span>
           </div>
         </div>
         <ul class="py-4 mt-3 border-t border-g-300/80">
-          <li class="btn-item" @click="goPage('/system/user-center')">
+          <li class="btn-item" @click="goPage('/account/center')">
             <ArtSvgIcon icon="ri:user-3-line" />
             <span>{{ $t('topBar.user.userCenter') }}</span>
           </li>
