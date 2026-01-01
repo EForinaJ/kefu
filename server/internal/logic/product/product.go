@@ -1,7 +1,7 @@
 package product
 
 import (
-	"kefu-server/internal/service"
+	"server/internal/service"
 )
 
 type sProduct struct{}

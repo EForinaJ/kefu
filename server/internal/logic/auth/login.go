@@ -2,14 +2,14 @@ package auth
 
 import (
 	"context"
-	"kefu-server/internal/consts"
-	"kefu-server/internal/dao"
-	"kefu-server/internal/lib/jwt"
-	"kefu-server/internal/model/entity"
-	dto_auth "kefu-server/internal/type/auth/dto"
-	utils_error "kefu-server/internal/utils/error"
-	utils_lock "kefu-server/internal/utils/lock"
-	"kefu-server/internal/utils/response"
+	"server/internal/consts"
+	"server/internal/dao"
+	"server/internal/lib/jwt"
+	"server/internal/model/entity"
+	dto_auth "server/internal/type/auth/dto"
+	utils_error "server/internal/utils/error"
+	utils_lock "server/internal/utils/lock"
+	"server/internal/utils/response"
 	"strings"
 
 	"github.com/gogf/gf/v2/crypto/gmd5"

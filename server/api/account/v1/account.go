@@ -1,7 +1,7 @@
 package v1
 
 import (
-	dao_account "kefu-server/internal/type/account/dao"
+	dao_account "server/internal/type/account/dao"
 
 	"github.com/gogf/gf/v2/frame/g"
 )

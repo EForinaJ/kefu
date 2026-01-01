@@ -1,7 +1,7 @@
 package v1
 
 import (
-	dto_auth "kefu-server/internal/type/auth/dto"
+	dto_auth "server/internal/type/auth/dto"
 
 	"github.com/gogf/gf/v2/frame/g"
 )

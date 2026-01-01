@@ -1,8 +1,8 @@
 package v1
 
 import (
-	dao_product "kefu-server/internal/type/product/dao"
-	dto_product "kefu-server/internal/type/product/dto"
+	dao_product "server/internal/type/product/dao"
+	dto_product "server/internal/type/product/dto"
 
 	"github.com/gogf/gf/v2/frame/g"
 )

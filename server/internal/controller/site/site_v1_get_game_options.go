@@ -3,8 +3,8 @@ package site
 import (
 	"context"
 
-	v1 "kefu-server/api/site/v1"
-	"kefu-server/internal/service"
+	v1 "server/api/site/v1"
+	"server/internal/service"
 )
 
 func (c *ControllerV1) GetGameOptions(ctx context.Context, req *v1.GetGameOptionsReq) (res *v1.GetGameOptionsRes, err error) {

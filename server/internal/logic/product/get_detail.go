@@ -2,10 +2,10 @@ package product
 
 import (
 	"context"
-	"kefu-server/internal/dao"
-	dao_product "kefu-server/internal/type/product/dao"
-	utils_error "kefu-server/internal/utils/error"
-	"kefu-server/internal/utils/response"
+	"server/internal/dao"
+	dao_product "server/internal/type/product/dao"
+	utils_error "server/internal/utils/error"
+	"server/internal/utils/response"
 
 	"github.com/gogf/gf/v2/util/gconv"
 )

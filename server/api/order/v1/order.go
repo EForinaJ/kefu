@@ -1,8 +1,8 @@
 package v1
 
 import (
-	dao_order "kefu-server/internal/type/order/dao"
-	dto_order "kefu-server/internal/type/order/dto"
+	dao_order "server/internal/type/order/dao"
+	dto_order "server/internal/type/order/dto"
 
 	"github.com/gogf/gf/v2/frame/g"
 )

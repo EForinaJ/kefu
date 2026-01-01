@@ -1,7 +1,7 @@
 package utils_error
 
 import (
-	"kefu-server/internal/utils/response"
+	"server/internal/utils/response"
 
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"

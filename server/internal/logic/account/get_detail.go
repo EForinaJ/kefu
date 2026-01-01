@@ -2,11 +2,11 @@ package account
 
 import (
 	"context"
-	"kefu-server/internal/consts"
-	"kefu-server/internal/dao"
-	dao_account "kefu-server/internal/type/account/dao"
-	utils_error "kefu-server/internal/utils/error"
-	"kefu-server/internal/utils/response"
+	"server/internal/consts"
+	"server/internal/dao"
+	dao_account "server/internal/type/account/dao"
+	utils_error "server/internal/utils/error"
+	"server/internal/utils/response"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/util/gconv"

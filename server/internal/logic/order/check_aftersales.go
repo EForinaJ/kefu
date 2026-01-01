@@ -3,11 +3,11 @@ package order
 import (
 	"context"
 
-	"kefu-server/internal/consts"
-	"kefu-server/internal/dao"
-	dto_order "kefu-server/internal/type/order/dto"
-	utils_error "kefu-server/internal/utils/error"
-	"kefu-server/internal/utils/response"
+	"server/internal/consts"
+	"server/internal/dao"
+	dto_order "server/internal/type/order/dto"
+	utils_error "server/internal/utils/error"
+	"server/internal/utils/response"
 
 	"github.com/gogf/gf/v2/util/gconv"
 	"github.com/shopspring/decimal"

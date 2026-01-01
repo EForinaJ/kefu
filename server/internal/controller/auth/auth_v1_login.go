@@ -3,12 +3,12 @@ package auth
 import (
 	"context"
 
-	v1 "kefu-server/api/auth/v1"
-	"kefu-server/internal/consts"
-	"kefu-server/internal/service"
-	utils_error "kefu-server/internal/utils/error"
-	utils_lock "kefu-server/internal/utils/lock"
-	"kefu-server/internal/utils/response"
+	v1 "server/api/auth/v1"
+	"server/internal/consts"
+	"server/internal/service"
+	utils_error "server/internal/utils/error"
+	utils_lock "server/internal/utils/lock"
+	"server/internal/utils/response"
 )
 
 func (c *ControllerV1) Login(ctx context.Context, req *v1.LoginReq) (res *v1.LoginRes, err error) {

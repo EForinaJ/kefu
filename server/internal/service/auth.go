@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	dto_auth "kefu-server/internal/type/auth/dto"
+	dto_auth "server/internal/type/auth/dto"
 )
 
 // 定义显示接口

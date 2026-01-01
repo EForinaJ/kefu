@@ -1,6 +1,6 @@
 package witkey
 
-import "kefu-server/internal/service"
+import "server/internal/service"
 
 type sWitkey struct{}
 

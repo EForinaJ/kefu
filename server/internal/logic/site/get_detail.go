@@ -2,11 +2,11 @@ package site
 
 import (
 	"context"
-	"kefu-server/internal/consts"
-	"kefu-server/internal/dao"
-	dao_site "kefu-server/internal/type/site/dao"
-	utils_error "kefu-server/internal/utils/error"
-	"kefu-server/internal/utils/response"
+	"server/internal/consts"
+	"server/internal/dao"
+	dao_site "server/internal/type/site/dao"
+	utils_error "server/internal/utils/error"
+	"server/internal/utils/response"
 
 	"github.com/gogf/gf/v2/encoding/gjson"
 	"github.com/gogf/gf/v2/frame/g"

@@ -7,7 +7,7 @@ package product
 import (
 	"context"
 
-	"kefu-server/api/product/v1"
+	"server/api/product/v1"
 )
 
 type IProductV1 interface {

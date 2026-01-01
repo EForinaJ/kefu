@@ -1,13 +1,13 @@
 package router
 
 import (
-	"kefu-server/internal/controller/account"
-	"kefu-server/internal/controller/auth"
-	"kefu-server/internal/controller/order"
-	"kefu-server/internal/controller/product"
-	"kefu-server/internal/controller/site"
-	"kefu-server/internal/controller/witkey"
-	"kefu-server/internal/middleware"
+	"server/internal/controller/account"
+	"server/internal/controller/auth"
+	"server/internal/controller/order"
+	"server/internal/controller/product"
+	"server/internal/controller/site"
+	"server/internal/controller/witkey"
+	"server/internal/middleware"
 
 	"github.com/gogf/gf/v2/net/ghttp"
 )

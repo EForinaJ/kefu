@@ -3,8 +3,8 @@ package order
 import (
 	"context"
 
-	v1 "kefu-server/api/order/v1"
-	"kefu-server/internal/service"
+	v1 "server/api/order/v1"
+	"server/internal/service"
 )
 
 func (c *ControllerV1) GetList(ctx context.Context, req *v1.GetListReq) (res *v1.GetListRes, err error) {

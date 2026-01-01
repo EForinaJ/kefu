@@ -1,7 +1,7 @@
 package v1
 
 import (
-	dao_site "kefu-server/internal/type/site/dao"
+	dao_site "server/internal/type/site/dao"
 
 	"github.com/gogf/gf/v2/frame/g"
 )

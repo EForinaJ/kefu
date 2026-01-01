@@ -2,12 +2,12 @@ package witkey
 
 import (
 	"context"
-	"kefu-server/internal/dao"
-	"kefu-server/internal/model/entity"
-	dao_witkey "kefu-server/internal/type/witkey/dao"
-	dto_witkey "kefu-server/internal/type/witkey/dto"
-	utils_error "kefu-server/internal/utils/error"
-	"kefu-server/internal/utils/response"
+	"server/internal/dao"
+	"server/internal/model/entity"
+	dao_witkey "server/internal/type/witkey/dao"
+	dto_witkey "server/internal/type/witkey/dto"
+	utils_error "server/internal/utils/error"
+	"server/internal/utils/response"
 
 	"github.com/gogf/gf/v2/util/gconv"
 )

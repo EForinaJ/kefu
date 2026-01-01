@@ -1,7 +1,7 @@
 package account
 
 import (
-	"kefu-server/internal/service"
+	"server/internal/service"
 )
 
 type sAccount struct{}

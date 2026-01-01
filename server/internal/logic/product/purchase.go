@@ -2,12 +2,12 @@ package product
 
 import (
 	"context"
-	"kefu-server/internal/consts"
-	"kefu-server/internal/dao"
-	dto_product "kefu-server/internal/type/product/dto"
-	utils_code "kefu-server/internal/utils/code"
-	utils_error "kefu-server/internal/utils/error"
-	"kefu-server/internal/utils/response"
+	"server/internal/consts"
+	"server/internal/dao"
+	dto_product "server/internal/type/product/dto"
+	utils_code "server/internal/utils/code"
+	utils_error "server/internal/utils/error"
+	"server/internal/utils/response"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/os/gtime"

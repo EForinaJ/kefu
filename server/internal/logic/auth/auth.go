@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"kefu-server/internal/service"
+	"server/internal/service"
 )
 
 type sAuth struct{}

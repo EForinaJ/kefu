@@ -2,11 +2,11 @@ package site
 
 import (
 	"context"
-	"kefu-server/internal/dao"
-	"kefu-server/internal/model/entity"
-	dao_site "kefu-server/internal/type/site/dao"
-	utils_error "kefu-server/internal/utils/error"
-	"kefu-server/internal/utils/response"
+	"server/internal/dao"
+	"server/internal/model/entity"
+	dao_site "server/internal/type/site/dao"
+	utils_error "server/internal/utils/error"
+	"server/internal/utils/response"
 )
 
 // GetGameOptions implements service.ISite.

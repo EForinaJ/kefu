@@ -5,7 +5,7 @@
 package auth
 
 import (
-	"kefu-server/api/auth"
+	"server/api/auth"
 )
 
 type ControllerV1 struct{}

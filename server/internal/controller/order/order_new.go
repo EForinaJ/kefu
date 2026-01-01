@@ -5,7 +5,7 @@
 package order
 
 import (
-	"kefu-server/api/order"
+	"server/api/order"
 )
 
 type ControllerV1 struct{}

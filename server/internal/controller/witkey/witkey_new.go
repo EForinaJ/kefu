@@ -5,7 +5,7 @@
 package witkey
 
 import (
-	"kefu-server/api/witkey"
+	"server/api/witkey"
 )
 
 type ControllerV1 struct{}

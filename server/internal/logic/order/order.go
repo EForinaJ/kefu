@@ -1,7 +1,7 @@
 package order
 
 import (
-	"kefu-server/internal/service"
+	"server/internal/service"
 )
 
 type sOrder struct{}

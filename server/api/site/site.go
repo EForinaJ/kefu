@@ -7,7 +7,7 @@ package site
 import (
 	"context"
 
-	"kefu-server/api/site/v1"
+	"server/api/site/v1"
 )
 
 type ISiteV1 interface {

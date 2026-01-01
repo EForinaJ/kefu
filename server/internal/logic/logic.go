@@ -1,10 +1,10 @@
 package logic
 
 import (
-	_ "kefu-server/internal/logic/account"
-	_ "kefu-server/internal/logic/auth"
-	_ "kefu-server/internal/logic/order"
-	_ "kefu-server/internal/logic/product"
-	_ "kefu-server/internal/logic/site"
-	_ "kefu-server/internal/logic/witkey"
+	_ "server/internal/logic/account"
+	_ "server/internal/logic/auth"
+	_ "server/internal/logic/order"
+	_ "server/internal/logic/product"
+	_ "server/internal/logic/site"
+	_ "server/internal/logic/witkey"
 )

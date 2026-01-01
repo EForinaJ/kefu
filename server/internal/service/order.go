@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
-	dao_order "kefu-server/internal/type/order/dao"
-	dto_order "kefu-server/internal/type/order/dto"
+	dao_order "server/internal/type/order/dao"
+	dto_order "server/internal/type/order/dto"
 )
 
 // 定义显示接口

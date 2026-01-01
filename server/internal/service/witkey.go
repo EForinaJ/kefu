@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
-	dao_witkey "kefu-server/internal/type/witkey/dao"
-	dto_witkey "kefu-server/internal/type/witkey/dto"
+	dao_witkey "server/internal/type/witkey/dao"
+	dto_witkey "server/internal/type/witkey/dto"
 )
 
 // 定义显示接口

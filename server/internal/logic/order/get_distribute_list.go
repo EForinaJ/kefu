@@ -2,12 +2,12 @@ package order
 
 import (
 	"context"
-	"kefu-server/internal/dao"
-	"kefu-server/internal/model/entity"
-	dao_order "kefu-server/internal/type/order/dao"
-	dto_order "kefu-server/internal/type/order/dto"
-	utils_error "kefu-server/internal/utils/error"
-	"kefu-server/internal/utils/response"
+	"server/internal/dao"
+	"server/internal/model/entity"
+	dao_order "server/internal/type/order/dao"
+	dto_order "server/internal/type/order/dto"
+	utils_error "server/internal/utils/error"
+	"server/internal/utils/response"
 
 	"github.com/gogf/gf/v2/util/gconv"
 )

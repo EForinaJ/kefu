@@ -7,7 +7,7 @@ package auth
 import (
 	"context"
 
-	"kefu-server/api/auth/v1"
+	"server/api/auth/v1"
 )
 
 type IAuthV1 interface {

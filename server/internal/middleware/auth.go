@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"kefu-server/internal/lib/jwt"
-	"kefu-server/internal/utils/response"
+	"server/internal/lib/jwt"
+	"server/internal/utils/response"
 	"strings"
 
 	"github.com/gogf/gf/v2/net/ghttp"

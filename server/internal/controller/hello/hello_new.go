@@ -5,7 +5,7 @@
 package hello
 
 import (
-	"kefu-server/api/hello"
+	"server/api/hello"
 )
 
 type ControllerV1 struct{}

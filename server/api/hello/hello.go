@@ -7,7 +7,7 @@ package hello
 import (
 	"context"
 
-	"kefu-server/api/hello/v1"
+	"server/api/hello/v1"
 )
 
 type IHelloV1 interface {

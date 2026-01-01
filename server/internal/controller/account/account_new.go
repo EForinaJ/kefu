@@ -5,7 +5,7 @@
 package account
 
 import (
-	"kefu-server/api/account"
+	"server/api/account"
 )
 
 type ControllerV1 struct{}

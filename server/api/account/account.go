@@ -7,7 +7,7 @@ package account
 import (
 	"context"
 
-	"kefu-server/api/account/v1"
+	"server/api/account/v1"
 )
 
 type IAccountV1 interface {

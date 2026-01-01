@@ -1,7 +1,7 @@
 package site
 
 import (
-	"kefu-server/internal/service"
+	"server/internal/service"
 )
 
 type sSite struct{}

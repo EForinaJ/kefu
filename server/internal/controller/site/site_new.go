@@ -5,7 +5,7 @@
 package site
 
 import (
-	"kefu-server/api/site"
+	"server/api/site"
 )
 
 type ControllerV1 struct{}

@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	dao_site "kefu-server/internal/type/site/dao"
+	dao_site "server/internal/type/site/dao"
 )
 
 // 定义显示接口

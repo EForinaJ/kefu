@@ -5,7 +5,7 @@
 package product
 
 import (
-	"kefu-server/api/product"
+	"server/api/product"
 )
 
 type ControllerV1 struct{}

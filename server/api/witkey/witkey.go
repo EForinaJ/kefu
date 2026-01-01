@@ -7,7 +7,7 @@ package witkey
 import (
 	"context"
 
-	"kefu-server/api/witkey/v1"
+	"server/api/witkey/v1"
 )
 
 type IWitkeyV1 interface {

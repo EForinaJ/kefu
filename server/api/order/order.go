@@ -7,7 +7,7 @@ package order
 import (
 	"context"
 
-	"kefu-server/api/order/v1"
+	"server/api/order/v1"
 )
 
 type IOrderV1 interface {

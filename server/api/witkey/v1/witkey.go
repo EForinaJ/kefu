@@ -1,8 +1,8 @@
 package v1
 
 import (
-	dao_witkey "kefu-server/internal/type/witkey/dao"
-	dto_witkey "kefu-server/internal/type/witkey/dto"
+	dao_witkey "server/internal/type/witkey/dao"
+	dto_witkey "server/internal/type/witkey/dto"
 
 	"github.com/gogf/gf/v2/frame/g"
 )

@@ -5,7 +5,7 @@
 package dao
 
 import (
-	"kefu-server/internal/dao/internal"
+	"server/internal/dao/internal"
 )
 
 // internalSysUserBillDao is an internal type for wrapping the internal DAO implementation.

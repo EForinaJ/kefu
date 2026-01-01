@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"context"
-	_ "kefu-server/internal/logic"
-	"kefu-server/internal/router"
+	_ "server/internal/logic"
+	"server/internal/router"
 
 	_ "github.com/gogf/gf/contrib/drivers/mysql/v2"
 	_ "github.com/gogf/gf/contrib/nosql/redis/v2"

@@ -28,11 +28,10 @@
   </template>
   
 <script setup lang="ts">
-import { fetchGetOrderList, fetchPostOrderAftersales, fetchPostOrderDistribute } from '@/api/order';
+import {  fetchPostOrderDistribute } from '@/api/order';
 import { fetchGetWitkeyList } from '@/api/witkey';
-import { AfterSalesType } from '@/enums/typeEnum';
 import { useTable } from '@/hooks';
-import { ElImage, ElRate, ElTag, type FormInstance, type FormRules } from 'element-plus'
+import { ElImage, ElRate, ElTag } from 'element-plus'
 import OrderDistributeSearch from './order-distribute-search.vue';
 import ArtButtonTable from '@/components/core/forms/art-button-table/index.vue'
 
