@@ -6,6 +6,7 @@ import (
 	_ "server/internal/logic/auth"
 	_ "server/internal/logic/comment"
 	_ "server/internal/logic/order"
+	_ "server/internal/logic/prestore"
 	_ "server/internal/logic/product"
 	_ "server/internal/logic/settlement"
 	_ "server/internal/logic/site"

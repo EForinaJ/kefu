@@ -6,6 +6,7 @@ import (
 	"server/internal/controller/auth"
 	"server/internal/controller/comment"
 	"server/internal/controller/order"
+	"server/internal/controller/prestore"
 	"server/internal/controller/product"
 	"server/internal/controller/settlement"
 	"server/internal/controller/site"
@@ -30,6 +31,7 @@ func LoadRouter(s *ghttp.Server) {
 			order.NewV1(),
 			aftersales.NewV1(),
 			settlement.NewV1(),
+			prestore.NewV1(),
 			witkey.NewV1(),
 			upload.NewV1(),
 		).Middleware(middleware.Auth).Middleware(middleware.Response)

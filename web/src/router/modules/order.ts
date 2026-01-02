@@ -36,5 +36,14 @@ export const orderRoutes: AppRouteRecord = {
         keepAlive: true,
       }
     },
+    {
+      path: 'order_prestore',
+      name: 'OrderPrestore',
+      component: '/order/prestore',
+      meta: {
+        title: '预存充值',
+        keepAlive: true,
+      }
+    },
   ]
 }
