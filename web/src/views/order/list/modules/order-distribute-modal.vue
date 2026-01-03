@@ -33,7 +33,6 @@ import { fetchGetWitkeyList } from '@/api/witkey';
 import { useTable } from '@/hooks';
 import { ElButton, ElImage, ElMessageBox, ElRate, ElTag } from 'element-plus'
 import OrderDistributeSearch from './order-distribute-search.vue';
-import ArtButtonTable from '@/components/core/forms/art-button-table/index.vue'
 import { DistributeType } from '@/enums/typeEnum';
 
 interface Props {

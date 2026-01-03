@@ -172,6 +172,7 @@ const {
             {
                 prop: 'createTime',
                 label: '下单时间',
+                width: 180,
                 sortable: true
             },
             {

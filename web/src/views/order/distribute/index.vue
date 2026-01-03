@@ -198,7 +198,7 @@ const {
               onClick: () => handleView(row)
             }),
             h(ArtButtonTable, {
-              type: 'edit',
+              type: 'delete',
               icon: 'solar:close-square-bold',
               onClick: () => handleCancel(row)
             }),

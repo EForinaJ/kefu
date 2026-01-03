@@ -43,16 +43,16 @@
   const formItems = computed(() => [
     {
       label: '订单号',
-      key: 'orderCode',
+      key: 'code',
       type: 'input',
       placeholder: '请输入订单号',
       clearable: true
     },
     {
-      label: '售后号',
-      key: 'code',
+      label: '接单人',
+      key: 'name',
       type: 'input',
-      props: { placeholder: '请输入售后号' }
+      props: { placeholder: '请输入威客昵称' }
     },
   ])
 
