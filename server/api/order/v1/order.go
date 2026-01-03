@@ -38,7 +38,7 @@ type AddDiscountRes struct{}
 
 type PaidReq struct {
 	g.Meta `path:"/order/paid" method:"post" tags:"订单" summary:"订单确认收款"`
-	Id     int64 `p:"id" v:"required|integer|min:1#请输入id|id类型必须是整型|id最小为1" dc:"id"`
+	*dto_order.Paid
 }
 type PaidRes struct{}
 
@@ -65,18 +65,3 @@ type DistributeReq struct {
 	*dto_order.Distribute
 }
 type DistributeRes struct{}
-
-type GetDistributeListReq struct {
-	g.Meta `path:"/order/distribute/list" method:"get" tags:"订单" summary:"派单列表"`
-	*dto_order.DistributeQuery
-}
-type GetDistributeListRes struct {
-	Total int                         `json:"total" dc:"总数"`
-	List  []*dao_order.DistributeList `json:"list" dc:"派单列表"`
-}
-
-type DistributeCancelReq struct {
-	g.Meta `path:"/order/distribute/cancel" method:"post" tags:"订单" summary:"派发取消"`
-	*dto_order.DistributeCancel
-}
-type DistributeCancelRes struct{}

@@ -25,7 +25,7 @@
                     <!-- 未支付 -->
                     <ElButton v-if="detail?.status == OrderStatus.PendingPayment"
                     @click="handleAddDiscount" size="small" type="primary">添加优惠</ElButton>
-                    <ElButton v-if="detail?.status == OrderStatus.PendingPayment" 
+                    <ElButton  v-if="detail?.status == OrderStatus.PendingPayment" 
                     @click="handlePaid" size="small" type="success">确认收款</ElButton>
                     <ElButton v-if="detail?.status == OrderStatus.PendingPayment" 
                     @click="handleCancel" size="small" type="danger">关闭订单</ElButton>
@@ -145,7 +145,11 @@
         :id="id"
         @submit="getData"
     />
-
+    <OrderPaidModal
+        v-model:visible="paidModalVisible"
+        :id="id"
+        @submit="getData"
+    />
     <OrderDistributeModal
         v-model:visible="distributeModalVisible"
         :id="id"
@@ -162,6 +166,7 @@ import OrderAddDiscountModal from './order-add-discount-modal.vue';
 import OrderAftersalesModal from './order-aftersales-modal.vue';
 import { ElMessageBox } from 'element-plus';
 import OrderDistributeModal from './order-distribute-modal.vue';
+import OrderPaidModal from './order-paid-modal.vue';
 
 interface Props {
   id?: number;
@@ -268,19 +273,11 @@ const handleDistribute = () => {
     })
 }
 
+const paidModalVisible = ref(false)
 const handlePaid = (): void => {
-ElMessageBox.confirm(`请确认是否已收款订单`, '提示', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-    type: 'primary'
-}).then(async() => {
-    // TODO: 调用删除接口
-    await fetchPostOrderPaid({id:props.id!})
-    getData()
-})
-.catch(() => {
-    ElMessage.info('已取消')
-})
+    nextTick(() => {
+        paidModalVisible.value = true
+    })
 }
 const handleCancel = (): void => {
 ElMessageBox.confirm(`确定要关闭订单吗？`, '提示', {

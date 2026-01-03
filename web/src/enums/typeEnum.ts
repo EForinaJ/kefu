@@ -10,4 +10,8 @@ export enum SexType {
   Female = 2,    // 女
   Other = 3,     // 其他
 }
+export enum DistributeType {
+  Team = 1,      // 自带队伍
+  Self = 2,    // 个人接单
+}
 

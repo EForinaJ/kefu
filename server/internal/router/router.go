@@ -5,6 +5,7 @@ import (
 	"server/internal/controller/aftersales"
 	"server/internal/controller/auth"
 	"server/internal/controller/comment"
+	"server/internal/controller/distribute"
 	"server/internal/controller/order"
 	"server/internal/controller/prestore"
 	"server/internal/controller/product"
@@ -29,6 +30,7 @@ func LoadRouter(s *ghttp.Server) {
 			product.NewV1(),
 			comment.NewV1(),
 			order.NewV1(),
+			distribute.NewV1(),
 			aftersales.NewV1(),
 			settlement.NewV1(),
 			prestore.NewV1(),

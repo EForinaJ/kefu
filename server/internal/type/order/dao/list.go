@@ -11,12 +11,3 @@ type List struct {
 	Status      int         `json:"status" dc:"订单状态"`
 	CreateTime  *gtime.Time `json:"createTime" dc:"下单时间"`
 }
-
-type DistributeList struct {
-	Id         int64       `json:"id" dc:"项目Id"`
-	Witkey     string      `json:"witkey" dc:"接单威客"`
-	Game       string      `json:"game" dc:"游戏领域"`
-	Title      string      `json:"title" dc:"头衔勋章"`
-	IsCancel   int         `json:"isCancel" dc:"是否取消"`
-	CreateTime *gtime.Time `json:"createTime" dc:"下单时间"`
-}

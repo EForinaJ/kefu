@@ -19,6 +19,15 @@ export const orderRoutes: AppRouteRecord = {
       },
     },
     {
+      path: 'order_distribute',
+      name: 'OrderDistribute',
+      component: '/order/distribute',
+      meta: {
+        title: '派单列表',
+        keepAlive: true,
+      }
+    },
+    {
       path: 'order_aftersales',
       name: 'OrderAftersales',
       component: '/order/aftersales',

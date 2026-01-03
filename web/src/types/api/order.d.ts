@@ -6,12 +6,10 @@ declare namespace Order {
             code?: string;
             status?: number;
         }
-        type DistributeQuery = {
-            page: number;
-            limit: number;
+        
+        type Paid = {
             id: number;
-            name?: string;
-            status?: number;
+            payMode: number;
         }
         type AddDiscount = {
             id: number;
@@ -26,10 +24,7 @@ declare namespace Order {
         type Distribute = {
             id: number;
             witkeyId: number;
-        }
-        type DistributeCancel = {
-            id: number;
-            reason: string | null;
+            type: number;
         }
     }
     namespace Response {
@@ -92,9 +87,21 @@ declare namespace Order {
             witkey:string;
             game:string;
             title:string;
-            reason:string;
-            isCancel:number;
+            type:number;
+            status:number;
             createTime:string;
         }>
+
+        type DistributeDetail = {
+            id: number;
+            code:string;
+            manage: string;
+            witkey:string;
+            game:string;
+            title:string;
+            type:number;
+            status:number;
+            createTime:string;
+        }
     }
 }

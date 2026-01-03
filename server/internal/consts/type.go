@@ -6,6 +6,12 @@ const (
 const (
 	ProfitTypeOrder = 1 // 订单收益
 )
+
+const (
+	UserChangeBalanceTypeSystem    = 1 // 系统变更余额
+	UserChangeBalanceTypeRecharge  = 2 // 用户充值
+	UserChangeBalanceTypePaidOrder = 3 // 订单余额消费
+)
 const (
 	BillTypeRecharge             = 1 // 账户充值
 	BillTypeRefund               = 2 // 商品退款
@@ -35,4 +41,9 @@ const (
 	OrderLogTypeDistribute       = 7 // 派发威客
 	OrderLogTypeDistributeCancel = 8 // 取消派单服务
 	OrderLogTypeStart            = 9 // 开始服务
+)
+
+const (
+	DistributeTypeTeam = 1 // 自带队伍
+	DistributeTypeSelf = 2 //自己个人
 )

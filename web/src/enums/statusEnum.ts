@@ -28,3 +28,9 @@ export enum OrderStatus {
     Cancel = 5, // 已取消
     Refund = 6, // 已退款
 }
+export enum DistributeStatus {
+    Pending = 1, // 待服务
+    InProgress = 2, // 待服务
+    Completed = 3, // 已完成
+    Cancel = 4, // 已取消
+}
