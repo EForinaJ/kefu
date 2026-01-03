@@ -125,67 +125,66 @@ const {
       size: 'limit'
     },
     columnsFactory: () => [
-    {
-        prop: 'order',
-        label: '订单号',
-        width: 240,
-        formatter: (row) => {
-            return h('p', { }, row.order)
-        }
-    },
-    {
-        prop: 'manage',
-        label: '派单客服',
-        width: 160,
-        formatter: (row) => {
-            return h('p', { }, row.manage)
-        }
-    },
-    {
-        prop: 'witkey',
-        label: '接单者',
-        width: 160,
-        formatter: (row) => {
-            return h('p', { }, row.witkey)
-        }
-    },
-    {
-        prop: 'game',
-        label: '游戏领域',
-        formatter: (row) => {
-            return h(ElTag, { type:"primary" }, () => row.game )
-        }
-    },
-    {
-        prop: 'title',
-        label: '所属头衔',
-        formatter: (row) => {
-            return h(ElTag, { type:"primary" }, () => row.title )
-        }
-    },
-    {
-        prop: 'type',
-        label: '派单类型',
-        formatter: (row) => {
-        const typeConfig = getType(row.type)
-        return h(ElTag, { type: typeConfig.type }, () => typeConfig.text)
-        }
-    },
-    {
-        prop: 'status',
-        label: '服务状态',
-        formatter: (row) => {
-        const statusConfig = getStatus(row.status)
-        return h(ElTag, { type: statusConfig.type }, () => statusConfig.text)
-        }
-    },
-    {
-        prop: 'createTime',
-        label: '派单时间',
-        width: 200,
-        sortable: true
-    },
-
+      {
+          prop: 'order',
+          label: '订单号',
+          width: 240,
+          formatter: (row) => {
+              return h('p', { }, row.order)
+          }
+      },
+      {
+          prop: 'manage',
+          label: '派单客服',
+          width: 160,
+          formatter: (row) => {
+              return h('p', { }, row.manage)
+          }
+      },
+      {
+          prop: 'witkey',
+          label: '接单者',
+          width: 160,
+          formatter: (row) => {
+              return h('p', { }, row.witkey)
+          }
+      },
+      {
+          prop: 'game',
+          label: '游戏领域',
+          formatter: (row) => {
+              return h(ElTag, { type:"primary" }, () => row.game )
+          }
+      },
+      {
+          prop: 'title',
+          label: '所属头衔',
+          formatter: (row) => {
+              return h(ElTag, { type:"primary" }, () => row.title )
+          }
+      },
+      {
+          prop: 'type',
+          label: '派单类型',
+          formatter: (row) => {
+          const typeConfig = getType(row.type)
+          return h(ElTag, { type: typeConfig.type }, () => typeConfig.text)
+          }
+      },
+      {
+          prop: 'status',
+          label: '服务状态',
+          formatter: (row) => {
+          const statusConfig = getStatus(row.status)
+          return h(ElTag, { type: statusConfig.type }, () => statusConfig.text)
+          }
+      },
+      {
+          prop: 'createTime',
+          label: '派单时间',
+          width: 200,
+          sortable: true
+      },
       {
         prop: 'operation',
         label: '操作',

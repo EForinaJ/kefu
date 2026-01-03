@@ -19,13 +19,8 @@ func (s *sSettlement) GetList(ctx context.Context, req *dto_settlement.Query) (t
 		Page(req.Page, req.Limit).
 		OrderDesc(dao.SysSettlement.Columns().CreateTime)
 	if req.Name != "" {
-		userId, err := dao.SysUser.Ctx(ctx).
-			WhereLike(dao.SysUser.Columns().Name, "%"+req.Name+"%").Value(dao.SysUser.Columns().Id)
-		if err != nil {
-			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-		}
 		witkeyId, err := dao.SysWitkey.Ctx(ctx).
-			Where(dao.SysWitkey.Columns().UserId, userId).Value(dao.SysWitkey.Columns().Id)
+			Where(dao.SysWitkey.Columns().Name, req.Name).Value(dao.SysWitkey.Columns().Id)
 		if err != nil {
 			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
 		}

@@ -79,29 +79,5 @@ declare namespace Order {
             finishTime:string | null;
             requirements:string | null;
         }
-
-        type DistributeList = Api.Common.PaginatedResponse<{
-            id: number;
-            code:string;
-            manage: string;
-            witkey:string;
-            game:string;
-            title:string;
-            type:number;
-            status:number;
-            createTime:string;
-        }>
-
-        type DistributeDetail = {
-            id: number;
-            code:string;
-            manage: string;
-            witkey:string;
-            game:string;
-            title:string;
-            type:number;
-            status:number;
-            createTime:string;
-        }
     }
 }
