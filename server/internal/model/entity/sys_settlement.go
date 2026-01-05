@@ -15,9 +15,11 @@ type SysSettlement struct {
 	OrderId        int64       `json:"orderId"        orm:"order_id"        description:""` //
 	WitkeyId       int64       `json:"witkeyId"       orm:"witkey_id"       description:""` //
 	ManageId       int64       `json:"manageId"       orm:"manage_id"       description:""` //
+	DistributeId   int64       `json:"distributeId"   orm:"distribute_id"   description:""` //
 	Amount         float64     `json:"amount"         orm:"amount"          description:""` //
 	Commission     float64     `json:"commission"     orm:"commission"      description:""` //
 	ServiceCharge  float64     `json:"serviceCharge"  orm:"service_charge"  description:""` //
+	Images         string      `json:"images"         orm:"images"          description:""` //
 	Status         int         `json:"status"         orm:"status"          description:""` //
 	Reason         string      `json:"reason"         orm:"reason"          description:""` //
 	SettlementTime *gtime.Time `json:"settlementTime" orm:"settlement_time" description:""` //

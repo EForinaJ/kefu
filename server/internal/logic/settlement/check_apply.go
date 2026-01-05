@@ -42,6 +42,7 @@ func (s *sSettlement) CheckApply(ctx context.Context, req *dto_settlement.Apply)
 	if gconv.Int(obj.GMap().Get(dao.SysSettlement.Columns().Status)) != consts.StatusApply {
 		return utils_error.Err(response.FAILD, "该报单结算已审核")
 	}
+
 	aftersalesStatus, err := dao.SysAftersales.Ctx(ctx).
 		Where(dao.SysAftersales.Columns().OrderId, obj.GMap().Get(dao.SysSettlement.Columns().OrderId)).
 		Value(dao.SysAftersales.Columns().Status)

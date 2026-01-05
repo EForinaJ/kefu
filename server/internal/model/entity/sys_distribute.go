@@ -17,5 +17,7 @@ type SysDistribute struct {
 	Type       int         `json:"type"       orm:"type"        description:""` //
 	Reason     string      `json:"reason"     orm:"reason"      description:""` //
 	Status     int         `json:"status"     orm:"status"      description:""` //
+	StartTime  *gtime.Time `json:"startTime"  orm:"start_time"  description:""` //
+	FinishTime *gtime.Time `json:"finishTime" orm:"finish_time" description:""` //
 	CreateTime *gtime.Time `json:"createTime" orm:"create_time" description:""` //
 }

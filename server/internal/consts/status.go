@@ -26,8 +26,10 @@ const (
 )
 
 const (
-	DistributeStatusPending    = 1 // 待服务
-	DistributeStatusInProgress = 2 // 进行中
-	DistributeStatusComplete   = 3 // 已完成
-	DistributeStatusCancel     = 4 // 已取消
+	DistributeStatusPending       = 1 // 待服务
+	DistributeStatusInProgress    = 2 // 进行中
+	DistributeStatusComplete      = 3 // 已完成
+	DistributeStatusSettlementing = 4 // 结算中
+	DistributeStatusSettlemented  = 5 // 已结算
+	DistributeStatusCancel        = 6 // 已取消
 )

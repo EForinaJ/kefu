@@ -25,9 +25,11 @@ type SysSettlementColumns struct {
 	OrderId        string //
 	WitkeyId       string //
 	ManageId       string //
+	DistributeId   string //
 	Amount         string //
 	Commission     string //
 	ServiceCharge  string //
+	Images         string //
 	Status         string //
 	Reason         string //
 	SettlementTime string //
@@ -42,9 +44,11 @@ var sysSettlementColumns = SysSettlementColumns{
 	OrderId:        "order_id",
 	WitkeyId:       "witkey_id",
 	ManageId:       "manage_id",
+	DistributeId:   "distribute_id",
 	Amount:         "amount",
 	Commission:     "commission",
 	ServiceCharge:  "service_charge",
+	Images:         "images",
 	Status:         "status",
 	Reason:         "reason",
 	SettlementTime: "settlement_time",

@@ -19,5 +19,7 @@ type SysDistribute struct {
 	Type       interface{} //
 	Reason     interface{} //
 	Status     interface{} //
+	StartTime  *gtime.Time //
+	FinishTime *gtime.Time //
 	CreateTime *gtime.Time //
 }

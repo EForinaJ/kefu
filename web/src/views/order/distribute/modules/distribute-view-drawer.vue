@@ -1,7 +1,7 @@
 <template>
     <ElDrawer
         v-model="visible"
-        title="订单详情"
+        title="派单详情"
         size="50%"
         @close="handleClose"
         >
@@ -104,7 +104,7 @@
                 </div>
                 <div class="flex justify-end">
                     <div class="flex items-center">
-                        实付金额：<span class="text-[red] font-bold">{{ detail?.order.actualAmount }} {{ site.symbol }}</span>
+                        需付金额：<span class="text-[red] font-bold">{{ detail?.order.actualAmount }} {{ site.symbol }}</span>
                     </div>
                 </div>
                 <div class="flex justify-end">
@@ -135,11 +135,16 @@
                     <ElTag :type="getType(detail?.type!).type">{{ getType(detail?.type!).text }}</ElTag>
                 </ElDescriptionsItem>
             </ElDescriptions>
-            <template  v-if="detail?.status == DistributeStatus.Cancel" #footer>
+        </ElCard>
+        <ElCard v-if="detail?.status == DistributeStatus.Cancel" v-loading="loading" shadow="never" class="mt-[20px]">
+            <template #header>
                 <div class="font-bold">
-                    {{detail?.reason}}
+                    取消原因
                 </div>
             </template>
+            <div>
+                {{ detail?.reason }}
+            </div>
         </ElCard>
     </ElDrawer>
 </template>
@@ -175,6 +180,8 @@ const STATUS = {
   [DistributeStatus.InProgress]: { type: 'primary' as const, text: '进行中' },
   [DistributeStatus.Completed]: { type: 'success' as const, text: '已完成' },
   [DistributeStatus.Cancel]: { type: 'danger' as const, text: '已取消' },
+  [DistributeStatus.Settlementing]: { type: 'warning' as const, text: '结算中' },
+  [DistributeStatus.Settlemented]: { type: 'success' as const, text: '已结算' },
 } as const
 
 const getStatus = (isCancel: number) => {

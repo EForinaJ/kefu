@@ -27,6 +27,8 @@ type SysDistributeColumns struct {
 	Type       string //
 	Reason     string //
 	Status     string //
+	StartTime  string //
+	FinishTime string //
 	CreateTime string //
 }
 
@@ -39,6 +41,8 @@ var sysDistributeColumns = SysDistributeColumns{
 	Type:       "type",
 	Reason:     "reason",
 	Status:     "status",
+	StartTime:  "start_time",
+	FinishTime: "finish_time",
 	CreateTime: "create_time",
 }
 

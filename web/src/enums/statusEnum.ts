@@ -32,5 +32,7 @@ export enum DistributeStatus {
     Pending = 1, // 待服务
     InProgress = 2, // 待服务
     Completed = 3, // 已完成
-    Cancel = 4, // 已取消
+    Settlementing = 4, // 结算中
+    Settlemented = 5, // 已结算
+    Cancel = 6, // 已取消
 }

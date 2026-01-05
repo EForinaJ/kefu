@@ -17,9 +17,11 @@ type SysSettlement struct {
 	OrderId        interface{} //
 	WitkeyId       interface{} //
 	ManageId       interface{} //
+	DistributeId   interface{} //
 	Amount         interface{} //
 	Commission     interface{} //
 	ServiceCharge  interface{} //
+	Images         interface{} //
 	Status         interface{} //
 	Reason         interface{} //
 	SettlementTime *gtime.Time //

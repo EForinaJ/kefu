@@ -35,6 +35,7 @@ func (s *sSettlement) Apply(ctx context.Context, req *dto_settlement.Apply) (err
 			dao.SysSettlement.Columns().Commission,
 			dao.SysSettlement.Columns().ServiceCharge,
 			dao.SysSettlement.Columns().OrderId,
+			dao.SysSettlement.Columns().DistributeId,
 		).
 		One()
 	if err != nil {
@@ -54,6 +55,7 @@ func (s *sSettlement) Apply(ctx context.Context, req *dto_settlement.Apply) (err
 		_, err = tx.Model(dao.SysSettlement.Table()).
 			Where(dao.SysSettlement.Columns().Id, req.Id).
 			Data(g.Map{
+				dao.SysSettlement.Columns().ManageId:       ctx.Value("userId"),
 				dao.SysSettlement.Columns().Status:         consts.StatusSuccess,
 				dao.SysSettlement.Columns().SettlementTime: gtime.Now(),
 			}).Update()
@@ -130,12 +132,21 @@ func (s *sSettlement) Apply(ctx context.Context, req *dto_settlement.Apply) (err
 		_, err = tx.Model(dao.SysSettlement.Table()).
 			Where(dao.SysSettlement.Columns().Id, req.Id).
 			Data(g.Map{
-				dao.SysSettlement.Columns().Reason: req.Reason,
-				dao.SysSettlement.Columns().Status: consts.StatusFail,
+				dao.SysSettlement.Columns().ManageId: ctx.Value("userId"),
+				dao.SysSettlement.Columns().Reason:   req.Reason,
+				dao.SysSettlement.Columns().Status:   consts.StatusFail,
 			}).Update()
 		if err != nil {
 			return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
 		}
+	}
+	_, err = tx.Model(dao.SysDistribute.Table()).
+		Where(dao.SysDistribute.Columns().Id, obj.GMap().Get(dao.SysSettlement.Columns().DistributeId)).
+		Data(g.Map{
+			dao.SysDistribute.Columns().Status: consts.DistributeStatusSettlemented,
+		}).Update()
+	if err != nil {
+		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
 	}
 
 	return

@@ -77,6 +77,8 @@ const STATUS = {
   [DistributeStatus.InProgress]: { type: 'primary' as const, text: '进行中' },
   [DistributeStatus.Completed]: { type: 'success' as const, text: '已完成' },
   [DistributeStatus.Cancel]: { type: 'danger' as const, text: '已取消' },
+  [DistributeStatus.Settlementing]: { type: 'warning' as const, text: '结算中' },
+  [DistributeStatus.Settlemented]: { type: 'success' as const, text: '已结算' },
 } as const
 
 const getStatus = (isCancel: number) => {
@@ -196,11 +198,11 @@ const {
               type: 'view',
               onClick: () => handleView(row)
             }),
-            h(ArtButtonTable, {
+            ((row.status != DistributeStatus.Cancel && row.status != DistributeStatus.Settlemented) && h(ArtButtonTable, {
+              icon: 'solar:close-circle-bold',
               type: 'delete',
-              icon: 'solar:close-square-bold',
               onClick: () => handleCancel(row)
-            }),
+            })),
           ])
         }
       }
