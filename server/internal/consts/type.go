@@ -13,11 +13,9 @@ const (
 	UserChangeBalanceTypePaidOrder = 3 // 订单余额消费
 )
 const (
-	BillTypeRecharge             = 1 // 账户充值
-	BillTypeRefund               = 2 // 商品退款
-	BillTypeOrder                = 3 // 购买商品
-	BillTypeSettlementCommission = 3 // 佣金结算
-	BillTypeWithdrawCommission   = 4 // 佣金提现
+	BillTypeRecharge = 1 // 账户充值
+	BillTypeRefund   = 2 // 商品退款
+	BillTypeOrder    = 3 // 购买商品
 )
 const (
 	WitkeyChangeCommissionTypeSystem     = 1 // 系统变更佣金
@@ -41,6 +39,11 @@ const (
 	OrderLogTypeDistribute       = 7 // 派发威客
 	OrderLogTypeDistributeCancel = 8 // 取消派单服务
 	OrderLogTypeStart            = 9 // 开始服务
+)
+
+const (
+	WitkeyLogTypeCreate      = 1 // 创建威客
+	WitkeyLogTypeChangeTitle = 2 // 变更头衔
 )
 
 const (

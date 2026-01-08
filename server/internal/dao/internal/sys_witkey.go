@@ -22,14 +22,22 @@ type SysWitkeyDao struct {
 type SysWitkeyColumns struct {
 	Id          string // 用户ID
 	Name        string //
-	UserId      string //
 	TitleId     string //
 	GameId      string //
+	Phone       string //
+	Avatar      string //
+	Address     string //
+	Salt        string //
+	Password    string //
 	Album       string //
+	Sex         string //
+	Birthday    string //
 	Rate        string //
 	Commission  string //
 	Description string //
 	Status      string //
+	LoginIp     string //
+	LoginTime   string //
 	CreateTime  string // 创建时间
 	UpdateTime  string // 更新时间
 }
@@ -38,14 +46,22 @@ type SysWitkeyColumns struct {
 var sysWitkeyColumns = SysWitkeyColumns{
 	Id:          "id",
 	Name:        "name",
-	UserId:      "user_id",
 	TitleId:     "title_id",
 	GameId:      "game_id",
+	Phone:       "phone",
+	Avatar:      "avatar",
+	Address:     "address",
+	Salt:        "salt",
+	Password:    "password",
 	Album:       "album",
+	Sex:         "sex",
+	Birthday:    "birthday",
 	Rate:        "rate",
 	Commission:  "commission",
 	Description: "description",
 	Status:      "status",
+	LoginIp:     "login_ip",
+	LoginTime:   "login_time",
 	CreateTime:  "create_time",
 	UpdateTime:  "update_time",
 }

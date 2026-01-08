@@ -1,14 +1,14 @@
 <template>
   <ElDialog
     title="变更头衔"
-    width="25%"
+    width="20%"
     :model-value="visible"
     align-center
     @update:model-value="handleCancel"
     @close="handleClose"
   >
     <ElForm ref="formRef" :model="form" :rules="rules" label-width="auto">
-      <ElFormItem label="所属游戏" prop="gameId">
+      <ElFormItem prop="gameId">
         <ElSelect
           clearable
           style="width: 100%;"
@@ -24,7 +24,7 @@
           />
         </ElSelect>
       </ElFormItem>
-      <ElFormItem v-if="form.gameId" label="所属头衔" prop="titleId">
+      <ElFormItem v-if="form.gameId" prop="titleId">
         <ElSelect
           clearable
           style="width: 100%;"
@@ -39,6 +39,29 @@
           />
         </ElSelect>
       </ElFormItem>
+      <ElFormItem prop="type">
+        <ElSelect
+          clearable
+          style="width: 100%;"
+          v-model="form.type"
+        >
+          <el-option
+            label="升级"
+            :value="ChangeTitleType.Upgrade"
+          />
+          <el-option
+            label="降级"
+            :value="ChangeTitleType.Downgrade"
+          />
+          <el-option
+            label="换游戏"
+            :value="ChangeTitleType.ChangeGame"
+          />
+        </ElSelect>
+      </ElFormItem>
+      <ElFormItem prop="description">
+        <ElInput :rows="5" type="textarea" v-model="form.description" placeholder="请输入变更描述" />
+      </ElFormItem>
     </ElForm>
     <template #footer>
       <ElButton @click="handleCancel">取消</ElButton>
@@ -52,6 +75,7 @@ import { fetchGetGameOptionsList, fetchGetTitleOptionsList } from '@/api/site';
 import type { FormInstance, FormRules } from 'element-plus'
 
 import { fetchPostWitkeyChangeTitle } from '@/api/witkey';
+import { ChangeTitleType } from '@/enums/typeEnum';
 interface Props {
   visible: boolean
   id?: number | null
@@ -85,6 +109,8 @@ const form = reactive<Witkey.Params.ChangeTitle>({
   id: null,
   gameId: null,
   titleId: null,
+  type: null,
+  description: null,
 })
 
 
@@ -94,6 +120,12 @@ const rules = reactive<FormRules>({
   ],
   titleId: [
       { required: true, message: '请选择头衔', trigger: 'blur' },
+  ],
+  type: [
+      { required: true, message: '请选择变更类型', trigger: 'blur' },
+  ],
+  description: [
+      { required: true, message: '请输入变更描述', trigger: 'blur' },
   ],
 })
 
@@ -172,7 +204,7 @@ const handleSubmit = async () => {
       await formRef.value.validate()
       // TODO: 调用新增/编辑接口
       const res = await fetchPostWitkeyChangeTitle(form)
-      ElMessage.success('更新成功')
+      ElMessage.success('提交变更头衔工单成功')
       emit('submit')
       handleClose()
       handleCancel()

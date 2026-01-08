@@ -24,12 +24,7 @@ func (s *sWitkey) GetList(ctx context.Context, req *dto_witkey.Query) (total int
 		m = m.Where(dao.SysWitkey.Columns().Name, req.Name)
 	}
 	if req.Phone != "" {
-		user, err := dao.SysUser.Ctx(ctx).Where(dao.SysUser.Columns().Phone, req.Phone).
-			Value(dao.SysUser.Columns().Id)
-		if err != nil {
-			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-		}
-		m = m.Where(dao.SysWitkey.Columns().UserId, user.Int64())
+		m = m.Where(dao.SysWitkey.Columns().Phone, req.Phone)
 	}
 
 	total, err = m.Count()
@@ -49,21 +44,6 @@ func (s *sWitkey) GetList(ctx context.Context, req *dto_witkey.Query) (total int
 		if err != nil {
 			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
 		}
-
-		user, err := dao.SysUser.Ctx(ctx).
-			Where(dao.SysUser.Columns().Id, v.UserId).
-			Fields(dao.SysUser.Columns().Name, dao.SysUser.Columns().Avatar).
-			One()
-		if err != nil {
-			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-		}
-
-		var userEntity *dao_witkey.User
-		err = gconv.Scan(user, &userEntity)
-		if err != nil {
-			return 0, nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-		}
-		entity.User = userEntity
 
 		game, err := dao.SysGame.Ctx(ctx).
 			Where(dao.SysGame.Columns().Id, v.GameId).

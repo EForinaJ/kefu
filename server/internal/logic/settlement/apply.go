@@ -5,7 +5,6 @@ import (
 	"server/internal/consts"
 	"server/internal/dao"
 	dto_settlement "server/internal/type/settlement/dto"
-	utils_code "server/internal/utils/code"
 	utils_error "server/internal/utils/error"
 	"server/internal/utils/response"
 
@@ -87,25 +86,6 @@ func (s *sSettlement) Apply(ctx context.Context, req *dto_settlement.Apply) (err
 		if err != nil {
 			return utils_error.Err(response.ADD_FAILED, response.CodeMsg(response.ADD_FAILED))
 		}
-		userId, err := tx.Model(dao.SysWitkey.Table()).
-			Where(dao.SysWitkey.Columns().Id, obj.GMap().Get(dao.SysSettlement.Columns().WitkeyId)).
-			Value(dao.SysWitkey.Columns().UserId)
-		if err != nil {
-			return utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-		}
-		_, err = tx.Model(dao.SysUserBill.Table()).
-			Data(g.Map{
-				dao.SysUserBill.Columns().UserId:     userId,
-				dao.SysUserBill.Columns().RelatedId:  req.Id,
-				dao.SysUserBill.Columns().Code:       utils_code.GetCode(ctx, consts.BL),
-				dao.SysUserBill.Columns().Type:       consts.BillTypeSettlementCommission,
-				dao.SysUserBill.Columns().Amount:     commission,
-				dao.SysUserBill.Columns().Mode:       consts.Add,
-				dao.SysUserBill.Columns().CreateTime: gtime.Now(),
-			}).Insert()
-		if err != nil {
-			return utils_error.Err(response.ADD_FAILED, response.CodeMsg(response.ADD_FAILED))
-		}
 
 		orderCode, err := tx.Model(dao.SysOrder.Table()).
 			Where(dao.SysOrder.Columns().Id, obj.GMap().Get(dao.SysSettlement.Columns().OrderId)).
@@ -116,7 +96,6 @@ func (s *sSettlement) Apply(ctx context.Context, req *dto_settlement.Apply) (err
 
 		_, err = tx.Model(dao.SysProfit.Table()).
 			Data(g.Map{
-				dao.SysProfit.Columns().Type:       userId,
 				dao.SysProfit.Columns().Related:    orderCode.String(),
 				dao.SysProfit.Columns().Type:       consts.ProfitTypeOrder,
 				dao.SysProfit.Columns().Amount:     obj.GMap().Get(dao.SysSettlement.Columns().ServiceCharge),

@@ -10,19 +10,13 @@ import (
 
 // CheckExist implements service.IWitkey.
 func (s *sWitkey) CheckCreate(ctx context.Context, req *dto_witkey.Create) (err error) {
-	exist, err := dao.SysUser.Ctx(ctx).Where(dao.SysUser.Columns().Id, req.UserId).Exist()
+	res, err := dao.SysWitkey.Ctx(ctx).
+		Where(dao.SysWitkey.Columns().Phone, req.Phone).Exist()
 	if err != nil {
 		return utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
 	}
-	if !exist {
-		return utils_error.Err(response.FAILD, "添加的用户不存在")
+	if res {
+		return utils_error.Err(response.FAILD, "手机号已存在")
 	}
-	exist, err = dao.SysWitkey.Ctx(ctx).Where(dao.SysWitkey.Columns().UserId, req.UserId).Exist()
-	if err != nil {
-		return utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-	}
-	if exist {
-		return utils_error.Err(response.FAILD, "该用户已添加威客信息")
-	}
-	return nil
+	return
 }

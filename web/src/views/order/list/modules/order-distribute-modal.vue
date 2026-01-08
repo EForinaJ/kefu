@@ -33,7 +33,7 @@ import { fetchGetWitkeyList } from '@/api/witkey';
 import { useTable } from '@/hooks';
 import { ElButton, ElImage, ElMessageBox, ElRate, ElTag } from 'element-plus'
 import OrderDistributeSearch from './order-distribute-search.vue';
-import { DistributeType } from '@/enums/typeEnum';
+import { DistributeType, SexType } from '@/enums/typeEnum';
 
 interface Props {
     visible: boolean
@@ -68,7 +68,20 @@ const searchForm = ref({
     name: undefined,
     phone: undefined
 })
+const SEX_CONFIG = {
+  [SexType.Female]: { type: 'danger' as const, text: '女' },
+  [SexType.Male]: { type: 'primary' as const, text: '男' },
+  [SexType.Other]: { type: 'danger' as const, text: '其他' },
+} as const
 
+const getSex = (sex: number) => {
+  return (
+    SEX_CONFIG[sex as keyof typeof SEX_CONFIG] || {
+      type: 'info' as const,
+      text: '未知'
+    }
+  )
+}
 const {
     columns,
     columnChecks,
@@ -97,20 +110,21 @@ const {
         },
         columnsFactory: () => [
             {
-                prop: 'userInfo',
-                label: '所属用户',
-                width: 240,
+                prop: 'info',
+                label: '威客信息',
+                width: 280,
                 formatter: (row) => {
                 return h('div', { class: 'user flex-c' }, [
                     h(ElImage, {
                     class: 'size-9.5 rounded-md',
-                    src: row.user.avatar,
-                    previewSrcList: [row.user.avatar],
+                    src: row.avatar,
+                    previewSrcList: [row.avatar],
                     // 图片预览是否插入至 body 元素上，用于解决表格内部图片预览样式异常
                     previewTeleported: true
                     }),
-                    h('div', { class: 'ml-2' }, [
-                        h('p', { class: 'user-name' }, row.user.name),
+                        h('div', { class: 'ml-2' }, [
+                        h('p', { class: 'user-name' }, row.name),
+                        h(ElTag, { size: 'small',type: getSex(row.sex!).type }, () => getSex(row.sex!).text)
                     ])
                 ])
                 }

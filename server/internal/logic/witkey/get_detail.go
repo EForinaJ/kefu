@@ -27,20 +27,6 @@ func (s *sWitkey) GetDetail(ctx context.Context, id int64) (res *dao_witkey.Deta
 		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
 	}
 
-	userModel, err := dao.SysUser.Ctx(ctx).
-		Fields(dao.SysUser.Columns().Name, dao.SysUser.Columns().Avatar).
-		Where(dao.SysUser.Columns().Id, info.GMap().Get(dao.SysWitkey.Columns().UserId)).
-		One()
-	if err != nil {
-		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-	}
-	// 2. 使用结构体转换代替手动映射
-	var user *dao_witkey.User
-	if err := gconv.Scan(userModel.Map(), &user); err != nil {
-		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-	}
-	detail.User = user
-
 	game, err := dao.SysGame.Ctx(ctx).
 		Where(dao.SysGame.Columns().Id, info.GMap().Get(dao.SysWitkey.Columns().GameId)).
 		Value(dao.SysGame.Columns().Name)

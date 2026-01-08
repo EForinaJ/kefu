@@ -14,14 +14,22 @@ type SysWitkey struct {
 	g.Meta      `orm:"table:sys_witkey, do:true"`
 	Id          interface{} // 用户ID
 	Name        interface{} //
-	UserId      interface{} //
 	TitleId     interface{} //
 	GameId      interface{} //
+	Phone       interface{} //
+	Avatar      interface{} //
+	Address     interface{} //
+	Salt        interface{} //
+	Password    interface{} //
 	Album       interface{} //
+	Sex         interface{} //
+	Birthday    *gtime.Time //
 	Rate        interface{} //
 	Commission  interface{} //
 	Description interface{} //
 	Status      interface{} //
+	LoginIp     interface{} //
+	LoginTime   *gtime.Time //
 	CreateTime  *gtime.Time // 创建时间
 	UpdateTime  *gtime.Time // 更新时间
 }

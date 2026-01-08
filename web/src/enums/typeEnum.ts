@@ -15,3 +15,8 @@ export enum DistributeType {
   Self = 2,    // 个人接单
 }
 
+export enum ChangeTitleType {
+  Downgrade = 1,      // 降级
+  Upgrade = 2,    // 升级
+  ChangeGame = 3,    // 换游戏
+}

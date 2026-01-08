@@ -31,9 +31,8 @@
       </ArtTable>
 
       <!-- 弹窗 -->
-      <WitkeyDialog
-        v-model:visible="dialogVisible"
-        :id="id"
+      <WitkeyDrawer
+        v-model="dialogVisible"
         @submit="refreshData"
       />
       <!-- 威客弹窗 -->
@@ -56,7 +55,6 @@
 import { useTable } from '@/hooks/core/useTable'
 import WitkeySearch from './modules/witkey-search.vue'
 import { ElTag, ElImage, ElRate } from 'element-plus'
-import WitkeyDialog from './modules/witkey-dialog.vue'
 import { fetchGetWitkeyList } from '@/api/witkey'
 import ArtButtonTable from '@/components/core/forms/art-button-table/index.vue'
 import WitkeyViewDrawer from './modules/witkey-view-drawer.vue'
@@ -64,6 +62,8 @@ import { Status } from '@/enums/statusEnum'
 import ArtButtonMore from '@/components/core/forms/art-button-more/index.vue'
 import { ButtonMoreItem } from '@/components/core/forms/art-button-more/index.vue'
 import WitkeyTitleDialog from './modules/witkey-title-dialog.vue'
+import WitkeyDrawer from './modules/witkey-drawer.vue'
+import { SexType } from '@/enums/typeEnum'
 
 
 defineOptions({ name: 'Witkey' })
@@ -97,6 +97,21 @@ const getStatus = (status: number) => {
     }
   )
 }
+
+const SEX_CONFIG = {
+  [SexType.Female]: { type: 'danger' as const, text: '女' },
+  [SexType.Male]: { type: 'primary' as const, text: '男' },
+  [SexType.Other]: { type: 'danger' as const, text: '其他' },
+} as const
+
+const getSex = (sex: number) => {
+  return (
+    SEX_CONFIG[sex as keyof typeof SEX_CONFIG] || {
+      type: 'info' as const,
+      text: '未知'
+    }
+  )
+}
 const {
   columns,
   columnChecks,
@@ -122,25 +137,22 @@ const {
       size: 'limit'
     },
     columnsFactory: () => [
-      { 
-        prop: 'name', 
-        label: '威客名称',
-      },
       {
-        prop: 'userInfo',
-        label: '所属用户',
+        prop: 'info',
+        label: '威客信息',
         width: 280,
         formatter: (row) => {
           return h('div', { class: 'user flex-c' }, [
             h(ElImage, {
               class: 'size-9.5 rounded-md',
-              src: row.user.avatar,
-              previewSrcList: [row.user.avatar],
+              src: row.avatar,
+              previewSrcList: [row.avatar],
               // 图片预览是否插入至 body 元素上，用于解决表格内部图片预览样式异常
               previewTeleported: true
             }),
             h('div', { class: 'ml-2' }, [
-              h('p', { class: 'user-name' }, row.user.name),
+              h('p', { class: 'user-name' }, row.name),
+              h(ElTag, { size: 'small',type: getSex(row.sex!).type }, () => getSex(row.sex!).text)
             ])
           ])
         }
