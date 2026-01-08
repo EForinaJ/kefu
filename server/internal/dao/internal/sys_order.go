@@ -30,7 +30,7 @@ type SysOrderColumns struct {
 	UnitPrice      string //
 	TotalAmount    string // 订单总额
 	DiscountAmount string // 优惠金额
-	ActualAmount   string // 实付金额
+	ActualAmount   string // 需付金额
 	PayAmount      string //
 	Requirements   string //
 	Status         string //

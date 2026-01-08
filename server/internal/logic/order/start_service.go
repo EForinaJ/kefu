@@ -34,10 +34,12 @@ func (s *sOrder) StartService(ctx context.Context, id int64) (err error) {
 		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
 	}
 
-	_, err = tx.Model(dao.SysDistribute.Table()).Where(dao.SysDistribute.Columns().OrderId, id).Data(g.Map{
-		dao.SysDistribute.Columns().Status:    consts.DistributeStatusInProgress,
-		dao.SysDistribute.Columns().StartTime: gtime.Now(),
-	}).Update()
+	_, err = tx.Model(dao.SysDistribute.Table()).Where(dao.SysDistribute.Columns().OrderId, id).
+		Where(dao.SysDistribute.Columns().Status, consts.DistributeStatusPending).
+		Data(g.Map{
+			dao.SysDistribute.Columns().Status:    consts.DistributeStatusInProgress,
+			dao.SysDistribute.Columns().StartTime: gtime.Now(),
+		}).Update()
 	if err != nil {
 		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
 	}

@@ -9,7 +9,7 @@ type Detail struct {
 	Product        *Product    `json:"product" dc:"订单商品"`
 	TotalAmount    float64     `json:"totalAmount" dc:"订单总额"`
 	DiscountAmount float64     `json:"discountAmount" dc:"订单优惠"`
-	ActualAmount   float64     `json:"actualAmount" dc:"实付金额"`
+	ActualAmount   float64     `json:"actualAmount" dc:"需付金额"`
 	PayAmount      float64     `json:"payAmount" dc:"已支付"`
 	Requirements   string      `json:"requirements" dc:"订单要求"`
 	PayMode        int         `json:"payMode" dc:"收款方式"`

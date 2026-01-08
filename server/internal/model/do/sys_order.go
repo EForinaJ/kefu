@@ -22,7 +22,7 @@ type SysOrder struct {
 	UnitPrice      interface{} //
 	TotalAmount    interface{} // 订单总额
 	DiscountAmount interface{} // 优惠金额
-	ActualAmount   interface{} // 实付金额
+	ActualAmount   interface{} // 需付金额
 	PayAmount      interface{} //
 	Requirements   interface{} //
 	Status         interface{} //

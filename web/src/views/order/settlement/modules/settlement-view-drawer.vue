@@ -104,7 +104,7 @@
                 </div>
                 <div class="flex justify-end">
                     <div class="flex items-center">
-                        实付金额：<span class="text-[red] font-bold">{{ detail?.order.actualAmount }} {{ site.symbol }}</span>
+                        需付金额：<span class="text-[red] font-bold">{{ detail?.order.actualAmount }} {{ site.symbol }}</span>
                     </div>
                 </div>
                 <div class="flex justify-end">
@@ -151,9 +151,9 @@
                     </ElImage>
                 </div>
             </ElSpace>
-            <template #footer>
+            <template v-if="detail?.status == ApplyStatus.Fail" #footer>
                 <div class="font-bold">
-                    {{detail?.reason}}
+                   拒绝原因: {{detail?.reason}}
                 </div>
             </template>
         </ElCard>
@@ -162,6 +162,7 @@
   
 <script setup lang="ts">
 import { fetchGetSettlementDetail } from '@/api/settlement';
+
 import { PayMode } from '@/enums/modeEnum';
 import {  ApplyStatus, OrderStatus, PayStatus } from '@/enums/statusEnum';
 import { useSiteStore } from '@/store/modules/site';

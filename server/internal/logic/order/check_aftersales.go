@@ -23,7 +23,7 @@ func (s *sOrder) CheckAftersales(ctx context.Context, req *dto_order.Aftersales)
 	}
 
 	if !decimal.NewFromFloat(req.Amount).LessThanOrEqual(decimal.NewFromFloat(orderActualAmount.Float64())) {
-		return utils_error.Err(response.FAILD, "退款金额超过实付金额")
+		return utils_error.Err(response.FAILD, "退款金额超过需付金额")
 	}
 
 	exist, err := dao.SysAftersales.Ctx(ctx).

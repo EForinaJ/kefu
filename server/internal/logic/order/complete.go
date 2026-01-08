@@ -24,9 +24,21 @@ func (s *sOrder) Complete(ctx context.Context, id int64) (err error) {
 			tx.Commit()
 		}
 	}()
-	_, err = tx.Model(dao.SysOrder.Table()).Where(dao.SysOrder.Columns().Id, id).Data(g.Map{
-		dao.SysOrder.Columns().Status: consts.OrderStatusComplete,
-	}).Update()
+	_, err = tx.Model(dao.SysOrder.Table()).Where(dao.SysOrder.Columns().Id, id).
+		Data(g.Map{
+			dao.SysOrder.Columns().Status:     consts.OrderStatusComplete,
+			dao.SysOrder.Columns().FinishTime: gtime.Now(),
+		}).Update()
+	if err != nil {
+		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
+	}
+
+	_, err = tx.Model(dao.SysDistribute.Table()).Where(dao.SysDistribute.Columns().OrderId, id).
+		Where(dao.SysDistribute.Columns().Status, consts.DistributeStatusInProgress).
+		Data(g.Map{
+			dao.SysDistribute.Columns().Status:     consts.DistributeStatusComplete,
+			dao.SysDistribute.Columns().FinishTime: gtime.Now(),
+		}).Update()
 	if err != nil {
 		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
 	}

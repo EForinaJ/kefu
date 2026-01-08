@@ -20,7 +20,7 @@ type SysOrder struct {
 	UnitPrice      float64     `json:"unitPrice"      orm:"unit_price"      description:""`     //
 	TotalAmount    float64     `json:"totalAmount"    orm:"total_amount"    description:"订单总额"` // 订单总额
 	DiscountAmount float64     `json:"discountAmount" orm:"discount_amount" description:"优惠金额"` // 优惠金额
-	ActualAmount   float64     `json:"actualAmount"   orm:"actual_amount"   description:"实付金额"` // 实付金额
+	ActualAmount   float64     `json:"actualAmount"   orm:"actual_amount"   description:"需付金额"` // 需付金额
 	PayAmount      float64     `json:"payAmount"      orm:"pay_amount"      description:""`     //
 	Requirements   string      `json:"requirements"   orm:"requirements"    description:""`     //
 	Status         int         `json:"status"         orm:"status"          description:""`     //

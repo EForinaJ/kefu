@@ -104,7 +104,7 @@
                 </div>
                 <div class="flex justify-end">
                     <div class="flex items-center">
-                        实付金额：<span class="text-[red] font-bold">{{ detail?.order.actualAmount }} {{ site.symbol }}</span>
+                        需付金额：<span class="text-[red] font-bold">{{ detail?.order.actualAmount }} {{ site.symbol }}</span>
                     </div>
                 </div>
                 <div class="flex justify-end">

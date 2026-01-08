@@ -132,9 +132,10 @@ func (s *sSettlement) Apply(ctx context.Context, req *dto_settlement.Apply) (err
 		_, err = tx.Model(dao.SysSettlement.Table()).
 			Where(dao.SysSettlement.Columns().Id, req.Id).
 			Data(g.Map{
-				dao.SysSettlement.Columns().ManageId: ctx.Value("userId"),
-				dao.SysSettlement.Columns().Reason:   req.Reason,
-				dao.SysSettlement.Columns().Status:   consts.StatusFail,
+				dao.SysSettlement.Columns().ManageId:       ctx.Value("userId"),
+				dao.SysSettlement.Columns().Reason:         req.Reason,
+				dao.SysSettlement.Columns().Status:         consts.StatusFail,
+				dao.SysSettlement.Columns().SettlementTime: gtime.Now(),
 			}).Update()
 		if err != nil {
 			return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
