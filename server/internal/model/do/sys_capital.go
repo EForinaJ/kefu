@@ -14,6 +14,7 @@ type SysCapital struct {
 	g.Meta     `orm:"table:sys_capital, do:true"`
 	Id         interface{} //
 	UserId     interface{} //
+	WitkeyId   interface{} //
 	Related    interface{} //
 	Code       interface{} //
 	Type       interface{} //

@@ -12,6 +12,7 @@ import (
 type SysCapital struct {
 	Id         int64       `json:"id"         orm:"id"          description:""` //
 	UserId     int64       `json:"userId"     orm:"user_id"     description:""` //
+	WitkeyId   int64       `json:"witkeyId"   orm:"witkey_id"   description:""` //
 	Related    string      `json:"related"    orm:"related"     description:""` //
 	Code       string      `json:"code"       orm:"code"        description:""` //
 	Type       int         `json:"type"       orm:"type"        description:""` //

@@ -24,8 +24,8 @@ declare namespace Witkey {
             id: number | null;
             titleId: number | null;
             gameId: number| null;
-            type: number| null;
-            description: string| null;
+            // type: number| null;
+            // description: string| null;
         }
     }
     namespace Response {

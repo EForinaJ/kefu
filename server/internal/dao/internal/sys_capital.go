@@ -22,6 +22,7 @@ type SysCapitalDao struct {
 type SysCapitalColumns struct {
 	Id         string //
 	UserId     string //
+	WitkeyId   string //
 	Related    string //
 	Code       string //
 	Type       string //
@@ -34,6 +35,7 @@ type SysCapitalColumns struct {
 var sysCapitalColumns = SysCapitalColumns{
 	Id:         "id",
 	UserId:     "user_id",
+	WitkeyId:   "witkey_id",
 	Related:    "related",
 	Code:       "code",
 	Type:       "type",
