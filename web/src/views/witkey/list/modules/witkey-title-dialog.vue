@@ -109,8 +109,8 @@ const form = reactive<Witkey.Params.ChangeTitle>({
   id: null,
   gameId: null,
   titleId: null,
-  type: null,
-  description: null,
+  // type: null,
+  // description: null,
 })
 
 
