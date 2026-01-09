@@ -4,7 +4,9 @@ const (
 	SYSTEMNAME = "func"
 	Account    = "kefu_account_"
 )
-
+const (
+	KeFuDashboard = "kefu_dashboard"
+)
 const (
 	FileSetting              = "FileSetting"
 	BaseSetting              = "BaseSetting"

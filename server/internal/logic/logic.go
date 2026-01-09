@@ -5,6 +5,7 @@ import (
 	_ "server/internal/logic/aftersales"
 	_ "server/internal/logic/auth"
 	_ "server/internal/logic/comment"
+	_ "server/internal/logic/dashboard"
 	_ "server/internal/logic/distribute"
 	_ "server/internal/logic/order"
 	_ "server/internal/logic/prestore"

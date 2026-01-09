@@ -5,6 +5,7 @@ import (
 	"server/internal/controller/aftersales"
 	"server/internal/controller/auth"
 	"server/internal/controller/comment"
+	"server/internal/controller/dashboard"
 	"server/internal/controller/distribute"
 	"server/internal/controller/order"
 	"server/internal/controller/prestore"
@@ -27,6 +28,7 @@ func LoadRouter(s *ghttp.Server) {
 		).Middleware(middleware.Response)
 		group.Bind(
 			account.NewV1(),
+			dashboard.NewV1(),
 			product.NewV1(),
 			comment.NewV1(),
 			order.NewV1(),

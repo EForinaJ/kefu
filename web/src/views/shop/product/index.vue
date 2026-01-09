@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import { useTable } from '@/hooks/core/useTable'
 // import ProductSearch from './modules/product-search.vue'
-import { ElTag, ElMessageBox, ElImage, ElRate } from 'element-plus'
+import { ElTag, ElImage, ElRate } from 'element-plus'
 
 
 import { useAuth } from '@/hooks'

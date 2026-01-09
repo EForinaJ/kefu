@@ -13,9 +13,10 @@ declare namespace Site {
             address: string;     // 网站地址
             icp: string;         // ICP备案号
             copyright: string;   // 版权信息
-            minFileSize : number,
-            bigFileSize: number,
-            mediaType: Array<string>,
+            fileSize : number,
+            imageSize: number,
+            fileType: Array<string>,
+            imageType: Array<string>,
             symbol: string;   // 货币类型
         }
     }

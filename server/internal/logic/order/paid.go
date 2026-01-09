@@ -9,6 +9,7 @@ import (
 	utils_error "server/internal/utils/error"
 	"server/internal/utils/response"
 
+	"github.com/gogf/gf/v2/database/gdb"
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/os/gtime"
 	"github.com/gogf/gf/v2/util/gconv"
@@ -50,6 +51,7 @@ func (s *sOrder) personalTransferPaid(ctx context.Context, req *dto_order.Paid) 
 			dao.SysOrder.Columns().ActualAmount,
 			dao.SysOrder.Columns().UserId,
 			dao.SysOrder.Columns().Code,
+			dao.SysOrder.Columns().ProductId,
 		).
 		One()
 	if err != nil {
@@ -69,6 +71,17 @@ func (s *sOrder) personalTransferPaid(ctx context.Context, req *dto_order.Paid) 
 	if err != nil {
 		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
 	}
+
+	_, err = tx.Model(dao.SysProduct.Table()).
+		Where(dao.SysProduct.Columns().Id, order.GMap().Get(dao.SysOrder.Columns().ProductId)).
+		Data(g.Map{
+			dao.SysProduct.Columns().SalesCount: gdb.Raw("sales_count+1"),
+		}).
+		Update()
+	if err != nil {
+		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
+	}
+
 	_, err = tx.Model(dao.SysUserBill.Table()).
 		Data(g.Map{
 			dao.SysUserBill.Columns().UserId:     order.GMap().Get(dao.SysOrder.Columns().UserId),
@@ -127,6 +140,7 @@ func (s *sOrder) balancePaid(ctx context.Context, req *dto_order.Paid) (err erro
 			dao.SysOrder.Columns().ActualAmount,
 			dao.SysOrder.Columns().UserId,
 			dao.SysOrder.Columns().Code,
+			dao.SysOrder.Columns().ProductId,
 		).
 		One()
 	if err != nil {
@@ -180,6 +194,16 @@ func (s *sOrder) balancePaid(ctx context.Context, req *dto_order.Paid) (err erro
 	if err != nil {
 		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
 	}
+	_, err = tx.Model(dao.SysProduct.Table()).
+		Where(dao.SysProduct.Columns().Id, order.GMap().Get(dao.SysOrder.Columns().ProductId)).
+		Data(g.Map{
+			dao.SysProduct.Columns().SalesCount: gdb.Raw("sales_count+1"),
+		}).
+		Update()
+	if err != nil {
+		return utils_error.Err(response.UPDATE_FAILED, response.CodeMsg(response.UPDATE_FAILED))
+	}
+
 	_, err = tx.Model(dao.SysUserBill.Table()).
 		Data(g.Map{
 			dao.SysUserBill.Columns().UserId:     order.GMap().Get(dao.SysOrder.Columns().UserId),
