@@ -20,30 +20,36 @@ type SysWitkeyOnboardingDao struct {
 
 // SysWitkeyOnboardingColumns defines and stores column names for the table sys_witkey_onboarding.
 type SysWitkeyOnboardingColumns struct {
-	Id          string // 用户ID
-	Name        string //
-	TitleId     string //
-	GameId      string //
-	Phone       string //
-	Address     string //
-	Sex         string //
-	Description string //
-	Status      string //
-	CreateTime  string // 创建时间
+	Id         string // 用户ID
+	ManageId   string //
+	Name       string //
+	TitleId    string //
+	GameId     string //
+	Phone      string //
+	Salt       string //
+	Password   string //
+	Birthday   string //
+	Address    string //
+	Sex        string //
+	Status     string //
+	CreateTime string // 创建时间
 }
 
 // sysWitkeyOnboardingColumns holds the columns for the table sys_witkey_onboarding.
 var sysWitkeyOnboardingColumns = SysWitkeyOnboardingColumns{
-	Id:          "id",
-	Name:        "name",
-	TitleId:     "title_id",
-	GameId:      "game_id",
-	Phone:       "phone",
-	Address:     "address",
-	Sex:         "sex",
-	Description: "description",
-	Status:      "status",
-	CreateTime:  "create_time",
+	Id:         "id",
+	ManageId:   "manage_id",
+	Name:       "name",
+	TitleId:    "title_id",
+	GameId:     "game_id",
+	Phone:      "phone",
+	Salt:       "salt",
+	Password:   "password",
+	Birthday:   "birthday",
+	Address:    "address",
+	Sex:        "sex",
+	Status:     "status",
+	CreateTime: "create_time",
 }
 
 // NewSysWitkeyOnboardingDao creates and returns a new DAO object for table data access.

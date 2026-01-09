@@ -11,21 +11,15 @@ declare namespace Witkey {
             password: string | null,
             address: string[],
             birthday: number,
-            description: string | null,
             sex: number | null,
-            avatar: string,
-            status: number,
             titleId: number | null;
             gameId: number| null;
-            album: string[];
-            rate: number;
         }
         interface ChangeTitle {
             id: number | null;
             titleId: number | null;
             gameId: number| null;
-            // type: number| null;
-            // description: string| null;
+            description: string| null;
         }
     }
     namespace Response {

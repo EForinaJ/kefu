@@ -42,11 +42,6 @@ const (
 )
 
 const (
-	WitkeyLogTypeCreate      = 1 // 创建威客
-	WitkeyLogTypeChangeTitle = 2 // 变更头衔
-)
-
-const (
 	DistributeTypeTeam = 1 // 自带队伍
 	DistributeTypeSelf = 2 //自己个人
 )

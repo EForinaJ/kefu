@@ -7,8 +7,6 @@ import (
 	dto_witkey "server/internal/type/witkey/dto"
 	utils_error "server/internal/utils/error"
 	"server/internal/utils/response"
-
-	"github.com/gogf/gf/v2/frame/g"
 )
 
 // CheckChangeTitle implements service.IWitkey.
@@ -20,7 +18,6 @@ func (s *sWitkey) CheckChangeTitle(ctx context.Context, req *dto_witkey.ChangeTi
 	if err != nil {
 		return utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
 	}
-	g.Dump(exist)
 	if exist {
 		return utils_error.Err(response.FAILD, "该威客还有派单未完成结算，无法申请变更头衔")
 	}

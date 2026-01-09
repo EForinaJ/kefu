@@ -53,16 +53,6 @@
           <ElOption label="其他" :value="SexType.Other" />
         </ElSelect>
       </ElFormItem>
-      <ElFormItem label="头像" prop="avatar">
-        <ArtUpload
-        @success="handleAvatar"
-        >
-          <ElAvatar 
-          shape="square"
-          v-if="formData.avatar != ''" :size="80" :src="formData.avatar" />
-          <ElButton v-if="formData.avatar == ''" type="primary">选择文件</ElButton>
-        </ArtUpload>
-      </ElFormItem>
       <ElFormItem label="所在地" prop="address">
         <ElCascader
           style="width: 100%;"
@@ -80,43 +70,6 @@
           format="YYYY/MM/DD"
           value-format="x"
         />
-      </ElFormItem>
-      <ElFormItem label="个人介绍" prop="description">
-        <ElInput :rows="5" type="textarea" v-model="formData.description" placeholder="请输入个人介绍" />
-      </ElFormItem>
-      <ElFormItem label="相册" prop="album">
-        <ElSpace wrap>
-          <div v-for="(item,index) in formData.album" 
-              class="w-[100px] h-[100px] relative">
-              <ElImage
-                class="rounded-lg"
-                :src="item"
-                :preview-src-list="[item]"
-                >
-              </ElImage>
-              <div @click="deleteAlbum(index)"  class="absolute top-0 right-0 cursor-pointer">
-                <ArtSvgIcon icon="solar:close-circle-bold" class="text-red-500 text-2xl"/>
-              </div>
-          </div>
-          <ArtUpload
-          @success="handleAlbum"
-          >
-            <div class="w-[100px] h-[100px] flex items-center justify-center border-1 border-solid rounded-lg cursor-pointer">
-              <ArtSvgIcon icon="solar:upload-square-bold" class="text-2xl"/>
-            </div>
-          </ArtUpload>
-        </ElSpace>
-      </ElFormItem>
-      <ElFormItem label="评分" prop="rate">
-        <ElRate 
-        allow-half
-        v-model="formData.rate"/>
-      </ElFormItem>
-      <ElFormItem label="状态" prop="status">
-        <ElRadioGroup v-model="formData.status">
-          <ElRadio :value="Status.Disable">禁用</ElRadio>
-          <ElRadio :value="Status.Enable">启用</ElRadio>
-        </ElRadioGroup>
       </ElFormItem>
     </ElForm>
     <template #footer>
@@ -169,14 +122,9 @@ const formData = reactive<Witkey.Params.Model>({
   password: null,
   address: [],
   birthday: 0,
-  description: null,
   sex: SexType.Other,
-  avatar: "",
-  status: Status.Enable,
   titleId: null,
   gameId: null,
-  album: [],
-  rate: 0,
 })
 
 // 表单验证规则
@@ -197,15 +145,7 @@ const rules: FormRules = {
   ]
 }
 
-const handleAvatar = (e:string) => {
-  formData.avatar = e
-}
-const handleAlbum = (e:string) => {
-  formData.album.push(e)
-}
-const deleteAlbum = (i:number) => {
-  formData.album.splice(i,1)
-}
+
 interface ListItem {
   value: number
   label: string

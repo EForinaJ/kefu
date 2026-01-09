@@ -58,10 +58,10 @@
             :value="ChangeTitleType.ChangeGame"
           />
         </ElSelect>
-      </ElFormItem>
+      </ElFormItem> -->
       <ElFormItem prop="description">
         <ElInput :rows="5" type="textarea" v-model="form.description" placeholder="请输入变更描述" />
-      </ElFormItem> -->
+      </ElFormItem>
     </ElForm>
     <template #footer>
       <ElButton @click="handleCancel">取消</ElButton>
@@ -109,8 +109,7 @@ const form = reactive<Witkey.Params.ChangeTitle>({
   id: null,
   gameId: null,
   titleId: null,
-  // type: null,
-  // description: null,
+  description: null,
 })
 
 
