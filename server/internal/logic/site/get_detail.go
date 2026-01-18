@@ -14,7 +14,7 @@ import (
 
 // GetInfo implements service.ISite.
 func (s *sSite) GetInfo(ctx context.Context) (res *dao_site.Detail, err error) {
-	options, err := g.Redis().Get(ctx, "site")
+	options, err := g.Redis().Get(ctx, "kefu_site")
 	if err != nil {
 		return nil, utils_error.Err(response.CACHE_READ_ERROR, response.CodeMsg(response.CACHE_READ_ERROR))
 	}
@@ -62,7 +62,7 @@ func (s *sSite) GetInfo(ctx context.Context) (res *dao_site.Detail, err error) {
 	site.ImageType = fileJson.Get("imageType").Strings()
 
 	res = &site
-	err = g.Redis().SetEX(ctx, "site", site, 600)
+	err = g.Redis().SetEX(ctx, "kefu_site", site, 600)
 	if err != nil {
 		return nil, utils_error.Err(response.CACHE_SAVE_ERROR, response.CodeMsg(response.CACHE_SAVE_ERROR))
 	}
