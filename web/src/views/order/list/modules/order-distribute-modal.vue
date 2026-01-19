@@ -102,7 +102,7 @@ const {
         apiFn: fetchGetWitkeyList,
         apiParams:{
             phone: "",
-            status: 0,
+            name: "",
         },
         paginationKey:{
             current: 'page', 

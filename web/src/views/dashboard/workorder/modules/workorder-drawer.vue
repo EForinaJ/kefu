@@ -36,11 +36,8 @@
 <script setup lang="ts">
 import { PriorityType } from '@/enums/typeEnum';
 import type { FormInstance, FormRules  } from 'element-plus'
-import type { CascaderOption } from 'element-plus';
-import { provinceAndCityData } from 'element-china-area-data';
 import { fetchPostWorkOrderCreate } from '@/api/workorder';
 
-const region = provinceAndCityData as CascaderOption[]
 interface Props {
   modelValue: boolean
 }
