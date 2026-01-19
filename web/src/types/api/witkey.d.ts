@@ -1,10 +1,11 @@
 declare namespace Witkey {
     namespace Params {
-        /** 角色搜索参数 */
-        type Query = Partial<
-            Pick<'name' | 'phone'> &
-            Api.Common.CommonSearchParams
-        >
+        type Query = {
+            page: number;
+            limit: number;
+            name?: string;
+            phone?: string;
+        }
         interface Model {
             name: string | null,
             phone: string | null,

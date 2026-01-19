@@ -33,3 +33,10 @@ const (
 	DistributeStatusSettlemented  = 5 // 已结算
 	DistributeStatusCancel        = 6 // 已取消
 )
+
+const (
+	WorkOrderStatusAllocate   = 1 // 待分配
+	WorkOrderStatusProcessing = 2 // 处理中
+	WorkOrderStatusResolved   = 3 // 已解决
+	WorkOrderStatusCancel     = 4 // 已取消
+)

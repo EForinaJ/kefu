@@ -20,3 +20,10 @@ export enum ChangeTitleType {
   Upgrade = 2,    // 升级
   ChangeGame = 3,    // 换游戏
 }
+
+export enum PriorityType {
+  urgent = 1, // 紧急
+  secondary = 2, // 高
+  tertiary = 3, // 中
+  quaternary = 4, // 低
+}

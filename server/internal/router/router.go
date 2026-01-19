@@ -14,6 +14,7 @@ import (
 	"server/internal/controller/site"
 	"server/internal/controller/upload"
 	"server/internal/controller/witkey"
+	"server/internal/controller/workorder"
 	"server/internal/middleware"
 
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -37,6 +38,7 @@ func LoadRouter(s *ghttp.Server) {
 			settlement.NewV1(),
 			prestore.NewV1(),
 			witkey.NewV1(),
+			workorder.NewV1(),
 			upload.NewV1(),
 		).Middleware(middleware.Auth).Middleware(middleware.Response)
 	})

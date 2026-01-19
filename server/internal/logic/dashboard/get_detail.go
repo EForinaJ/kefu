@@ -7,6 +7,7 @@ import (
 	"server/internal/model/entity"
 	dao_dashboard "server/internal/type/dashboard/dao"
 	dao_product "server/internal/type/product/dao"
+	dao_workorder "server/internal/type/workorder/dao"
 	utils_common "server/internal/utils/common"
 	utils_error "server/internal/utils/error"
 	"server/internal/utils/response"
@@ -76,8 +77,29 @@ func (s *sDashboard) GetDetail(ctx context.Context) (res *dao_dashboard.Detail, 
 
 		productList[i] = entity
 	}
-
 	detail.HotProductList = productList
+
+	workOrderObj := dao.SysWorkOrder.Ctx(ctx).
+		Page(1, 10).
+		Where(dao.SysWorkOrder.Columns().AssigneeId, ctx.Value("userId")).
+		Where(dao.SysWorkOrder.Columns().Status, consts.WorkOrderStatusProcessing).
+		OrderDesc(dao.SysWorkOrder.Columns().CreateTime)
+	var workOrderList []*entity.SysWorkOrder
+	err = workOrderObj.Scan(&workOrderList)
+	if err != nil {
+		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+	}
+	wkList := make([]*dao_workorder.List, len(workOrderList))
+	for i, v := range workOrderList {
+		var wkEntity *dao_workorder.List
+		err = gconv.Scan(v, &wkEntity)
+		if err != nil {
+			return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+		}
+
+		wkList[i] = wkEntity
+	}
+	detail.TodoList = wkList
 
 	return &detail, nil
 }

@@ -63,8 +63,6 @@ import ProductView from './modules/product-view.vue';
 import ProductModal from './modules/product-modal.vue';
 
 
-
-const { hasAuth } = useAuth();
 defineOptions({ name: 'Product' })
 
 const siteStore = useSiteStore()

@@ -19,6 +19,15 @@ export const dashboardRoutes: AppRouteRecord = {
       }
     },
     {
+      path: 'workorder',
+      name: 'WorkOrder',
+      component: '/dashboard/workorder',
+      meta: {
+        title: '工单列表',
+        keepAlive: false
+      }
+    },
+    {
       path: 'account',
       name: 'Account',
       component: '/account/user-center',

@@ -1,6 +1,6 @@
 <!-- 工作台页面 -->
 <template>
-  <div>
+  <div v-if="!loading">
     <ElRow :gutter="20">
       <ElCol :sm="24" :md="12" :lg="16">
         <Banner 
@@ -10,7 +10,8 @@
         <HotProduct :table-data="detail.hotProductList"/>
       </ElCol>
       <ElCol :sm="24" :md="12" :lg="8">
-        <NavBox />
+        <!-- <NavBox /> -->
+         <TodoList :list="detail.todoList"/>
       </ElCol>
     </ElRow>
   </div>
@@ -20,14 +21,15 @@
 import { fetchGetDashboardDetail } from '@/api/dashboard';
 import Banner from './modules/banner.vue'
 import HotProduct from './modules/hot-product.vue'
-import NavBox from './modules/nav-box.vue'
+import TodoList from './modules/todo-list.vue';
 
 defineOptions({ name: 'Console' })
 
 const detail = ref<Dashboard.Response.Detail>({
   todaySales:0,
   salesComparison:0,
-  hotProductList:[]
+  hotProductList:[],
+  todoList:[],
 })
 const loading = ref<boolean>(false)
 const getData = async () => {

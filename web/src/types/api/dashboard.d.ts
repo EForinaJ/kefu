@@ -5,6 +5,7 @@ declare namespace Dashboard {
             todaySales:number;
             salesComparison:number;
             hotProductList:Product.Response.Info[];
+            todoList:WorkOrder.Response.Info[];
         }
     }
 }
