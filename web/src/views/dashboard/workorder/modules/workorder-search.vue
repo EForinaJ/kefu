@@ -58,20 +58,11 @@ import { ApplyStatus } from '@/enums/statusEnum';
   // 表单配置
   const formItems = computed(() => [
     {
-      label: '商品编码',
+      label: '工单号',
       key: 'code',
       type: 'input',
-      placeholder: '请输入商品编码',
+      placeholder: '请输入工单号',
       clearable: true
-    },
-    {
-      label: '状态',
-      key: 'status',
-      type: 'select',
-      props: {
-        placeholder: '请选择状态',
-        options: statusOptions.value
-      }
     },
   ])
 

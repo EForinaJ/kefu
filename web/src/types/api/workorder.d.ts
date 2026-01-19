@@ -24,20 +24,5 @@ declare namespace WorkOrder {
             createTime: string;
         }
         type List = Api.Common.PaginatedResponse<Info>
-
-        type Detail = {
-            id: number;
-            avatar: string;
-            sex: number;
-            address: string[];
-            birthday: string;
-            name: string;
-            game: string;
-            title: string;
-            rate: number;
-            album: string[];
-            status: number;
-            createTime: string;
-        }
     }
 }
