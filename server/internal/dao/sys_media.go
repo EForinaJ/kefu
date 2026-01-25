@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysMediaDao is an internal type for wrapping the internal DAO implementation.
-type internalSysMediaDao = *internal.SysMediaDao
-
 // sysMediaDao is the data access object for the table sys_media.
 // You can define custom methods on it to extend its functionality as needed.
 type sysMediaDao struct {
-	internalSysMediaDao
+	*internal.SysMediaDao
 }
 
 var (
 	// SysMedia is a globally accessible object for table sys_media operations.
-	SysMedia = sysMediaDao{
-		internal.NewSysMediaDao(),
-	}
+	SysMedia = sysMediaDao{internal.NewSysMediaDao()}
 )
 
 // Add your custom methods and functionality below.

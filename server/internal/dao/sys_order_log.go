@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysOrderLogDao is an internal type for wrapping the internal DAO implementation.
-type internalSysOrderLogDao = *internal.SysOrderLogDao
-
 // sysOrderLogDao is the data access object for the table sys_order_log.
 // You can define custom methods on it to extend its functionality as needed.
 type sysOrderLogDao struct {
-	internalSysOrderLogDao
+	*internal.SysOrderLogDao
 }
 
 var (
 	// SysOrderLog is a globally accessible object for table sys_order_log operations.
-	SysOrderLog = sysOrderLogDao{
-		internal.NewSysOrderLogDao(),
-	}
+	SysOrderLog = sysOrderLogDao{internal.NewSysOrderLogDao()}
 )
 
 // Add your custom methods and functionality below.

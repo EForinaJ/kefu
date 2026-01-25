@@ -12,9 +12,9 @@ import (
 // SysProfit is the golang structure of table sys_profit for DAO operations like Where/Data.
 type SysProfit struct {
 	g.Meta     `orm:"table:sys_profit, do:true"`
-	Id         interface{} //
-	Related    interface{} //
-	Type       interface{} //
-	Amount     interface{} //
+	Id         any         //
+	Related    any         //
+	Type       any         //
+	Amount     any         //
 	CreateTime *gtime.Time //
 }

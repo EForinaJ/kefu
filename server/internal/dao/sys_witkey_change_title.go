@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysWitkeyChangeTitleDao is an internal type for wrapping the internal DAO implementation.
-type internalSysWitkeyChangeTitleDao = *internal.SysWitkeyChangeTitleDao
-
 // sysWitkeyChangeTitleDao is the data access object for the table sys_witkey_change_title.
 // You can define custom methods on it to extend its functionality as needed.
 type sysWitkeyChangeTitleDao struct {
-	internalSysWitkeyChangeTitleDao
+	*internal.SysWitkeyChangeTitleDao
 }
 
 var (
 	// SysWitkeyChangeTitle is a globally accessible object for table sys_witkey_change_title operations.
-	SysWitkeyChangeTitle = sysWitkeyChangeTitleDao{
-		internal.NewSysWitkeyChangeTitleDao(),
-	}
+	SysWitkeyChangeTitle = sysWitkeyChangeTitleDao{internal.NewSysWitkeyChangeTitleDao()}
 )
 
 // Add your custom methods and functionality below.

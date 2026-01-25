@@ -13,9 +13,10 @@ import (
 
 // SysCommentDao is the data access object for the table sys_comment.
 type SysCommentDao struct {
-	table   string            // table is the underlying table name of the DAO.
-	group   string            // group is the database configuration group name of the current DAO.
-	columns SysCommentColumns // columns contains all the column names of Table for convenient usage.
+	table    string             // table is the underlying table name of the DAO.
+	group    string             // group is the database configuration group name of the current DAO.
+	columns  SysCommentColumns  // columns contains all the column names of Table for convenient usage.
+	handlers []gdb.ModelHandler // handlers for customized model modification.
 }
 
 // SysCommentColumns defines and stores column names for the table sys_comment.
@@ -51,11 +52,12 @@ var sysCommentColumns = SysCommentColumns{
 }
 
 // NewSysCommentDao creates and returns a new DAO object for table data access.
-func NewSysCommentDao() *SysCommentDao {
+func NewSysCommentDao(handlers ...gdb.ModelHandler) *SysCommentDao {
 	return &SysCommentDao{
-		group:   "default",
-		table:   "sys_comment",
-		columns: sysCommentColumns,
+		group:    "default",
+		table:    "sys_comment",
+		columns:  sysCommentColumns,
+		handlers: handlers,
 	}
 }
 
@@ -81,7 +83,11 @@ func (dao *SysCommentDao) Group() string {
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
 func (dao *SysCommentDao) Ctx(ctx context.Context) *gdb.Model {
-	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
+	model := dao.DB().Model(dao.table)
+	for _, handler := range dao.handlers {
+		model = handler(model)
+	}
+	return model.Safe().Ctx(ctx)
 }
 
 // Transaction wraps the transaction logic using function f.

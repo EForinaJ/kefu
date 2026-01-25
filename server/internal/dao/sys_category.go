@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysCategoryDao is an internal type for wrapping the internal DAO implementation.
-type internalSysCategoryDao = *internal.SysCategoryDao
-
 // sysCategoryDao is the data access object for the table sys_category.
 // You can define custom methods on it to extend its functionality as needed.
 type sysCategoryDao struct {
-	internalSysCategoryDao
+	*internal.SysCategoryDao
 }
 
 var (
 	// SysCategory is a globally accessible object for table sys_category operations.
-	SysCategory = sysCategoryDao{
-		internal.NewSysCategoryDao(),
-	}
+	SysCategory = sysCategoryDao{internal.NewSysCategoryDao()}
 )
 
 // Add your custom methods and functionality below.

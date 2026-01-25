@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysProfitDao is an internal type for wrapping the internal DAO implementation.
-type internalSysProfitDao = *internal.SysProfitDao
-
 // sysProfitDao is the data access object for the table sys_profit.
 // You can define custom methods on it to extend its functionality as needed.
 type sysProfitDao struct {
-	internalSysProfitDao
+	*internal.SysProfitDao
 }
 
 var (
 	// SysProfit is a globally accessible object for table sys_profit operations.
-	SysProfit = sysProfitDao{
-		internal.NewSysProfitDao(),
-	}
+	SysProfit = sysProfitDao{internal.NewSysProfitDao()}
 )
 
 // Add your custom methods and functionality below.

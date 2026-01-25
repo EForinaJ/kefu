@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysBalanceDao is an internal type for wrapping the internal DAO implementation.
-type internalSysBalanceDao = *internal.SysBalanceDao
-
 // sysBalanceDao is the data access object for the table sys_balance.
 // You can define custom methods on it to extend its functionality as needed.
 type sysBalanceDao struct {
-	internalSysBalanceDao
+	*internal.SysBalanceDao
 }
 
 var (
 	// SysBalance is a globally accessible object for table sys_balance operations.
-	SysBalance = sysBalanceDao{
-		internal.NewSysBalanceDao(),
-	}
+	SysBalance = sysBalanceDao{internal.NewSysBalanceDao()}
 )
 
 // Add your custom methods and functionality below.

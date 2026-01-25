@@ -12,13 +12,13 @@ import (
 // SysDistribute is the golang structure of table sys_distribute for DAO operations like Where/Data.
 type SysDistribute struct {
 	g.Meta     `orm:"table:sys_distribute, do:true"`
-	Id         interface{} //
-	OrderId    interface{} //
-	WitkeyId   interface{} //
-	ManageId   interface{} //
-	Type       interface{} //
-	Reason     interface{} //
-	Status     interface{} //
+	Id         any         //
+	OrderId    any         //
+	WitkeyId   any         //
+	ManageId   any         //
+	Type       any         //
+	Reason     any         //
+	Status     any         //
 	StartTime  *gtime.Time //
 	FinishTime *gtime.Time //
 	CreateTime *gtime.Time //

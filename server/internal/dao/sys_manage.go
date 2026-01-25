@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysManageDao is an internal type for wrapping the internal DAO implementation.
-type internalSysManageDao = *internal.SysManageDao
-
 // sysManageDao is the data access object for the table sys_manage.
 // You can define custom methods on it to extend its functionality as needed.
 type sysManageDao struct {
-	internalSysManageDao
+	*internal.SysManageDao
 }
 
 var (
 	// SysManage is a globally accessible object for table sys_manage operations.
-	SysManage = sysManageDao{
-		internal.NewSysManageDao(),
-	}
+	SysManage = sysManageDao{internal.NewSysManageDao()}
 )
 
 // Add your custom methods and functionality below.

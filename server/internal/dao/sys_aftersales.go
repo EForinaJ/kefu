@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysAftersalesDao is an internal type for wrapping the internal DAO implementation.
-type internalSysAftersalesDao = *internal.SysAftersalesDao
-
 // sysAftersalesDao is the data access object for the table sys_aftersales.
 // You can define custom methods on it to extend its functionality as needed.
 type sysAftersalesDao struct {
-	internalSysAftersalesDao
+	*internal.SysAftersalesDao
 }
 
 var (
 	// SysAftersales is a globally accessible object for table sys_aftersales operations.
-	SysAftersales = sysAftersalesDao{
-		internal.NewSysAftersalesDao(),
-	}
+	SysAftersales = sysAftersalesDao{internal.NewSysAftersalesDao()}
 )
 
 // Add your custom methods and functionality below.

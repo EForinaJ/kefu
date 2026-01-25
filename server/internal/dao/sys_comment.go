@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysCommentDao is an internal type for wrapping the internal DAO implementation.
-type internalSysCommentDao = *internal.SysCommentDao
-
 // sysCommentDao is the data access object for the table sys_comment.
 // You can define custom methods on it to extend its functionality as needed.
 type sysCommentDao struct {
-	internalSysCommentDao
+	*internal.SysCommentDao
 }
 
 var (
 	// SysComment is a globally accessible object for table sys_comment operations.
-	SysComment = sysCommentDao{
-		internal.NewSysCommentDao(),
-	}
+	SysComment = sysCommentDao{internal.NewSysCommentDao()}
 )
 
 // Add your custom methods and functionality below.

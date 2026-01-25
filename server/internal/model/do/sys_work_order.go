@@ -12,13 +12,13 @@ import (
 // SysWorkOrder is the golang structure of table sys_work_order for DAO operations like Where/Data.
 type SysWorkOrder struct {
 	g.Meta     `orm:"table:sys_work_order, do:true"`
-	Id         interface{} //
-	CreatorId  interface{} //
-	AssigneeId interface{} //
-	Code       interface{} //
-	Priority   interface{} //
-	Title      interface{} //
-	Content    interface{} //
-	Status     interface{} //
+	Id         any         //
+	CreatorId  any         //
+	AssigneeId any         //
+	Code       any         //
+	Priority   any         //
+	Title      any         //
+	Content    any         //
+	Status     any         //
 	CreateTime *gtime.Time //
 }

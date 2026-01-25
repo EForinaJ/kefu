@@ -11,6 +11,6 @@ import (
 // SysRoleMenu is the golang structure of table sys_role_menu for DAO operations like Where/Data.
 type SysRoleMenu struct {
 	g.Meta `orm:"table:sys_role_menu, do:true"`
-	RoleId interface{} //
-	MenuId interface{} //
+	RoleId any //
+	MenuId any //
 }

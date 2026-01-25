@@ -13,9 +13,10 @@ import (
 
 // SysCapitalDao is the data access object for the table sys_capital.
 type SysCapitalDao struct {
-	table   string            // table is the underlying table name of the DAO.
-	group   string            // group is the database configuration group name of the current DAO.
-	columns SysCapitalColumns // columns contains all the column names of Table for convenient usage.
+	table    string             // table is the underlying table name of the DAO.
+	group    string             // group is the database configuration group name of the current DAO.
+	columns  SysCapitalColumns  // columns contains all the column names of Table for convenient usage.
+	handlers []gdb.ModelHandler // handlers for customized model modification.
 }
 
 // SysCapitalColumns defines and stores column names for the table sys_capital.
@@ -45,11 +46,12 @@ var sysCapitalColumns = SysCapitalColumns{
 }
 
 // NewSysCapitalDao creates and returns a new DAO object for table data access.
-func NewSysCapitalDao() *SysCapitalDao {
+func NewSysCapitalDao(handlers ...gdb.ModelHandler) *SysCapitalDao {
 	return &SysCapitalDao{
-		group:   "default",
-		table:   "sys_capital",
-		columns: sysCapitalColumns,
+		group:    "default",
+		table:    "sys_capital",
+		columns:  sysCapitalColumns,
+		handlers: handlers,
 	}
 }
 
@@ -75,7 +77,11 @@ func (dao *SysCapitalDao) Group() string {
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
 func (dao *SysCapitalDao) Ctx(ctx context.Context) *gdb.Model {
-	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
+	model := dao.DB().Model(dao.table)
+	for _, handler := range dao.handlers {
+		model = handler(model)
+	}
+	return model.Safe().Ctx(ctx)
 }
 
 // Transaction wraps the transaction logic using function f.

@@ -13,9 +13,10 @@ import (
 
 // SysPermissionDao is the data access object for the table sys_permission.
 type SysPermissionDao struct {
-	table   string               // table is the underlying table name of the DAO.
-	group   string               // group is the database configuration group name of the current DAO.
-	columns SysPermissionColumns // columns contains all the column names of Table for convenient usage.
+	table    string               // table is the underlying table name of the DAO.
+	group    string               // group is the database configuration group name of the current DAO.
+	columns  SysPermissionColumns // columns contains all the column names of Table for convenient usage.
+	handlers []gdb.ModelHandler   // handlers for customized model modification.
 }
 
 // SysPermissionColumns defines and stores column names for the table sys_permission.
@@ -41,11 +42,12 @@ var sysPermissionColumns = SysPermissionColumns{
 }
 
 // NewSysPermissionDao creates and returns a new DAO object for table data access.
-func NewSysPermissionDao() *SysPermissionDao {
+func NewSysPermissionDao(handlers ...gdb.ModelHandler) *SysPermissionDao {
 	return &SysPermissionDao{
-		group:   "default",
-		table:   "sys_permission",
-		columns: sysPermissionColumns,
+		group:    "default",
+		table:    "sys_permission",
+		columns:  sysPermissionColumns,
+		handlers: handlers,
 	}
 }
 
@@ -71,7 +73,11 @@ func (dao *SysPermissionDao) Group() string {
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
 func (dao *SysPermissionDao) Ctx(ctx context.Context) *gdb.Model {
-	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
+	model := dao.DB().Model(dao.table)
+	for _, handler := range dao.handlers {
+		model = handler(model)
+	}
+	return model.Safe().Ctx(ctx)
 }
 
 // Transaction wraps the transaction logic using function f.

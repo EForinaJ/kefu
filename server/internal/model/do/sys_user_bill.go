@@ -12,12 +12,12 @@ import (
 // SysUserBill is the golang structure of table sys_user_bill for DAO operations like Where/Data.
 type SysUserBill struct {
 	g.Meta     `orm:"table:sys_user_bill, do:true"`
-	Id         interface{} //
-	UserId     interface{} //
-	RelatedId  interface{} //
-	Code       interface{} //
-	Type       interface{} //
-	Amount     interface{} //
-	Mode       interface{} //
+	Id         any         //
+	UserId     any         //
+	RelatedId  any         //
+	Code       any         //
+	Type       any         //
+	Amount     any         //
+	Mode       any         //
 	CreateTime *gtime.Time //
 }

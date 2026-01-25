@@ -12,11 +12,11 @@ import (
 // SysPermission is the golang structure of table sys_permission for DAO operations like Where/Data.
 type SysPermission struct {
 	g.Meta      `orm:"table:sys_permission, do:true"`
-	Id          interface{} // 菜单ID
-	Pid         interface{} //
-	Permission  interface{} // 权限标识
-	Name        interface{} //
-	Description interface{} // 菜单名称
+	Id          any         // 菜单ID
+	Pid         any         //
+	Permission  any         // 权限标识
+	Name        any         //
+	Description any         // 菜单名称
 	CreateTime  *gtime.Time // 创建时间
 	UpdateTime  *gtime.Time // 更新时间
 }

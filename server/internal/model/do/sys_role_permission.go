@@ -11,6 +11,6 @@ import (
 // SysRolePermission is the golang structure of table sys_role_permission for DAO operations like Where/Data.
 type SysRolePermission struct {
 	g.Meta       `orm:"table:sys_role_permission, do:true"`
-	PermissionId interface{} //
-	RoleId       interface{} //
+	PermissionId any //
+	RoleId       any //
 }

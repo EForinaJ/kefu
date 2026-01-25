@@ -12,16 +12,16 @@ import (
 // SysComment is the golang structure of table sys_comment for DAO operations like Where/Data.
 type SysComment struct {
 	g.Meta     `orm:"table:sys_comment, do:true"`
-	Id         interface{} //
-	ManageId   interface{} //
-	UserId     interface{} //
-	ProductId  interface{} //
-	Content    interface{} //
-	Rate       interface{} //
-	Images     interface{} //
-	IsTop      interface{} //
-	Status     interface{} //
-	Ip         interface{} //
+	Id         any         //
+	ManageId   any         //
+	UserId     any         //
+	ProductId  any         //
+	Content    any         //
+	Rate       any         //
+	Images     any         //
+	IsTop      any         //
+	Status     any         //
+	Ip         any         //
 	CreateTime *gtime.Time //
 	UpdateTime *gtime.Time //
 }

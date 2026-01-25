@@ -12,10 +12,10 @@ import (
 // SysOrderLog is the golang structure of table sys_order_log for DAO operations like Where/Data.
 type SysOrderLog struct {
 	g.Meta     `orm:"table:sys_order_log, do:true"`
-	Id         interface{} //
-	OrderId    interface{} //
-	ManageId   interface{} //
-	Type       interface{} //
-	Content    interface{} //
+	Id         any         //
+	OrderId    any         //
+	ManageId   any         //
+	Type       any         //
+	Content    any         //
 	CreateTime *gtime.Time //
 }

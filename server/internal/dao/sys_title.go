@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysTitleDao is an internal type for wrapping the internal DAO implementation.
-type internalSysTitleDao = *internal.SysTitleDao
-
 // sysTitleDao is the data access object for the table sys_title.
 // You can define custom methods on it to extend its functionality as needed.
 type sysTitleDao struct {
-	internalSysTitleDao
+	*internal.SysTitleDao
 }
 
 var (
 	// SysTitle is a globally accessible object for table sys_title operations.
-	SysTitle = sysTitleDao{
-		internal.NewSysTitleDao(),
-	}
+	SysTitle = sysTitleDao{internal.NewSysTitleDao()}
 )
 
 // Add your custom methods and functionality below.

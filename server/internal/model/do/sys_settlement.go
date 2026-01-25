@@ -12,18 +12,18 @@ import (
 // SysSettlement is the golang structure of table sys_settlement for DAO operations like Where/Data.
 type SysSettlement struct {
 	g.Meta         `orm:"table:sys_settlement, do:true"`
-	Id             interface{} //
-	Code           interface{} //
-	OrderId        interface{} //
-	WitkeyId       interface{} //
-	ManageId       interface{} //
-	DistributeId   interface{} //
-	Amount         interface{} //
-	Commission     interface{} //
-	ServiceCharge  interface{} //
-	Images         interface{} //
-	Status         interface{} //
-	Reason         interface{} //
+	Id             any         //
+	Code           any         //
+	OrderId        any         //
+	WitkeyId       any         //
+	ManageId       any         //
+	DistributeId   any         //
+	Amount         any         //
+	Commission     any         //
+	ServiceCharge  any         //
+	Images         any         //
+	Status         any         //
+	Reason         any         //
 	SettlementTime *gtime.Time //
 	CreateTime     *gtime.Time //
 	UpdateTime     *gtime.Time //

@@ -12,13 +12,13 @@ import (
 // SysCapital is the golang structure of table sys_capital for DAO operations like Where/Data.
 type SysCapital struct {
 	g.Meta     `orm:"table:sys_capital, do:true"`
-	Id         interface{} //
-	UserId     interface{} //
-	WitkeyId   interface{} //
-	Related    interface{} //
-	Code       interface{} //
-	Type       interface{} //
-	Amount     interface{} //
-	Mode       interface{} //
+	Id         any         //
+	UserId     any         //
+	WitkeyId   any         //
+	Related    any         //
+	Code       any         //
+	Type       any         //
+	Amount     any         //
+	Mode       any         //
 	CreateTime *gtime.Time //
 }

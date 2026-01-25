@@ -13,9 +13,10 @@ import (
 
 // SysProfitDao is the data access object for the table sys_profit.
 type SysProfitDao struct {
-	table   string           // table is the underlying table name of the DAO.
-	group   string           // group is the database configuration group name of the current DAO.
-	columns SysProfitColumns // columns contains all the column names of Table for convenient usage.
+	table    string             // table is the underlying table name of the DAO.
+	group    string             // group is the database configuration group name of the current DAO.
+	columns  SysProfitColumns   // columns contains all the column names of Table for convenient usage.
+	handlers []gdb.ModelHandler // handlers for customized model modification.
 }
 
 // SysProfitColumns defines and stores column names for the table sys_profit.
@@ -37,11 +38,12 @@ var sysProfitColumns = SysProfitColumns{
 }
 
 // NewSysProfitDao creates and returns a new DAO object for table data access.
-func NewSysProfitDao() *SysProfitDao {
+func NewSysProfitDao(handlers ...gdb.ModelHandler) *SysProfitDao {
 	return &SysProfitDao{
-		group:   "default",
-		table:   "sys_profit",
-		columns: sysProfitColumns,
+		group:    "default",
+		table:    "sys_profit",
+		columns:  sysProfitColumns,
+		handlers: handlers,
 	}
 }
 
@@ -67,7 +69,11 @@ func (dao *SysProfitDao) Group() string {
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
 func (dao *SysProfitDao) Ctx(ctx context.Context) *gdb.Model {
-	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
+	model := dao.DB().Model(dao.table)
+	for _, handler := range dao.handlers {
+		model = handler(model)
+	}
+	return model.Safe().Ctx(ctx)
 }
 
 // Transaction wraps the transaction logic using function f.

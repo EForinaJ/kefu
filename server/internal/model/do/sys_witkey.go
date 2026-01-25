@@ -12,23 +12,23 @@ import (
 // SysWitkey is the golang structure of table sys_witkey for DAO operations like Where/Data.
 type SysWitkey struct {
 	g.Meta      `orm:"table:sys_witkey, do:true"`
-	Id          interface{} // 用户ID
-	Name        interface{} //
-	TitleId     interface{} //
-	GameId      interface{} //
-	Phone       interface{} //
-	Avatar      interface{} //
-	Address     interface{} //
-	Salt        interface{} //
-	Password    interface{} //
-	Album       interface{} //
-	Sex         interface{} //
+	Id          any         // 用户ID
+	Name        any         //
+	TitleId     any         //
+	GameId      any         //
+	Phone       any         //
+	Avatar      any         //
+	Address     any         //
+	Salt        any         //
+	Password    any         //
+	Album       any         //
+	Sex         any         //
 	Birthday    *gtime.Time //
-	Rate        interface{} //
-	Commission  interface{} //
-	Description interface{} //
-	Status      interface{} //
-	LoginIp     interface{} //
+	Rate        any         //
+	Commission  any         //
+	Description any         //
+	Status      any         //
+	LoginIp     any         //
 	LoginTime   *gtime.Time //
 	CreateTime  *gtime.Time // 创建时间
 	UpdateTime  *gtime.Time // 更新时间

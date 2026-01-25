@@ -12,27 +12,27 @@ import (
 // SysOrder is the golang structure of table sys_order for DAO operations like Where/Data.
 type SysOrder struct {
 	g.Meta         `orm:"table:sys_order, do:true"`
-	Id             interface{} //
-	Code           interface{} //
-	UserId         interface{} //
-	ProductId      interface{} //
-	WitkeyCount    interface{} //
-	Quantity       interface{} //
-	Unit           interface{} //
-	UnitPrice      interface{} //
-	TotalAmount    interface{} // 订单总额
-	DiscountAmount interface{} // 优惠金额
-	ActualAmount   interface{} // 实付金额
-	PayAmount      interface{} //
-	Requirements   interface{} //
-	Status         interface{} //
-	PayCode        interface{} //
-	PayMode        interface{} //
-	PayStatus      interface{} //
+	Id             any         //
+	Code           any         //
+	UserId         any         //
+	ProductId      any         //
+	WitkeyCount    any         //
+	Quantity       any         //
+	Unit           any         //
+	UnitPrice      any         //
+	TotalAmount    any         // 订单总额
+	DiscountAmount any         // 优惠金额
+	ActualAmount   any         // 实付金额
+	PayAmount      any         //
+	Requirements   any         //
+	Status         any         //
+	PayCode        any         //
+	PayMode        any         //
+	PayStatus      any         //
 	PayTime        *gtime.Time //
 	StartTime      *gtime.Time //
 	FinishTime     *gtime.Time //
 	CreateTime     *gtime.Time //
 	UpdateTime     *gtime.Time //
-	Remark         interface{} //
+	Remark         any         //
 }

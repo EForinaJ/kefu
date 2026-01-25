@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysWorkOrderDao is an internal type for wrapping the internal DAO implementation.
-type internalSysWorkOrderDao = *internal.SysWorkOrderDao
-
 // sysWorkOrderDao is the data access object for the table sys_work_order.
 // You can define custom methods on it to extend its functionality as needed.
 type sysWorkOrderDao struct {
-	internalSysWorkOrderDao
+	*internal.SysWorkOrderDao
 }
 
 var (
 	// SysWorkOrder is a globally accessible object for table sys_work_order operations.
-	SysWorkOrder = sysWorkOrderDao{
-		internal.NewSysWorkOrderDao(),
-	}
+	SysWorkOrder = sysWorkOrderDao{internal.NewSysWorkOrderDao()}
 )
 
 // Add your custom methods and functionality below.

@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysGameDao is an internal type for wrapping the internal DAO implementation.
-type internalSysGameDao = *internal.SysGameDao
-
 // sysGameDao is the data access object for the table sys_game.
 // You can define custom methods on it to extend its functionality as needed.
 type sysGameDao struct {
-	internalSysGameDao
+	*internal.SysGameDao
 }
 
 var (
 	// SysGame is a globally accessible object for table sys_game operations.
-	SysGame = sysGameDao{
-		internal.NewSysGameDao(),
-	}
+	SysGame = sysGameDao{internal.NewSysGameDao()}
 )
 
 // Add your custom methods and functionality below.

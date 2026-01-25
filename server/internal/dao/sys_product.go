@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysProductDao is an internal type for wrapping the internal DAO implementation.
-type internalSysProductDao = *internal.SysProductDao
-
 // sysProductDao is the data access object for the table sys_product.
 // You can define custom methods on it to extend its functionality as needed.
 type sysProductDao struct {
-	internalSysProductDao
+	*internal.SysProductDao
 }
 
 var (
 	// SysProduct is a globally accessible object for table sys_product operations.
-	SysProduct = sysProductDao{
-		internal.NewSysProductDao(),
-	}
+	SysProduct = sysProductDao{internal.NewSysProductDao()}
 )
 
 // Add your custom methods and functionality below.

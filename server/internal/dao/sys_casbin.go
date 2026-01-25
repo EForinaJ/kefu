@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysCasbinDao is an internal type for wrapping the internal DAO implementation.
-type internalSysCasbinDao = *internal.SysCasbinDao
-
 // sysCasbinDao is the data access object for the table sys_casbin.
 // You can define custom methods on it to extend its functionality as needed.
 type sysCasbinDao struct {
-	internalSysCasbinDao
+	*internal.SysCasbinDao
 }
 
 var (
 	// SysCasbin is a globally accessible object for table sys_casbin operations.
-	SysCasbin = sysCasbinDao{
-		internal.NewSysCasbinDao(),
-	}
+	SysCasbin = sysCasbinDao{internal.NewSysCasbinDao()}
 )
 
 // Add your custom methods and functionality below.

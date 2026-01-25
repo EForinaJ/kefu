@@ -12,14 +12,14 @@ import (
 // SysCommission is the golang structure of table sys_commission for DAO operations like Where/Data.
 type SysCommission struct {
 	g.Meta     `orm:"table:sys_commission, do:true"`
-	Id         interface{} //
-	WitkeyId   interface{} //
-	Related    interface{} //
-	After      interface{} //
-	Before     interface{} //
-	Amount     interface{} //
-	Mode       interface{} //
-	Type       interface{} //
-	Remark     interface{} //
+	Id         any         //
+	WitkeyId   any         //
+	Related    any         //
+	After      any         //
+	Before     any         //
+	Amount     any         //
+	Mode       any         //
+	Type       any         //
+	Remark     any         //
 	CreateTime *gtime.Time //
 }

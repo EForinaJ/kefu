@@ -12,12 +12,12 @@ import (
 // SysLevel is the golang structure of table sys_level for DAO operations like Where/Data.
 type SysLevel struct {
 	g.Meta     `orm:"table:sys_level, do:true"`
-	Id         interface{} //
-	Name       interface{} //
-	Level      interface{} //
-	Icon       interface{} //
-	Experience interface{} //
-	Benefits   interface{} //
+	Id         any         //
+	Name       any         //
+	Level      any         //
+	Icon       any         //
+	Experience any         //
+	Benefits   any         //
 	CreateTime *gtime.Time //
 	UpdateTime *gtime.Time //
 }

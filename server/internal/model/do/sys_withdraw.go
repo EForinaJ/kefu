@@ -12,18 +12,18 @@ import (
 // SysWithdraw is the golang structure of table sys_withdraw for DAO operations like Where/Data.
 type SysWithdraw struct {
 	g.Meta        `orm:"table:sys_withdraw, do:true"`
-	Id            interface{} //
-	Code          interface{} //
-	ManageId      interface{} //
-	WitkeyId      interface{} //
-	Amount        interface{} //
-	SettledAmount interface{} //
-	ServiceFee    interface{} //
-	Type          interface{} //
-	Number        interface{} //
-	Name          interface{} //
-	Status        interface{} //
-	Reason        interface{} //
+	Id            any         //
+	Code          any         //
+	ManageId      any         //
+	WitkeyId      any         //
+	Amount        any         //
+	SettledAmount any         //
+	ServiceFee    any         //
+	Type          any         //
+	Number        any         //
+	Name          any         //
+	Status        any         //
+	Reason        any         //
 	CreateTime    *gtime.Time //
 	UpdateTime    *gtime.Time //
 }

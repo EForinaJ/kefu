@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysWithdrawDao is an internal type for wrapping the internal DAO implementation.
-type internalSysWithdrawDao = *internal.SysWithdrawDao
-
 // sysWithdrawDao is the data access object for the table sys_withdraw.
 // You can define custom methods on it to extend its functionality as needed.
 type sysWithdrawDao struct {
-	internalSysWithdrawDao
+	*internal.SysWithdrawDao
 }
 
 var (
 	// SysWithdraw is a globally accessible object for table sys_withdraw operations.
-	SysWithdraw = sysWithdrawDao{
-		internal.NewSysWithdrawDao(),
-	}
+	SysWithdraw = sysWithdrawDao{internal.NewSysWithdrawDao()}
 )
 
 // Add your custom methods and functionality below.

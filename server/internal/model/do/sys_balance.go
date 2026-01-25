@@ -12,14 +12,14 @@ import (
 // SysBalance is the golang structure of table sys_balance for DAO operations like Where/Data.
 type SysBalance struct {
 	g.Meta     `orm:"table:sys_balance, do:true"`
-	Id         interface{} //
-	UserId     interface{} //
-	Related    interface{} //
-	After      interface{} //
-	Before     interface{} //
-	Amount     interface{} //
-	Mode       interface{} //
-	Type       interface{} //
-	Remark     interface{} //
+	Id         any         //
+	UserId     any         //
+	Related    any         //
+	After      any         //
+	Before     any         //
+	Amount     any         //
+	Mode       any         //
+	Type       any         //
+	Remark     any         //
 	CreateTime *gtime.Time //
 }

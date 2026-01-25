@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysUserDao is an internal type for wrapping the internal DAO implementation.
-type internalSysUserDao = *internal.SysUserDao
-
 // sysUserDao is the data access object for the table sys_user.
 // You can define custom methods on it to extend its functionality as needed.
 type sysUserDao struct {
-	internalSysUserDao
+	*internal.SysUserDao
 }
 
 var (
 	// SysUser is a globally accessible object for table sys_user operations.
-	SysUser = sysUserDao{
-		internal.NewSysUserDao(),
-	}
+	SysUser = sysUserDao{internal.NewSysUserDao()}
 )
 
 // Add your custom methods and functionality below.

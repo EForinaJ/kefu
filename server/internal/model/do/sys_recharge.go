@@ -12,13 +12,13 @@ import (
 // SysRecharge is the golang structure of table sys_recharge for DAO operations like Where/Data.
 type SysRecharge struct {
 	g.Meta     `orm:"table:sys_recharge, do:true"`
-	Id         interface{} //
-	UserId     interface{} //
-	Code       interface{} //
-	Amount     interface{} //
-	PayMode    interface{} //
-	Status     interface{} //
+	Id         any         //
+	UserId     any         //
+	Code       any         //
+	Amount     any         //
+	PayMode    any         //
+	Status     any         //
 	CreateTime *gtime.Time //
 	UpdateTime *gtime.Time //
-	Remark     interface{} //
+	Remark     any         //
 }

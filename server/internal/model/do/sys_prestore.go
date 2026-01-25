@@ -12,12 +12,12 @@ import (
 // SysPrestore is the golang structure of table sys_prestore for DAO operations like Where/Data.
 type SysPrestore struct {
 	g.Meta      `orm:"table:sys_prestore, do:true"`
-	Id          interface{} //
-	UserId      interface{} //
-	ManageId    interface{} //
-	Amount      interface{} //
-	BonusAmount interface{} //
-	Status      interface{} //
-	Reason      interface{} //
+	Id          any         //
+	UserId      any         //
+	ManageId    any         //
+	Amount      any         //
+	BonusAmount any         //
+	Status      any         //
+	Reason      any         //
 	CreateTime  *gtime.Time //
 }

@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysRoleMenuDao is an internal type for wrapping the internal DAO implementation.
-type internalSysRoleMenuDao = *internal.SysRoleMenuDao
-
 // sysRoleMenuDao is the data access object for the table sys_role_menu.
 // You can define custom methods on it to extend its functionality as needed.
 type sysRoleMenuDao struct {
-	internalSysRoleMenuDao
+	*internal.SysRoleMenuDao
 }
 
 var (
 	// SysRoleMenu is a globally accessible object for table sys_role_menu operations.
-	SysRoleMenu = sysRoleMenuDao{
-		internal.NewSysRoleMenuDao(),
-	}
+	SysRoleMenu = sysRoleMenuDao{internal.NewSysRoleMenuDao()}
 )
 
 // Add your custom methods and functionality below.

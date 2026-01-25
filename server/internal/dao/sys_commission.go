@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysCommissionDao is an internal type for wrapping the internal DAO implementation.
-type internalSysCommissionDao = *internal.SysCommissionDao
-
 // sysCommissionDao is the data access object for the table sys_commission.
 // You can define custom methods on it to extend its functionality as needed.
 type sysCommissionDao struct {
-	internalSysCommissionDao
+	*internal.SysCommissionDao
 }
 
 var (
 	// SysCommission is a globally accessible object for table sys_commission operations.
-	SysCommission = sysCommissionDao{
-		internal.NewSysCommissionDao(),
-	}
+	SysCommission = sysCommissionDao{internal.NewSysCommissionDao()}
 )
 
 // Add your custom methods and functionality below.

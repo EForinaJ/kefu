@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysPrestoreDao is an internal type for wrapping the internal DAO implementation.
-type internalSysPrestoreDao = *internal.SysPrestoreDao
-
 // sysPrestoreDao is the data access object for the table sys_prestore.
 // You can define custom methods on it to extend its functionality as needed.
 type sysPrestoreDao struct {
-	internalSysPrestoreDao
+	*internal.SysPrestoreDao
 }
 
 var (
 	// SysPrestore is a globally accessible object for table sys_prestore operations.
-	SysPrestore = sysPrestoreDao{
-		internal.NewSysPrestoreDao(),
-	}
+	SysPrestore = sysPrestoreDao{internal.NewSysPrestoreDao()}
 )
 
 // Add your custom methods and functionality below.

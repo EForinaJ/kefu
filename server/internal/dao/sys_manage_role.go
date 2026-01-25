@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysManageRoleDao is an internal type for wrapping the internal DAO implementation.
-type internalSysManageRoleDao = *internal.SysManageRoleDao
-
 // sysManageRoleDao is the data access object for the table sys_manage_role.
 // You can define custom methods on it to extend its functionality as needed.
 type sysManageRoleDao struct {
-	internalSysManageRoleDao
+	*internal.SysManageRoleDao
 }
 
 var (
 	// SysManageRole is a globally accessible object for table sys_manage_role operations.
-	SysManageRole = sysManageRoleDao{
-		internal.NewSysManageRoleDao(),
-	}
+	SysManageRole = sysManageRoleDao{internal.NewSysManageRoleDao()}
 )
 
 // Add your custom methods and functionality below.

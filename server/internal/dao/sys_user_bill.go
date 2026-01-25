@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysUserBillDao is an internal type for wrapping the internal DAO implementation.
-type internalSysUserBillDao = *internal.SysUserBillDao
-
 // sysUserBillDao is the data access object for the table sys_user_bill.
 // You can define custom methods on it to extend its functionality as needed.
 type sysUserBillDao struct {
-	internalSysUserBillDao
+	*internal.SysUserBillDao
 }
 
 var (
 	// SysUserBill is a globally accessible object for table sys_user_bill operations.
-	SysUserBill = sysUserBillDao{
-		internal.NewSysUserBillDao(),
-	}
+	SysUserBill = sysUserBillDao{internal.NewSysUserBillDao()}
 )
 
 // Add your custom methods and functionality below.

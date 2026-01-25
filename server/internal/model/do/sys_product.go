@@ -12,24 +12,24 @@ import (
 // SysProduct is the golang structure of table sys_product for DAO operations like Where/Data.
 type SysProduct struct {
 	g.Meta              `orm:"table:sys_product, do:true"`
-	Id                  interface{} //
-	Pic                 interface{} //
-	Code                interface{} //
-	Type                interface{} // 1护航，2代肝
-	CategoryId          interface{} //
-	GameId              interface{} //
-	Name                interface{} //
-	Description         interface{} //
-	Content             interface{} //
-	WitkeyCount         interface{} //
-	Price               interface{} //
-	Unit                interface{} //
-	SalesCount          interface{} //
-	Rate                interface{} //
-	PurchaseLimit       interface{} //
-	SkuType             interface{} //
-	WxMiniProgramQrCode interface{} //
-	Status              interface{} // 状态：1-禁用，2-启用
+	Id                  any         //
+	Pic                 any         //
+	Code                any         //
+	Type                any         // 1护航，2代肝
+	CategoryId          any         //
+	GameId              any         //
+	Name                any         //
+	Description         any         //
+	Content             any         //
+	WitkeyCount         any         //
+	Price               any         //
+	Unit                any         //
+	SalesCount          any         //
+	Rate                any         //
+	PurchaseLimit       any         //
+	SkuType             any         //
+	WxMiniProgramQrCode any         //
+	Status              any         // 状态：1-禁用，2-启用
 	CreateTime          *gtime.Time //
 	UpdateTime          *gtime.Time //
 }

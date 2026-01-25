@@ -13,9 +13,10 @@ import (
 
 // SysWithdrawDao is the data access object for the table sys_withdraw.
 type SysWithdrawDao struct {
-	table   string             // table is the underlying table name of the DAO.
-	group   string             // group is the database configuration group name of the current DAO.
-	columns SysWithdrawColumns // columns contains all the column names of Table for convenient usage.
+	table    string             // table is the underlying table name of the DAO.
+	group    string             // group is the database configuration group name of the current DAO.
+	columns  SysWithdrawColumns // columns contains all the column names of Table for convenient usage.
+	handlers []gdb.ModelHandler // handlers for customized model modification.
 }
 
 // SysWithdrawColumns defines and stores column names for the table sys_withdraw.
@@ -55,11 +56,12 @@ var sysWithdrawColumns = SysWithdrawColumns{
 }
 
 // NewSysWithdrawDao creates and returns a new DAO object for table data access.
-func NewSysWithdrawDao() *SysWithdrawDao {
+func NewSysWithdrawDao(handlers ...gdb.ModelHandler) *SysWithdrawDao {
 	return &SysWithdrawDao{
-		group:   "default",
-		table:   "sys_withdraw",
-		columns: sysWithdrawColumns,
+		group:    "default",
+		table:    "sys_withdraw",
+		columns:  sysWithdrawColumns,
+		handlers: handlers,
 	}
 }
 
@@ -85,7 +87,11 @@ func (dao *SysWithdrawDao) Group() string {
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
 func (dao *SysWithdrawDao) Ctx(ctx context.Context) *gdb.Model {
-	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
+	model := dao.DB().Model(dao.table)
+	for _, handler := range dao.handlers {
+		model = handler(model)
+	}
+	return model.Safe().Ctx(ctx)
 }
 
 // Transaction wraps the transaction logic using function f.

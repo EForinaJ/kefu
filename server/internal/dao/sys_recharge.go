@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysRechargeDao is an internal type for wrapping the internal DAO implementation.
-type internalSysRechargeDao = *internal.SysRechargeDao
-
 // sysRechargeDao is the data access object for the table sys_recharge.
 // You can define custom methods on it to extend its functionality as needed.
 type sysRechargeDao struct {
-	internalSysRechargeDao
+	*internal.SysRechargeDao
 }
 
 var (
 	// SysRecharge is a globally accessible object for table sys_recharge operations.
-	SysRecharge = sysRechargeDao{
-		internal.NewSysRechargeDao(),
-	}
+	SysRecharge = sysRechargeDao{internal.NewSysRechargeDao()}
 )
 
 // Add your custom methods and functionality below.

@@ -4,8 +4,15 @@
 gfcli:
   gen:
     dao:
-      - link: "mysql:root:123456@tcp(127.0.0.1:3306)/peiwan"
+      - link: "mysql:root:123456@tcp(127.0.0.1:3306)/func"
         descriptionTag: true
+
+  build:
+    name:     "func"
+    arch:     "amd64"
+    system:   "linux"
+    # packSrc:  "manifest"
+    output:   "./bin"
 
   docker:
     build: "-a amd64 -s linux -p temp -ew"

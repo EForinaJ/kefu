@@ -13,9 +13,10 @@ import (
 
 // SysOrderLogDao is the data access object for the table sys_order_log.
 type SysOrderLogDao struct {
-	table   string             // table is the underlying table name of the DAO.
-	group   string             // group is the database configuration group name of the current DAO.
-	columns SysOrderLogColumns // columns contains all the column names of Table for convenient usage.
+	table    string             // table is the underlying table name of the DAO.
+	group    string             // group is the database configuration group name of the current DAO.
+	columns  SysOrderLogColumns // columns contains all the column names of Table for convenient usage.
+	handlers []gdb.ModelHandler // handlers for customized model modification.
 }
 
 // SysOrderLogColumns defines and stores column names for the table sys_order_log.
@@ -39,11 +40,12 @@ var sysOrderLogColumns = SysOrderLogColumns{
 }
 
 // NewSysOrderLogDao creates and returns a new DAO object for table data access.
-func NewSysOrderLogDao() *SysOrderLogDao {
+func NewSysOrderLogDao(handlers ...gdb.ModelHandler) *SysOrderLogDao {
 	return &SysOrderLogDao{
-		group:   "default",
-		table:   "sys_order_log",
-		columns: sysOrderLogColumns,
+		group:    "default",
+		table:    "sys_order_log",
+		columns:  sysOrderLogColumns,
+		handlers: handlers,
 	}
 }
 
@@ -69,7 +71,11 @@ func (dao *SysOrderLogDao) Group() string {
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
 func (dao *SysOrderLogDao) Ctx(ctx context.Context) *gdb.Model {
-	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
+	model := dao.DB().Model(dao.table)
+	for _, handler := range dao.handlers {
+		model = handler(model)
+	}
+	return model.Safe().Ctx(ctx)
 }
 
 // Transaction wraps the transaction logic using function f.

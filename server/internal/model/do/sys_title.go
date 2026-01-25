@@ -12,12 +12,12 @@ import (
 // SysTitle is the golang structure of table sys_title for DAO operations like Where/Data.
 type SysTitle struct {
 	g.Meta         `orm:"table:sys_title, do:true"`
-	Id             interface{} //
-	GameId         interface{} //
-	Name           interface{} //
-	ServicePercent interface{} //
-	Pic            interface{} //
-	Description    interface{} //
+	Id             any         //
+	GameId         any         //
+	Name           any         //
+	ServicePercent any         //
+	Pic            any         //
+	Description    any         //
 	CreateTime     *gtime.Time //
 	UpdateTime     *gtime.Time //
 }

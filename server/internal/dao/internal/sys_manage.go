@@ -13,9 +13,10 @@ import (
 
 // SysManageDao is the data access object for the table sys_manage.
 type SysManageDao struct {
-	table   string           // table is the underlying table name of the DAO.
-	group   string           // group is the database configuration group name of the current DAO.
-	columns SysManageColumns // columns contains all the column names of Table for convenient usage.
+	table    string             // table is the underlying table name of the DAO.
+	group    string             // group is the database configuration group name of the current DAO.
+	columns  SysManageColumns   // columns contains all the column names of Table for convenient usage.
+	handlers []gdb.ModelHandler // handlers for customized model modification.
 }
 
 // SysManageColumns defines and stores column names for the table sys_manage.
@@ -63,11 +64,12 @@ var sysManageColumns = SysManageColumns{
 }
 
 // NewSysManageDao creates and returns a new DAO object for table data access.
-func NewSysManageDao() *SysManageDao {
+func NewSysManageDao(handlers ...gdb.ModelHandler) *SysManageDao {
 	return &SysManageDao{
-		group:   "default",
-		table:   "sys_manage",
-		columns: sysManageColumns,
+		group:    "default",
+		table:    "sys_manage",
+		columns:  sysManageColumns,
+		handlers: handlers,
 	}
 }
 
@@ -93,7 +95,11 @@ func (dao *SysManageDao) Group() string {
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
 func (dao *SysManageDao) Ctx(ctx context.Context) *gdb.Model {
-	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
+	model := dao.DB().Model(dao.table)
+	for _, handler := range dao.handlers {
+		model = handler(model)
+	}
+	return model.Safe().Ctx(ctx)
 }
 
 // Transaction wraps the transaction logic using function f.

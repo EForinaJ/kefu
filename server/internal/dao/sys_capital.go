@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysCapitalDao is an internal type for wrapping the internal DAO implementation.
-type internalSysCapitalDao = *internal.SysCapitalDao
-
 // sysCapitalDao is the data access object for the table sys_capital.
 // You can define custom methods on it to extend its functionality as needed.
 type sysCapitalDao struct {
-	internalSysCapitalDao
+	*internal.SysCapitalDao
 }
 
 var (
 	// SysCapital is a globally accessible object for table sys_capital operations.
-	SysCapital = sysCapitalDao{
-		internal.NewSysCapitalDao(),
-	}
+	SysCapital = sysCapitalDao{internal.NewSysCapitalDao()}
 )
 
 // Add your custom methods and functionality below.

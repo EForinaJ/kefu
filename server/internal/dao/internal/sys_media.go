@@ -13,9 +13,10 @@ import (
 
 // SysMediaDao is the data access object for the table sys_media.
 type SysMediaDao struct {
-	table   string          // table is the underlying table name of the DAO.
-	group   string          // group is the database configuration group name of the current DAO.
-	columns SysMediaColumns // columns contains all the column names of Table for convenient usage.
+	table    string             // table is the underlying table name of the DAO.
+	group    string             // group is the database configuration group name of the current DAO.
+	columns  SysMediaColumns    // columns contains all the column names of Table for convenient usage.
+	handlers []gdb.ModelHandler // handlers for customized model modification.
 }
 
 // SysMediaColumns defines and stores column names for the table sys_media.
@@ -45,11 +46,12 @@ var sysMediaColumns = SysMediaColumns{
 }
 
 // NewSysMediaDao creates and returns a new DAO object for table data access.
-func NewSysMediaDao() *SysMediaDao {
+func NewSysMediaDao(handlers ...gdb.ModelHandler) *SysMediaDao {
 	return &SysMediaDao{
-		group:   "default",
-		table:   "sys_media",
-		columns: sysMediaColumns,
+		group:    "default",
+		table:    "sys_media",
+		columns:  sysMediaColumns,
+		handlers: handlers,
 	}
 }
 
@@ -75,7 +77,11 @@ func (dao *SysMediaDao) Group() string {
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
 func (dao *SysMediaDao) Ctx(ctx context.Context) *gdb.Model {
-	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
+	model := dao.DB().Model(dao.table)
+	for _, handler := range dao.handlers {
+		model = handler(model)
+	}
+	return model.Safe().Ctx(ctx)
 }
 
 // Transaction wraps the transaction logic using function f.

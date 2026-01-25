@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysLevelDao is an internal type for wrapping the internal DAO implementation.
-type internalSysLevelDao = *internal.SysLevelDao
-
 // sysLevelDao is the data access object for the table sys_level.
 // You can define custom methods on it to extend its functionality as needed.
 type sysLevelDao struct {
-	internalSysLevelDao
+	*internal.SysLevelDao
 }
 
 var (
 	// SysLevel is a globally accessible object for table sys_level operations.
-	SysLevel = sysLevelDao{
-		internal.NewSysLevelDao(),
-	}
+	SysLevel = sysLevelDao{internal.NewSysLevelDao()}
 )
 
 // Add your custom methods and functionality below.

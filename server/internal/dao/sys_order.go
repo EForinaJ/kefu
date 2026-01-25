@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysOrderDao is an internal type for wrapping the internal DAO implementation.
-type internalSysOrderDao = *internal.SysOrderDao
-
 // sysOrderDao is the data access object for the table sys_order.
 // You can define custom methods on it to extend its functionality as needed.
 type sysOrderDao struct {
-	internalSysOrderDao
+	*internal.SysOrderDao
 }
 
 var (
 	// SysOrder is a globally accessible object for table sys_order operations.
-	SysOrder = sysOrderDao{
-		internal.NewSysOrderDao(),
-	}
+	SysOrder = sysOrderDao{internal.NewSysOrderDao()}
 )
 
 // Add your custom methods and functionality below.

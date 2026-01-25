@@ -12,12 +12,12 @@ import (
 // SysRole is the golang structure of table sys_role for DAO operations like Where/Data.
 type SysRole struct {
 	g.Meta      `orm:"table:sys_role, do:true"`
-	Id          interface{} // 角色ID
-	Name        interface{} // 角色名称
-	Code        interface{} //
-	Description interface{} //
-	Type        interface{} //
+	Id          any         // 角色ID
+	Name        any         // 角色名称
+	Code        any         //
+	Description any         //
+	Type        any         //
 	CreateTime  *gtime.Time // 创建时间
 	UpdateTime  *gtime.Time // 更新时间
-	Remark      interface{} // 备注
+	Remark      any         // 备注
 }

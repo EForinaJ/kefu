@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysConfigDao is an internal type for wrapping the internal DAO implementation.
-type internalSysConfigDao = *internal.SysConfigDao
-
 // sysConfigDao is the data access object for the table sys_config.
 // You can define custom methods on it to extend its functionality as needed.
 type sysConfigDao struct {
-	internalSysConfigDao
+	*internal.SysConfigDao
 }
 
 var (
 	// SysConfig is a globally accessible object for table sys_config operations.
-	SysConfig = sysConfigDao{
-		internal.NewSysConfigDao(),
-	}
+	SysConfig = sysConfigDao{internal.NewSysConfigDao()}
 )
 
 // Add your custom methods and functionality below.

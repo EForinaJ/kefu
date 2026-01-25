@@ -8,20 +8,15 @@ import (
 	"server/internal/dao/internal"
 )
 
-// internalSysUserExperienceDao is an internal type for wrapping the internal DAO implementation.
-type internalSysUserExperienceDao = *internal.SysUserExperienceDao
-
 // sysUserExperienceDao is the data access object for the table sys_user_experience.
 // You can define custom methods on it to extend its functionality as needed.
 type sysUserExperienceDao struct {
-	internalSysUserExperienceDao
+	*internal.SysUserExperienceDao
 }
 
 var (
 	// SysUserExperience is a globally accessible object for table sys_user_experience operations.
-	SysUserExperience = sysUserExperienceDao{
-		internal.NewSysUserExperienceDao(),
-	}
+	SysUserExperience = sysUserExperienceDao{internal.NewSysUserExperienceDao()}
 )
 
 // Add your custom methods and functionality below.

@@ -12,17 +12,17 @@ import (
 // SysWitkeyOnboarding is the golang structure of table sys_witkey_onboarding for DAO operations like Where/Data.
 type SysWitkeyOnboarding struct {
 	g.Meta     `orm:"table:sys_witkey_onboarding, do:true"`
-	Id         interface{} // 用户ID
-	ManageId   interface{} //
-	Name       interface{} //
-	TitleId    interface{} //
-	GameId     interface{} //
-	Phone      interface{} //
-	Salt       interface{} //
-	Password   interface{} //
+	Id         any         // 用户ID
+	ManageId   any         //
+	Name       any         //
+	TitleId    any         //
+	GameId     any         //
+	Phone      any         //
+	Salt       any         //
+	Password   any         //
 	Birthday   *gtime.Time //
-	Address    interface{} //
-	Sex        interface{} //
-	Status     interface{} //
+	Address    any         //
+	Sex        any         //
+	Status     any         //
 	CreateTime *gtime.Time // 创建时间
 }

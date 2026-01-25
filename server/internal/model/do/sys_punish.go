@@ -12,12 +12,12 @@ import (
 // SysPunish is the golang structure of table sys_punish for DAO operations like Where/Data.
 type SysPunish struct {
 	g.Meta     `orm:"table:sys_punish, do:true"`
-	Id         interface{} //
-	Code       interface{} //
-	WitkeyId   interface{} //
-	ManageId   interface{} //
-	Money      interface{} //
-	Content    interface{} //
+	Id         any         //
+	Code       any         //
+	WitkeyId   any         //
+	ManageId   any         //
+	Money      any         //
+	Content    any         //
 	CreateTime *gtime.Time //
 	UpdateTime *gtime.Time //
 }
