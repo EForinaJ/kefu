@@ -8,7 +8,8 @@ type List struct {
 	OrderCode  string      `json:"orderCode" dc:"订单编号"`
 	Product    *Product    `json:"product" dc:"商品信息"`
 	User       string      `json:"user" dc:"申请用户"`
-	Amount     float64     `json:"amount" dc:"退款金额"`
+	Type       int         `json:"type" dc:"售后类型"`
+	Amount     float64     `json:"amount" dc:"售后金额"`
 	Status     int         `json:"status" dc:"状态"`
 	CreateTime *gtime.Time `json:"createTime" dc:"下单时间"`
 }

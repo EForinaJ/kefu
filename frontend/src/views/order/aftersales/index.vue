@@ -42,6 +42,7 @@
   import AftersalesSearch from './modules/aftersales-search.vue'
   import { ApplyStatus } from '@/enums/statusEnum'
   import AftersalesViewDrawer from './modules/aftersales-view-drawer.vue'
+import { AfterSalesType } from '@/enums/typeEnum'
   
   
 
@@ -64,128 +65,150 @@
   
   
   
-  const AFTERSALES_STATUS = {
-    [ApplyStatus.Pending]: { type: 'primary' as const, text: '待审核' },
-    [ApplyStatus.Success]: { type: 'success' as const, text: '已通过' },
-    [ApplyStatus.Fail]: { type: 'danger' as const, text: '拒绝' },
-  } as const
-  
-  const getStatus = (status: number) => {
-    return (
-      AFTERSALES_STATUS[status as keyof typeof AFTERSALES_STATUS] || {
-        type: 'info' as const,
-        text: '未知'
-      }
-    )
-  }
-  const {
-    columns,
-    columnChecks,
-    data,
-    loading,
-    pagination,
-    getData,
-    searchParams,
-    resetSearchParams,
-    handleSizeChange,
-    handleCurrentChange,
-    refreshData
-  } = useTable({
-    // 核心配置
-    core: {
-      apiFn: fetchGetAftersalesList,
-      apiParams:{
-        code: "",
-        orderCode: "",
-      },
-      paginationKey:{
-        current: 'page', 
-        size: 'limit'
-      },
-      columnsFactory: () => [
-        {
-          prop: 'afterInfo',
-          label: '售后编号',
-          width: 280,
-          formatter: (row) => {
-            return h('div', {  }, [
-                h('p', { }, `售后号:${row.code}`),
-                h('p', { }, `订单号:${row.orderCode}`),
-              ])
-          }
-        },
-        {
-          prop: 'productInfo',
-          label: '商品信息',
-          width: 220,
-          formatter: (row) => {
-            return h('div', { class: 'flex-c' }, [
-              h(ElImage, {
-                class: 'size-12 rounded-md',
-                src: row.product.pic,
-                previewSrcList: [row.product.pic],
-                // 图片预览是否插入至 body 元素上，用于解决表格内部图片预览样式异常
-                previewTeleported: true
-              }),
-              h('div', { class: 'ml-2 flex-1' }, [
-                h('p', { class: 'line-clamp-1' }, row.product.name),
-              ])
+const AFTERSALES_STATUS = {
+  [ApplyStatus.Pending]: { type: 'primary' as const, text: '待审核' },
+  [ApplyStatus.Success]: { type: 'success' as const, text: '已通过' },
+  [ApplyStatus.Fail]: { type: 'danger' as const, text: '拒绝' },
+} as const
+
+const getStatus = (status: number) => {
+  return (
+    AFTERSALES_STATUS[status as keyof typeof AFTERSALES_STATUS] || {
+      type: 'info' as const,
+      text: '未知'
+    }
+  )
+}
+const AFTERSALES_TYPE = {
+  [AfterSalesType.Refund]: { type: 'primary' as const, text: '仅退款' },
+  [AfterSalesType.Compensate]: { type: 'primary' as const, text: '仅补偿' },
+  [AfterSalesType.RefundCompensate]: { type: 'primary' as const, text: '退款加补偿' },
+} as const
+
+const getType = (type: number) => {
+  return (
+    AFTERSALES_TYPE[type as keyof typeof AFTERSALES_TYPE] || {
+      type: 'info' as const,
+      text: '未知'
+    }
+  )
+}
+const {
+  columns,
+  columnChecks,
+  data,
+  loading,
+  pagination,
+  getData,
+  searchParams,
+  resetSearchParams,
+  handleSizeChange,
+  handleCurrentChange,
+  refreshData
+} = useTable({
+  // 核心配置
+  core: {
+    apiFn: fetchGetAftersalesList,
+    apiParams:{
+      code: "",
+      orderCode: "",
+    },
+    paginationKey:{
+      current: 'page', 
+      size: 'limit'
+    },
+    columnsFactory: () => [
+      {
+        prop: 'afterInfo',
+        label: '售后编号',
+        width: 280,
+        formatter: (row) => {
+          return h('div', {  }, [
+              h('p', { }, `售后号:${row.code}`),
+              h('p', { }, `订单号:${row.orderCode}`),
             ])
-          }
-        },
-        {
-          prop: 'user',
-          label: '申请人',
-          formatter: (row) => {
-            return h('p', { }, row.user)
-          }
-        },
-        {
-          prop: 'amount',
-          label: '售后金额',
-          formatter: (row) => {
-            return h(ElTag, { type:"primary" }, () => `${row.amount}${site.symbol}` )
-          }
-        },
-        {
-          prop: 'status',
-          label: '售后状态',
-          formatter: (row) => {
-            const statusConfig = getStatus(row.status)
-            return h(ElTag, { type: statusConfig.type }, () => statusConfig.text)
-          }
-        },
-        {
-          prop: 'createTime',
-          label: '申请时间',
-          sortable: true
-        },
-        {
-          prop: 'operation',
-          label: '操作',
-          width: 120,
-          fixed: 'right', // 固定列
-          formatter: (row) =>{
-            return h('div', { class: 'aftersales flex-c' }, [
-              h(ArtButtonTable, {
-                type: 'view',
-                onClick: () => handleView(row)
-              }),
-            ])
-          }
         }
-      ],
-    },
-    // 数据处理
-    transform: {
-      responseAdapter: (response) => {
-        return {
-          records: response.list,
-          total: response.total,
-        };
       },
+      {
+        prop: 'productInfo',
+        label: '商品信息',
+        width: 220,
+        formatter: (row) => {
+          return h('div', { class: 'flex-c' }, [
+            h(ElImage, {
+              class: 'size-12 rounded-md',
+              src: row.product.pic,
+              previewSrcList: [row.product.pic],
+              // 图片预览是否插入至 body 元素上，用于解决表格内部图片预览样式异常
+              previewTeleported: true
+            }),
+            h('div', { class: 'ml-2 flex-1' }, [
+              h('p', { class: 'line-clamp-1' }, row.product.name),
+            ])
+          ])
+        }
+      },
+      {
+        prop: 'user',
+        label: '申请人',
+        formatter: (row) => {
+          return h('p', { }, row.user)
+        }
+      },
+      {
+        prop: 'type',
+        label: '售后类型',
+        formatter: (row) => {
+          const typeConfig = getType(row.type)
+          return h(ElTag, { type: typeConfig.type }, () => typeConfig.text)
+        }
+      },
+      {
+        prop: 'amount',
+        label: '售后金额',
+        formatter: (row) => {
+          return h(ElTag, { type:"primary" }, () => `${row.amount}${site.symbol}` )
+        }
+      },
+      {
+        prop: 'status',
+        label: '售后状态',
+        formatter: (row) => {
+          const statusConfig = getStatus(row.status)
+          return h(ElTag, { type: statusConfig.type }, () => statusConfig.text)
+        }
+      },
+      {
+        prop: 'createTime',
+        label: '申请时间',
+        sortable: true
+      },
+      {
+        prop: 'operation',
+        label: '操作',
+        width: 120,
+        fixed: 'right', // 固定列
+        formatter: (row) =>{
+          return h('div', { class: 'aftersales flex-c' }, [
+            h(ArtButtonTable, {
+              type: 'view',
+              onClick: () => handleView(row)
+            }),
+          ])
+        }
+      }
+    ],
+  },
+  // 数据处理
+  transform: {
+    responseAdapter: (response) => {
+      return {
+        records: response.list,
+        total: response.total,
+      };
     },
-  })
+  },
+})
   
   
   /**

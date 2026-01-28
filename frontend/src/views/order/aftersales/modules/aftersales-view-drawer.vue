@@ -137,6 +137,10 @@
             <div v-if="detail?.status == ApplyStatus.Fail" class="bg-primary/10 text-sm p-2 rounded">
                 驳回原因:{{ detail?.reject }}
             </div>
+
+            <div class="text-sm p-2 rounded mt-[20px]">
+                {{ detail?.content }}
+            </div>
             <template #footer>
                 <div class="font-bold">
                     {{detail?.reason}}

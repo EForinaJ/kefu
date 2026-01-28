@@ -11,17 +11,19 @@ import (
 
 // SysAftersales is the golang structure of table sys_aftersales for DAO operations like Where/Data.
 type SysAftersales struct {
-	g.Meta     `orm:"table:sys_aftersales, do:true"`
-	Id         any         //
-	Code       any         //
-	UserId     any         //
-	ManageId   any         //
-	OrderId    any         //
-	Type       any         //
-	Amount     any         //
-	Reason     any         //
-	Reject     any         //
-	Content    any         //
-	Status     any         //
-	CreateTime *gtime.Time //
+	g.Meta        `orm:"table:sys_aftersales, do:true"`
+	Id            any         //
+	Code          any         //
+	UserId        any         //
+	ManageId      any         //
+	OrderId       any         //
+	Type          any         //
+	Amount        any         //
+	Reason        any         //
+	Reject        any         //
+	Content       any         //
+	ContactMode   any         //
+	ContactNumber any         //
+	Status        any         //
+	CreateTime    *gtime.Time //
 }

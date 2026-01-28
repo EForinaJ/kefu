@@ -20,6 +20,7 @@ declare namespace Aftersales {
                 pic:string
             };
             user:string;
+            type:number;
             amount:number;
             status:number;
             createTime:string;
@@ -66,6 +67,7 @@ declare namespace Aftersales {
                 requirements:string | null;
             };
             reject:string;
+            content:string;
             createTime:string;
         }
 

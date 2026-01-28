@@ -21,34 +21,38 @@ type SysAftersalesDao struct {
 
 // SysAftersalesColumns defines and stores column names for the table sys_aftersales.
 type SysAftersalesColumns struct {
-	Id         string //
-	Code       string //
-	UserId     string //
-	ManageId   string //
-	OrderId    string //
-	Type       string //
-	Amount     string //
-	Reason     string //
-	Reject     string //
-	Content    string //
-	Status     string //
-	CreateTime string //
+	Id            string //
+	Code          string //
+	UserId        string //
+	ManageId      string //
+	OrderId       string //
+	Type          string //
+	Amount        string //
+	Reason        string //
+	Reject        string //
+	Content       string //
+	ContactMode   string //
+	ContactNumber string //
+	Status        string //
+	CreateTime    string //
 }
 
 // sysAftersalesColumns holds the columns for the table sys_aftersales.
 var sysAftersalesColumns = SysAftersalesColumns{
-	Id:         "id",
-	Code:       "code",
-	UserId:     "user_id",
-	ManageId:   "manage_id",
-	OrderId:    "order_id",
-	Type:       "type",
-	Amount:     "amount",
-	Reason:     "reason",
-	Reject:     "reject",
-	Content:    "content",
-	Status:     "status",
-	CreateTime: "create_time",
+	Id:            "id",
+	Code:          "code",
+	UserId:        "user_id",
+	ManageId:      "manage_id",
+	OrderId:       "order_id",
+	Type:          "type",
+	Amount:        "amount",
+	Reason:        "reason",
+	Reject:        "reject",
+	Content:       "content",
+	ContactMode:   "contactMode",
+	ContactNumber: "contactNumber",
+	Status:        "status",
+	CreateTime:    "create_time",
 }
 
 // NewSysAftersalesDao creates and returns a new DAO object for table data access.
