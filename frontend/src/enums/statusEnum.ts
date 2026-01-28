@@ -15,9 +15,9 @@ export enum ProductStatus {
     Enable = 2, // 上架
 }
 export enum PayStatus {
-    PendingPayment = 1, // 待付款 
-    Paid = 2, // 已付款
-    Refunded = 3, // 已退款
+    Pending = 1, // 待付款 
+    Success = 2, // 支付成功
+    Fail = 3, // 支付失败
 }
 
 export enum OrderStatus {
@@ -26,7 +26,7 @@ export enum OrderStatus {
     InProgress = 3, // 进行中
     Completed = 4, // 已完成
     Cancel = 5, // 已取消
-    Refund = 6, // 已退款
+    AfterSales = 6, // 已售后
 }
 export enum DistributeStatus {
     Pending = 1, // 待服务

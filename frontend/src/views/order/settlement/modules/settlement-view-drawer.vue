@@ -216,7 +216,7 @@ const ORDER_STATUS_CONFIG = {
   [OrderStatus.InProgress]: { type: 'primary' as const, text: '进行中' },
   [OrderStatus.Completed]: { type: 'success' as const, text: '已完成' },
   [OrderStatus.Cancel]: { type: 'danger' as const, text: '已取消' },
-  [OrderStatus.Refund]: { type: 'warning' as const, text: '已退款' },
+  [OrderStatus.AfterSales]: { type: 'warning' as const, text: '已售后' },
 } as const
 
 /**
@@ -253,9 +253,9 @@ const getOrderPayMode = (mode: number) => {
 
 // 支付状态配置
 const ORDER_PAY_STATUS = {
-  [PayStatus.Paid]: { type: 'success' as const, text: '已支付' },
-  [PayStatus.PendingPayment]: { type: 'primary' as const, text: '待支付' },
-  [PayStatus.Refunded]: { type: 'warning' as const, text: '已退款' },
+  [PayStatus.Success]: { type: 'success' as const, text: '支付成功' },
+  [PayStatus.Pending]: { type: 'primary' as const, text: '待支付' },
+  [PayStatus.Fail]: { type: 'warning' as const, text: '支付失败' },
 } as const
 
 /**

@@ -1,8 +1,8 @@
 
 export enum AfterSalesType {
-  ServiceNotCompleted = 1,      // 服务无法完成
-  Cheater = 2,      // 威客作弊
-  Other = 3,      // 其他
+  Refund = 1, // 仅退款
+  Compensate = 2, // 仅补偿
+  RefundCompensate = 3, // 退款加补偿
 }
 
 export enum SexType {

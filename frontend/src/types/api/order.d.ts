@@ -20,6 +20,9 @@ declare namespace Order {
             type: number;
             amount: number | null;
             reason: string | null;
+            content: string;
+            contactMode: number;
+            contactNumber: string;
         }
         type Distribute = {
             id: number;

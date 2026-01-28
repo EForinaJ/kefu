@@ -4,3 +4,9 @@ export enum PayMode {
     Balance = 3,// 余额
     PersonalTransfer = 4,// 人工转账
 }
+
+export enum ContactMode {
+    Wechat = 1,// 微信
+    QQ = 2,// QQ
+    Phone = 3,// 手机
+}

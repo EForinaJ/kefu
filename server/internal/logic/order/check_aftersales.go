@@ -49,8 +49,8 @@ func (s *sOrder) CheckAftersales(ctx context.Context, req *dto_order.Aftersales)
 		return utils_error.Err(response.FAILD, "订单已取消")
 	}
 
-	if gconv.Int(status) == consts.OrderStatusRefund {
-		return utils_error.Err(response.FAILD, "订单已退款")
+	if gconv.Int(status) == consts.OrderStatusAftersales {
+		return utils_error.Err(response.FAILD, "订单已售后")
 	}
 
 	return nil

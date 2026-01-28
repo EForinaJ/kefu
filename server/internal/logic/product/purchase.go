@@ -39,7 +39,7 @@ func (s *sProduct) Purchase(ctx context.Context, req *dto_product.Purchase) (cod
 		Where(dao.SysOrder.Columns().UserId, req.UserId).
 		WhereNot(dao.SysOrder.Columns().Status, consts.OrderStatusPendingPayment).
 		WhereNot(dao.SysOrder.Columns().Status, consts.OrderStatusCancel).
-		WhereNot(dao.SysOrder.Columns().Status, consts.OrderStatusRefund).
+		WhereNot(dao.SysOrder.Columns().Status, consts.OrderStatusAftersales).
 		Where(dao.SysOrder.Columns().ProductId, req.Id).Count()
 	if err != nil {
 		return "", utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))

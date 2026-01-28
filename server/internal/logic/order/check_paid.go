@@ -36,8 +36,8 @@ func (s *sOrder) CheckPaid(ctx context.Context, req *dto_order.Paid) (err error)
 	if gconv.Int(order.GMap().Get(dao.SysOrder.Columns().Status)) == consts.OrderStatusCancel {
 		return utils_error.Err(response.FAILD, "订单已取消，无法确认收款")
 	}
-	if gconv.Int(order.GMap().Get(dao.SysOrder.Columns().Status)) == consts.OrderStatusRefund {
-		return utils_error.Err(response.FAILD, "订单已退款，无法确认收款")
+	if gconv.Int(order.GMap().Get(dao.SysOrder.Columns().Status)) == consts.OrderStatusAftersales {
+		return utils_error.Err(response.FAILD, "订单已售后，无法确认收款")
 	}
 
 	if req.PayMode == consts.PayModeBalance {

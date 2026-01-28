@@ -70,7 +70,7 @@ const ORDER_STATUS_CONFIG = {
     [OrderStatus.InProgress]: { type: 'primary' as const, text: '进行中' },
     [OrderStatus.Completed]: { type: 'success' as const, text: '已完成' },
     [OrderStatus.Cancel]: { type: 'danger' as const, text: '已取消' },
-    [OrderStatus.Refund]: { type: 'warning' as const, text: '已退款' },
+    [OrderStatus.AfterSales]: { type: 'warning' as const, text: '已售后' },
 } as const
 
 /**

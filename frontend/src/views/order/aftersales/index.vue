@@ -1,4 +1,4 @@
-<!-- 售后退款管理页面 -->
+<!-- 售后售后管理页面 -->
 <!-- art-full-height 自动计算出页面剩余高度 -->
 <!-- art-table-card 一个符合系统样式的 class，同时自动撑满剩余高度 -->
 <!-- 更多 useTable 使用示例请移步至 功能示例 下面的高级表格示例或者查看官方文档 -->
@@ -37,7 +37,6 @@
   import { useTable } from '@/hooks/core/useTable'
   import { ElTag, ElImage } from 'element-plus'
   import { useSiteStore } from '@/store/modules/site'
-  import { useAuth } from '@/hooks'
   import ArtButtonTable from '@/components/core/forms/art-button-table/index.vue'
   import { fetchGetAftersalesList } from '@/api/aftersales'
   import AftersalesSearch from './modules/aftersales-search.vue'
@@ -143,14 +142,14 @@
         },
         {
           prop: 'amount',
-          label: '退款金额',
+          label: '售后金额',
           formatter: (row) => {
             return h(ElTag, { type:"primary" }, () => `${row.amount}${site.symbol}` )
           }
         },
         {
           prop: 'status',
-          label: '退款状态',
+          label: '售后状态',
           formatter: (row) => {
             const statusConfig = getStatus(row.status)
             return h(ElTag, { type: statusConfig.type }, () => statusConfig.text)

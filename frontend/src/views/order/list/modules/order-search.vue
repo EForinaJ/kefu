@@ -50,7 +50,7 @@ import { OrderStatus } from '@/enums/statusEnum';
           { label: '进行中', value: OrderStatus.InProgress },
           { label: '已完成', value: OrderStatus.Completed },
           { label: '已取消', value: OrderStatus.Cancel },
-          { label: '已退款', value: OrderStatus.Refund },
+          { label: '已售后', value: OrderStatus.AfterSales },
         ])
       }, 1000)
     })

@@ -3,10 +3,10 @@
   <div v-if="!loading">
     <ElRow :gutter="20">
       <ElCol :sm="24" :md="12" :lg="16">
-        <Banner 
+        <!-- <Banner 
           :today-sales="detail.todaySales"
           :sales-comparison="detail.salesComparison"
-        />
+        /> -->
         <HotProduct :table-data="detail.hotProductList"/>
       </ElCol>
       <ElCol :sm="24" :md="12" :lg="8">

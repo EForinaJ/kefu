@@ -12,6 +12,7 @@ func (c *ControllerV1) GetDetail(ctx context.Context, req *v1.GetDetailReq) (res
 	if err != nil {
 		return nil, err
 	}
+
 	res = &v1.GetDetailRes{
 		Detail: detail,
 	}

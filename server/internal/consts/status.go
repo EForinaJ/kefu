@@ -22,7 +22,7 @@ const (
 	OrderStatusInProgress     = 3 // 进行中
 	OrderStatusComplete       = 4 // 已完成
 	OrderStatusCancel         = 5 // 已取消
-	OrderStatusRefund         = 6 // 已退款
+	OrderStatusAftersales     = 6 // 已售后
 )
 
 const (

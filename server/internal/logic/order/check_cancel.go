@@ -30,8 +30,8 @@ func (s *sOrder) CheckCancel(ctx context.Context, id int64) (err error) {
 	if status.Int() == consts.OrderStatusCancel {
 		return utils_error.Err(response.FAILD, "订单已取消，无法取消")
 	}
-	if status.Int() == consts.OrderStatusRefund {
-		return utils_error.Err(response.FAILD, "订单已退款，无法取消")
+	if status.Int() == consts.OrderStatusAftersales {
+		return utils_error.Err(response.FAILD, "订单已售后，无法取消")
 	}
 	return
 }

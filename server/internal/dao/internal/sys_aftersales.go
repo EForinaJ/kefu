@@ -30,6 +30,7 @@ type SysAftersalesColumns struct {
 	Amount     string //
 	Reason     string //
 	Reject     string //
+	Content    string //
 	Status     string //
 	CreateTime string //
 }
@@ -45,6 +46,7 @@ var sysAftersalesColumns = SysAftersalesColumns{
 	Amount:     "amount",
 	Reason:     "reason",
 	Reject:     "reject",
+	Content:    "content",
 	Status:     "status",
 	CreateTime: "create_time",
 }

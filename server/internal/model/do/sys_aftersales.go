@@ -21,6 +21,7 @@ type SysAftersales struct {
 	Amount     any         //
 	Reason     any         //
 	Reject     any         //
+	Content    any         //
 	Status     any         //
 	CreateTime *gtime.Time //
 }

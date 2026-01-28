@@ -8,39 +8,16 @@ import (
 	dao_dashboard "server/internal/type/dashboard/dao"
 	dao_product "server/internal/type/product/dao"
 	dao_workorder "server/internal/type/workorder/dao"
-	utils_common "server/internal/utils/common"
 	utils_error "server/internal/utils/error"
 	"server/internal/utils/response"
 
-	"github.com/gogf/gf/v2/os/gtime"
 	"github.com/gogf/gf/v2/util/gconv"
 )
 
 // GetDetail implements service.IDashboard.
 func (s *sDashboard) GetDetail(ctx context.Context) (res *dao_dashboard.Detail, err error) {
-	// 获取昨天收益
-	yesterday, err := dao.SysCapital.Ctx(ctx).
-		Where(dao.SysCapital.Columns().Type, consts.CapitalPaymentOrder).
-		Where("DATE(create_time) = ?", gtime.Now().AddDate(0, 0, -1).Format("Y-m-d")).
-		Sum("amount")
-	if err != nil {
-		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-	}
 
-	today, err := dao.SysCapital.Ctx(ctx).
-		Where(dao.SysCapital.Columns().Type, consts.CapitalPaymentOrder).
-		Where("DATE(create_time) = ?", gtime.Now().Format("Y-m-d")).
-		Sum("amount")
-	if err != nil {
-		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
-	}
-
-	calculate := utils_common.CalculateChangePercent(today, yesterday)
-
-	detail := dao_dashboard.Detail{
-		TodaySales:      today,
-		SalesComparison: calculate,
-	}
+	detail := dao_dashboard.Detail{}
 
 	m := dao.SysProduct.Ctx(ctx).
 		Page(1, 10).
